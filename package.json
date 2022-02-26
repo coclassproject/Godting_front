@@ -1,0 +1,50 @@
+{
+  "name": "godting_front",
+  "version": "1.0.0",
+  "description": "Godting_front",
+  "main": ".src/index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev"
+  },
+  "dependencies": {
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "emotion-reset": "^3.0.1",
+    "next": "^11.1.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-hook-form": "^7.22.5",
+    "react-icons": "^4.3.1",
+    "react-query": "^3.34.7"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^5.5.0",
+    "@types/react": "^17.0.27",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-jsx-conditionals": "^2.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coclassproject/Godting_front.git"
+  },
+  "author": "godting",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coclassproject/Godting_front/issues"
+  },
+  "homepage": "https://github.com/coclassproject/Godting_front#readme"
+}
