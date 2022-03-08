@@ -1,0 +1,37 @@
+import React from 'react';
+import styled from '@emotion/styled';
+import { useRouter } from 'next/dist/client/router';
+import { AnimatePresence, motion } from 'framer-motion';
+
+const Container = styled.div`
+  background-color: #f2f4f6;
+`;
+
+const SubContainer = styled.div`
+  background-color: #fff;
+  width: 100%;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
+  padding-bottom: 5rem;
+  position: relative;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+`;
+
+const Layout = () => {
+  const router = useRouter();
+
+  return (
+    <Container>
+      <AnimatePresence exitBeforeEnter>
+        <motion.div>
+          <SubContainer>
+            <h1>test</h1>
+          </SubContainer>
+        </motion.div>
+      </AnimatePresence>
+    </Container>
+  );
+};
+
+export default Layout;

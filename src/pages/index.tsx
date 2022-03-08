@@ -1,5 +1,6 @@
 import React from 'react';
+import Layout from 'src/components/shared/Layout';
 
-const Home = () => <div>h1</div>;
+const Home = () => <Layout />;
 
 export default Home;
