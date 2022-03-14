@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { HiOutlineRefresh } from 'react-icons/hi';
 
 const Container = styled.div`
   width: 100%;
@@ -14,6 +15,7 @@ const SubContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  align-items: center;
   height: 50px;
 
   span {
@@ -21,11 +23,17 @@ const SubContainer = styled.div`
   }
 `;
 
+const IconContainer = styled.div`
+  padding: 1.5rem;
+`;
+
 const Nav = () => (
   <Container>
     <SubContainer>
       <span>로고</span>
-      <span>새로고침</span>
+      <IconContainer>
+        <HiOutlineRefresh size="1.3rem" />
+      </IconContainer>
     </SubContainer>
   </Container>
 );
