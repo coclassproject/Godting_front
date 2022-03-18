@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/dist/client/router';
 import { AnimatePresence, motion } from 'framer-motion';
+import { menus } from 'schema';
 import Nav from './Nav';
 import Menu from './Menu';
 
@@ -26,15 +27,29 @@ const SubContainer = styled.div`
   }
 `;
 
-const Layout = () => {
+const Layout = ({ noAni = false, children = null }) => {
   const router = useRouter();
+
+  const currentPage = Object.keys(menus).find((key) => menus[key].path === router.pathname);
+  const isMenu = Object.keys(menus).includes(currentPage);
+
+  const variants = {
+    hidden: noAni ? {} : { opacity: 0, x: 100, y: 0 },
+    enter: noAni ? {} : { opacity: 1, x: 0, y: 0 },
+  };
 
   return (
     <Container>
       <AnimatePresence exitBeforeEnter>
-        <motion.div>
+        <motion.div
+          variants={variants}
+          initial={!isMenu && 'hidden'}
+          animate={!isMenu && 'enter'}
+          transition={{ type: 'linear' }}
+        >
           <SubContainer>
             <Nav />
+            {children}
             <Menu currentMenu />
           </SubContainer>
         </motion.div>
