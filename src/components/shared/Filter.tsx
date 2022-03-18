@@ -7,6 +7,7 @@ const Container = styled.div`
   position: absolute;
   bottom: 0px;
   z-index: 999;
+  border-radius: 10px 10px 0 0;
 `;
 const Filter = () => <Container>hsd</Container>;
 
