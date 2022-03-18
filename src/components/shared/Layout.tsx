@@ -26,7 +26,7 @@ const SubContainer = styled.div`
   }
 `;
 
-const Layout = () => {
+const Layout = ({ children }) => {
   const router = useRouter();
 
   return (
@@ -35,6 +35,7 @@ const Layout = () => {
         <motion.div>
           <SubContainer>
             <Nav />
+            {children}
             <Menu currentMenu />
           </SubContainer>
         </motion.div>

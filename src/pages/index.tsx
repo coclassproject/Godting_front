@@ -4,7 +4,6 @@ import Layout from 'src/components/shared/Layout';
 
 const Home = () => (
   <Layout>
-    <h1>sd</h1>
     <Filter />
   </Layout>
 );
