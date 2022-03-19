@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { menus } from 'schema';
 import Nav from './Nav';
 import Menu from './Menu';
+import Category from '../home/Category';
+import Card from '../home/Card';
 
 const Container = styled.div`
   background-color: #f2f4f6;
@@ -51,6 +53,8 @@ const Layout = ({ noAni = false, children = null }) => {
             <Nav />
             {children}
             <Menu currentMenu />
+            <Category />
+            <Card />
           </SubContainer>
         </motion.div>
       </AnimatePresence>
