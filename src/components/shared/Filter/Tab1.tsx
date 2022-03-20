@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { region } from 'src/schema';
-import { Range } from 'react-range';
+import { getTrackBackground, Range } from 'react-range';
 import { ButtonContainer, CommonTag } from './style';
 
 const Container = styled.div`
@@ -28,6 +28,18 @@ const Container = styled.div`
   }
 `;
 
+const LabelContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-size: 14px;
+    margin-bottom: 1.2rem;
+    color: ${(props) => props.theme.PUBLIC_BLUE};
+  }
+`;
+
 const Label = styled.label`
   display: block;
   font-size: 14px;
@@ -35,8 +47,23 @@ const Label = styled.label`
   color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
 `;
 
+const StyledRangeLine = styled.div`
+  height: 6px;
+  width: 100%;
+  background-color: ${(props) => props.theme.PUBLIC_BLUE};
+`;
+
+const StyledRangePointer = styled.div`
+  width: 15px;
+  height: 15px;
+  border-radius: 30px;
+  /* background-color: #999; */
+  background-color: ${(props) => props.theme.PUBLIC_BLUE};
+`;
+
 const Tab1 = () => {
-  const [value, setValue] = React.useState([25, 50]);
+  const [ageValue, setAgeValue] = useState([25, 30]);
+  const [heightValue, setHeightValue] = useState([160, 175]);
 
   return (
     <Container>
@@ -47,12 +74,36 @@ const Tab1 = () => {
         ))}
       </div>
       <div className="age">
-        <Label htmlFor="age">나이</Label>
-        {/* <input id="age" type="range" min="20" max="39" step="1" /> */}
+        <LabelContainer>
+          <Label htmlFor="age">나이</Label>
+          <span>{`${ageValue[0]}세~${ageValue[1]}세`}</span>
+        </LabelContainer>
+        <Range
+          draggableTrack
+          step={1}
+          min={20}
+          max={39}
+          values={ageValue}
+          onChange={(values) => setAgeValue(values)}
+          renderTrack={({ props, children }) => <StyledRangeLine {...props}>{children}</StyledRangeLine>}
+          renderThumb={({ props }) => <StyledRangePointer {...props} />}
+        />
       </div>
       <div className="key">
-        <Label htmlFor="key">키</Label>
-        <input id="key" type="range" min="140" max="190" step="10" />
+        <LabelContainer>
+          <Label htmlFor="key">키</Label>
+          <span>{`${heightValue[0]}cm~${heightValue[1]}cm`}</span>
+        </LabelContainer>
+        <Range
+          draggableTrack
+          step={5}
+          min={140}
+          max={190}
+          values={heightValue}
+          onChange={(values) => setHeightValue(values)}
+          renderTrack={({ props, children }) => <StyledRangeLine {...props}>{children}</StyledRangeLine>}
+          renderThumb={({ props }) => <StyledRangePointer {...props} />}
+        />
       </div>
       <div className="common">
         <Label>주량</Label>
