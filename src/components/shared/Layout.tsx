@@ -53,8 +53,6 @@ const Layout = ({ noAni = false, children = null }) => {
             <Nav />
             {children}
             <Menu currentMenu />
-            <Category />
-            <Card />
           </SubContainer>
         </motion.div>
       </AnimatePresence>

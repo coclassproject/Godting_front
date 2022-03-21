@@ -4,7 +4,7 @@ import Main from 'src/components/home/Main';
 
 const Home = () => (
   <Layout>
-    <h1>ts</h1>
+    <Main />
   </Layout>
 );
 

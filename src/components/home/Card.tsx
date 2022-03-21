@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { AiOutlineHeart } from 'react-icons/ai';
 
 const CardContainer = styled.div`
   width: 400px;
@@ -20,8 +21,15 @@ const CardSubContainer = styled.div`
 `;
 const CardButton = styled.button`
   position: absolute;
-  left: 130px;
+  width: 34px;
+  height: 34px;
+  left: 140px;
   bottom: 200px;
+  border-radius: 100%;
+  color: #f5f5f5;
+  background-color: white;
+  border: 1px solid #f5f5f5;
+  cursor: pointer;
 `;
 
 const CardOld = styled.span`
@@ -38,16 +46,32 @@ const CardHeight = styled.span`
 `;
 //
 
+const RegisterContainer = styled.div`
+  width: 400px;
+  height: 300px;
+  float: left;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+`;
+
+const RegisterSubContainer = styled.div`
+  width: 175px;
+  height: 100px;
+  justify-content: center;
+  text-align: center;
+  display: table-cell;
+  flex-direction: column;
+`;
+
 const RegisterCard = styled.div`
   border-radius: 10px;
   width: 175px;
   height: 230px;
   float: left;
-  margin: auto;
-  justify-content: center;
-  position: absolute;
   box-shadow: 0px 2px 12px 1px rgba(0, 0, 0, 0.08);
   text-align: center;
+  margin: 6px;
 `;
 const RegisterImg = styled.div`
   width: 100px;
@@ -60,75 +84,85 @@ const RegisterImg = styled.div`
   margin-top: 30px;
 `;
 const RegisterNick = styled.span`
-  position: absolute;
   font-weight: bold;
-  display: block;
   color: grey;
-  align: center;
+  text-align: center;
+  vertical-align: middle;
 `;
 const RegisterLecture = styled.span`
-  position: absolute;
-  display: block;
   font-size: 15px;
   color: grey;
+  vertical-align: middle;
+  text-align: center;
 `;
 const RegisterInfo = styled.span`
-  position: absolute;
-  display: block;
   color: lightgrey;
-  align: center;
+  vertical-align: middle;
+  text-align: center;
 `;
-const Span = styled.span`
-  display: block;
+const Span = styled.div`
+  margin-bottom: 20px;
+  padding-top: 40px;
 `;
 
 const Card = () => (
   <>
     <CardContainer>
       <CardSubContainer>
-        <CardButton>하트</CardButton>
+        <CardButton>
+          <AiOutlineHeart size="20" />
+        </CardButton>
         <CardOld> 23세</CardOld>
         <CardHeight> 162cm</CardHeight>
       </CardSubContainer>
       <CardSubContainer>
-        <CardButton>하트</CardButton>
+        <CardButton>
+          <AiOutlineHeart size="20" />
+        </CardButton>
         <CardOld> 23세</CardOld>
         <CardHeight> 162cm</CardHeight>
       </CardSubContainer>
       <CardSubContainer>
-        <CardButton>하트</CardButton>
+        <CardButton>
+          <AiOutlineHeart size="20" />
+        </CardButton>
         <CardOld> 23세</CardOld>
         <CardHeight> 162cm</CardHeight>
       </CardSubContainer>
       <CardSubContainer>
-        <CardButton>하트</CardButton>
+        <CardButton>
+          <AiOutlineHeart size="20" />
+        </CardButton>
         <CardOld> 23세</CardOld>
         <CardHeight> 162cm</CardHeight>
       </CardSubContainer>
-    </CardContainer>
-    <br /> <br /> <br />
-    <CardContainer>
       <Span>#최근에 가입한 친구들</Span>
-      <RegisterCard>
-        <RegisterImg />
-        <RegisterNick>햄찌</RegisterNick> <br />
-        <br />
-        <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
-        <br />
-        <br />
-        <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
-        <br />
-      </RegisterCard>
-      <RegisterCard>
-        <RegisterImg />
-        <RegisterNick>햄찌</RegisterNick> <br />
-        <br />
-        <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
-        <br />
-        <br />
-        <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
-        <br />
-      </RegisterCard>
+      <RegisterContainer>
+        <RegisterCard>
+          <RegisterImg />
+          <RegisterSubContainer>
+            <RegisterNick>햄찌</RegisterNick> <br />
+            <br />
+            <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
+            <br />
+            <br />
+            <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
+            <br />
+          </RegisterSubContainer>
+        </RegisterCard>
+        <RegisterCard>
+          <RegisterImg />
+          <RegisterSubContainer>
+            <RegisterNick>햄찌</RegisterNick> <br />
+            <br />
+            <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
+            <br />
+            <br />
+            <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
+            <br />
+          </RegisterSubContainer>
+        </RegisterCard>
+      </RegisterContainer>
     </CardContainer>
   </>
 );
