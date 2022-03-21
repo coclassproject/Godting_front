@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { region } from 'src/schema';
 import Tab1 from './Tab1';
 import Tab2 from './Tab2';
+import Tab3 from './Tab3';
 
 type PageTitleColor = {
   textColor: boolean;
@@ -58,6 +58,7 @@ const Filter = () => {
         </div>
         {page === 1 && <Tab1 />}
         {page === 2 && <Tab2 />}
+        {page === 3 && <Tab3 />}
       </SubContainer>
     </Container>
   );

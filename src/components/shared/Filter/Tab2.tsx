@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { interest } from 'src/schema';
+import { INTEREST } from 'src/schema';
 import { ButtonContainer, CommonTag } from './style';
 
 const Container = styled.div`
@@ -23,7 +23,7 @@ const ExtendsButtonContainer = styled(ButtonContainer)`
 
 const Tab2 = () => (
   <Container>
-    {interest.map((item) => (
+    {INTEREST.map((item) => (
       <ExtendsCommonTag key={item}>{item}</ExtendsCommonTag>
     ))}
     <ExtendsButtonContainer>

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { region } from 'src/schema';
-import { getTrackBackground, Range } from 'react-range';
-import { ButtonContainer, CommonTag } from './style';
+import React, { useState } from 'react';
+import { Range } from 'react-range';
+import { REGION } from 'src/schema';
+import { ButtonContainer, CommonTag, Label, LabelContainer, StyledRangeLine, StyledRangePointer } from './style';
 
 const Container = styled.div`
   .region {
@@ -12,11 +12,6 @@ const Container = styled.div`
 
   .age {
     margin-bottom: 2rem;
-    input {
-      width: 100%;
-      appearance: none;
-      background-color: ${(props) => props.theme.PUBLIC_BLUE};
-    }
   }
 
   .key {
@@ -28,39 +23,6 @@ const Container = styled.div`
   }
 `;
 
-const LabelContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  span {
-    font-size: 14px;
-    margin-bottom: 1.2rem;
-    color: ${(props) => props.theme.PUBLIC_BLUE};
-  }
-`;
-
-const Label = styled.label`
-  display: block;
-  font-size: 14px;
-  margin-bottom: 1.2rem;
-  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
-`;
-
-const StyledRangeLine = styled.div`
-  height: 6px;
-  width: 100%;
-  background-color: ${(props) => props.theme.PUBLIC_BLUE};
-`;
-
-const StyledRangePointer = styled.div`
-  width: 15px;
-  height: 15px;
-  border-radius: 30px;
-  /* background-color: #999; */
-  background-color: ${(props) => props.theme.PUBLIC_BLUE};
-`;
-
 const Tab1 = () => {
   const [ageValue, setAgeValue] = useState([25, 30]);
   const [heightValue, setHeightValue] = useState([160, 175]);
@@ -69,7 +31,7 @@ const Tab1 = () => {
     <Container>
       <div className="region">
         <Label>지역</Label>
-        {region.map((area) => (
+        {REGION.map((area) => (
           <CommonTag key={area}>{area}</CommonTag>
         ))}
       </div>

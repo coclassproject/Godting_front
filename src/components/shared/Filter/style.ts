@@ -26,3 +26,36 @@ export const ButtonContainer = styled.div`
     font-size: 14px;
   }
 `;
+
+export const LabelContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-size: 14px;
+    margin-bottom: 1.2rem;
+    color: ${(props) => props.theme.PUBLIC_BLUE};
+  }
+`;
+
+export const Label = styled.label`
+  display: block;
+  font-size: 14px;
+  margin-bottom: 1.2rem;
+  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
+`;
+
+export const StyledRangeLine = styled.div`
+  height: 6px;
+  width: 100%;
+  background-color: ${(props) => props.theme.PUBLIC_BLUE};
+`;
+
+export const StyledRangePointer = styled.div`
+  width: 15px;
+  height: 15px;
+  border-radius: 30px;
+  /* background-color: #999; */
+  background-color: ${(props) => props.theme.PUBLIC_BLUE};
+`;
