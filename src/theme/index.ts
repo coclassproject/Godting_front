@@ -19,6 +19,7 @@ export const lightTheme = {
   NOTEBOOK: `(min-width: ${responsiveView.NOTEBOOK})`,
   TABLET: `(min-width: ${responsiveView.TABLET})`,
   MOBILE: `(min-width: ${responsiveView.MOBILE})`,
+  BUTTON_COLOR_HEART: '#f5f5f5', // 하트 버튼, 회색
 };
 
 export type ThemeType = typeof lightTheme;
