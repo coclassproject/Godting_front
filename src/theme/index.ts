@@ -14,12 +14,13 @@ export const lightTheme = {
   ICON_COLOR_AND_BOTTOM_CONTENT: '#9E9E9E', // 아이콘 색상 및 제일 하위의 내용에 사용,
   LINE_WHITE_COLOR: '#f5f5f5', // 퍼블릭 화이트, 라인,
   BUTTON_BACKGROUND_COLOR: '#EFEFEF', // 버튼 백그라운드,
+  LAYOUT_BACKGROUND_COLOR: '#f2f4f6',
+  LAYOUT_WHITE_COLOR: '#ffffff',
   HDPC: `(min-width: ${responsiveView.HDPC})`,
   PC: `(min-width: ${responsiveView.PC})`,
   NOTEBOOK: `(min-width: ${responsiveView.NOTEBOOK})`,
   TABLET: `(min-width: ${responsiveView.TABLET})`,
   MOBILE: `(min-width: ${responsiveView.MOBILE})`,
-  BUTTON_COLOR_HEART: '#f5f5f5', // 하트 버튼, 회색
 };
 
 export type ThemeType = typeof lightTheme;

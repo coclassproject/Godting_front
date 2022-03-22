@@ -7,11 +7,11 @@ import Nav from './Nav';
 import Menu from './Menu';
 
 const Container = styled.div`
-  background-color: #f2f4f6;
+  background-color: ${(props) => props.theme.LAYOUT_BACKGROUND_COLOR};
 `;
 
 const SubContainer = styled.div`
-  background-color: #fff;
+  background-color: ${(props) => props.theme.LAYOUT_WHITE_COLOR};
   width: 100%;
   height: 100vh;
   left: 0px;

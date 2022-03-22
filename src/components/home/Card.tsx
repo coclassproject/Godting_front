@@ -26,9 +26,9 @@ const CardButton = styled.button`
   left: 140px;
   bottom: 200px;
   border-radius: 100%;
-  color: ${(props) => props.theme.BUTTON_COLOR_HEART};
+  color: ${(props) => props.theme.LINE_WHITE_COLOR};
   background-color: white;
-  border: 1px solid #f5f5f5;
+  border: 1px solid ${(props) => props.theme.LINE_WHITE_COLOR};
   cursor: pointer;
 `;
 
