@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { Range } from 'react-range';
+import { Range, getTrackBackground } from 'react-range';
 import { IoIosArrowDown } from 'react-icons/io';
 import { DEPARTMENT_LIST, MajorObj } from 'src/schema';
 import { VscChromeClose } from 'react-icons/vsc';
-import { Label, LabelContainer, StyledRangeLine, StyledRangePointer } from './style';
+import { ButtonContainer, Label, LabelContainer, StyledRangeLine, StyledRangePointer } from './style';
 
 const Container = styled.div`
-  padding: 2rem 0;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
 `;
 
 const ExtendsLabel = styled(Label)`
@@ -72,10 +73,34 @@ const Hr = styled.hr`
 `;
 
 const Tab3 = () => {
-  const [undergrad, setUndergrad] = useState([15, 22]);
+  const STEP = 1;
+  const MIN = 15;
+  const MAX = 22;
+  const [undergrad, setUndergrad] = useState([17, 20]);
   const [major, setMajor] = useState<[number, string]>([null, '']);
   const [open, setOpen] = useState(false);
-  const [choiceMajor, setChoiceMajor] = useState([null]);
+  const [choiceMajor, setChoiceMajor] = useState<string[]>([null]);
+
+  const removeChoiceMajor = (choice: string) => {
+    setChoiceMajor((prev) => prev.filter((v) => v !== choice));
+  };
+
+  const onClickDepartment = (index: number, department: string) => {
+    setMajor([index, department]);
+    setOpen((prev) => !prev);
+  };
+
+  const onClickMajor = (selectMajor: string) => {
+    setChoiceMajor((prev) => {
+      if (prev[0] === null) {
+        return [selectMajor];
+      }
+      if (prev.indexOf(selectMajor) !== -1) {
+        return [...prev];
+      }
+      return [...prev, selectMajor];
+    });
+  };
 
   return (
     <Container>
@@ -84,14 +109,48 @@ const Tab3 = () => {
         <span>{`${undergrad[0]}학번~${undergrad[1]}학번`}</span>
       </LabelContainer>
       <Range
-        draggableTrack
-        step={1}
-        min={15}
-        max={22}
         values={undergrad}
+        step={STEP}
+        min={MIN}
+        max={MAX}
         onChange={(values) => setUndergrad(values)}
-        renderTrack={({ props, children }) => <StyledRangeLine {...props}>{children}</StyledRangeLine>}
-        renderThumb={({ props }) => <StyledRangePointer {...props} />}
+        renderTrack={({ props, children }) => (
+          <StyledRangeLine
+            onMouseDown={props.onMouseDown}
+            onTouchStart={props.onTouchStart}
+            style={{
+              ...props.style,
+            }}
+          >
+            <div
+              ref={props.ref}
+              style={{
+                height: '5px',
+                width: '100%',
+                borderRadius: '2px',
+                background: getTrackBackground({
+                  values: undergrad,
+                  colors: ['#f5f5f5', '#3D00FC', '#f5f5f5'],
+                  min: MIN,
+                  max: MAX,
+                }),
+                alignSelf: 'center',
+              }}
+            >
+              {children}
+            </div>
+          </StyledRangeLine>
+        )}
+        renderThumb={({ props }) => (
+          <StyledRangePointer
+            {...props}
+            style={{
+              ...props.style,
+            }}
+          >
+            <div />
+          </StyledRangePointer>
+        )}
       />
       <DepartmentContainer>
         <div className="tag">
@@ -100,24 +159,14 @@ const Tab3 = () => {
             choiceMajor.map((choice) => (
               <div className="choiceMajor">
                 <span>{`#${choice}`}</span>
-                <VscChromeClose
-                  onClick={() => setChoiceMajor((prev) => prev.filter((v) => v !== choice))}
-                  color="#9E9E9E"
-                />
+                <VscChromeClose onClick={() => removeChoiceMajor(choice)} color="#9E9E9E" />
               </div>
             ))}
         </div>
         <ListContainer>
           {DEPARTMENT_LIST.map((department, index) => (
             <>
-              <div
-                className="list"
-                key={department[1]}
-                onClick={() => {
-                  setMajor([index, department[1]]);
-                  setOpen((prev) => !prev);
-                }}
-              >
+              <div className="list" key={department[1]} onClick={() => onClickDepartment(index, department[1])}>
                 <div>
                   <IoIosArrowDown color="#666666" />
                 </div>
@@ -128,10 +177,7 @@ const Tab3 = () => {
                 major[0] === index &&
                 MajorObj[major[0]].map((v) => (
                   <SubListContainer key={v}>
-                    <span
-                      onClick={() => setChoiceMajor((prev) => (prev[0] === null ? [v] : [...prev, v]))}
-                      key={v}
-                    >{`- ${v}`}</span>
+                    <span onClick={() => onClickMajor(v)} key={v}>{`- ${v}`}</span>
                     <Hr />
                   </SubListContainer>
                 ))}
@@ -139,6 +185,9 @@ const Tab3 = () => {
           ))}
         </ListContainer>
       </DepartmentContainer>
+      <ButtonContainer>
+        <button>등록하기</button>
+      </ButtonContainer>
     </Container>
   );
 };

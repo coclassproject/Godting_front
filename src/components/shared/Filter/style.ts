@@ -14,7 +14,7 @@ export const CommonTag = styled.span`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 
   button {
     width: 270px;
@@ -49,13 +49,14 @@ export const Label = styled.label`
 export const StyledRangeLine = styled.div`
   height: 6px;
   width: 100%;
-  background-color: ${(props) => props.theme.PUBLIC_BLUE};
 `;
 
 export const StyledRangePointer = styled.div`
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   border-radius: 30px;
-  /* background-color: #999; */
   background-color: ${(props) => props.theme.PUBLIC_BLUE};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
-import { Range } from 'react-range';
+import { Range, getTrackBackground } from 'react-range';
 import { REGION } from 'src/schema';
 import { ButtonContainer, CommonTag, Label, LabelContainer, StyledRangeLine, StyledRangePointer } from './style';
 
 const Container = styled.div`
+  padding-bottom: 4rem;
   .region {
     margin-top: 2rem;
     margin-bottom: 2.5rem;
@@ -24,6 +25,12 @@ const Container = styled.div`
 `;
 
 const Tab1 = () => {
+  const AGE_STEP = 1;
+  const AGE_MIN = 20;
+  const AGE_MAX = 39;
+  const HEIGHT_STEP = 5;
+  const HEIGHT_MIN = 140;
+  const HEIGHT_MAX = 190;
   const [ageValue, setAgeValue] = useState([25, 30]);
   const [heightValue, setHeightValue] = useState([160, 175]);
 
@@ -41,14 +48,48 @@ const Tab1 = () => {
           <span>{`${ageValue[0]}세~${ageValue[1]}세`}</span>
         </LabelContainer>
         <Range
-          draggableTrack
-          step={1}
-          min={20}
-          max={39}
           values={ageValue}
+          step={AGE_STEP}
+          min={AGE_MIN}
+          max={AGE_MAX}
           onChange={(values) => setAgeValue(values)}
-          renderTrack={({ props, children }) => <StyledRangeLine {...props}>{children}</StyledRangeLine>}
-          renderThumb={({ props }) => <StyledRangePointer {...props} />}
+          renderTrack={({ props, children }) => (
+            <StyledRangeLine
+              onMouseDown={props.onMouseDown}
+              onTouchStart={props.onTouchStart}
+              style={{
+                ...props.style,
+              }}
+            >
+              <div
+                ref={props.ref}
+                style={{
+                  height: '5px',
+                  width: '100%',
+                  borderRadius: '2px',
+                  background: getTrackBackground({
+                    values: ageValue,
+                    colors: ['#f5f5f5', '#3D00FC', '#f5f5f5'],
+                    min: AGE_MIN,
+                    max: AGE_MAX,
+                  }),
+                  alignSelf: 'center',
+                }}
+              >
+                {children}
+              </div>
+            </StyledRangeLine>
+          )}
+          renderThumb={({ props }) => (
+            <StyledRangePointer
+              {...props}
+              style={{
+                ...props.style,
+              }}
+            >
+              <div />
+            </StyledRangePointer>
+          )}
         />
       </div>
       <div className="key">
@@ -57,14 +98,48 @@ const Tab1 = () => {
           <span>{`${heightValue[0]}cm~${heightValue[1]}cm`}</span>
         </LabelContainer>
         <Range
-          draggableTrack
-          step={5}
-          min={140}
-          max={190}
           values={heightValue}
+          step={HEIGHT_STEP}
+          min={HEIGHT_MIN}
+          max={HEIGHT_MAX}
           onChange={(values) => setHeightValue(values)}
-          renderTrack={({ props, children }) => <StyledRangeLine {...props}>{children}</StyledRangeLine>}
-          renderThumb={({ props }) => <StyledRangePointer {...props} />}
+          renderTrack={({ props, children }) => (
+            <StyledRangeLine
+              onMouseDown={props.onMouseDown}
+              onTouchStart={props.onTouchStart}
+              style={{
+                ...props.style,
+              }}
+            >
+              <div
+                ref={props.ref}
+                style={{
+                  height: '5px',
+                  width: '100%',
+                  borderRadius: '2px',
+                  background: getTrackBackground({
+                    values: heightValue,
+                    colors: ['#f5f5f5', '#3D00FC', '#f5f5f5'],
+                    min: HEIGHT_MIN,
+                    max: HEIGHT_MAX,
+                  }),
+                  alignSelf: 'center',
+                }}
+              >
+                {children}
+              </div>
+            </StyledRangeLine>
+          )}
+          renderThumb={({ props }) => (
+            <StyledRangePointer
+              {...props}
+              style={{
+                ...props.style,
+              }}
+            >
+              <div />
+            </StyledRangePointer>
+          )}
         />
       </div>
       <div className="common">
