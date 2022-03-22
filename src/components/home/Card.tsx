@@ -49,7 +49,6 @@ const CardHeight = styled.span`
 const RegisterContainer = styled.div`
   width: 400px;
   height: 300px;
-  float: left;
   justify-content: center;
   margin: 0 auto;
   text-align: center;
@@ -58,9 +57,8 @@ const RegisterContainer = styled.div`
 const RegisterSubContainer = styled.div`
   width: 175px;
   height: 100px;
-  justify-content: center;
   text-align: center;
-  display: table-cell;
+  display: flex;
   flex-direction: column;
 `;
 
@@ -85,24 +83,30 @@ const RegisterImg = styled.div`
 `;
 const RegisterNick = styled.span`
   font-weight: bold;
+  font-size: 14px;
   color: grey;
   text-align: center;
   vertical-align: middle;
+  padding-top: 10px;
 `;
 const RegisterLecture = styled.span`
-  font-size: 15px;
+  font-size: 12px;
   color: grey;
   vertical-align: middle;
   text-align: center;
+  padding: 10px 2px 3px 4px;
 `;
 const RegisterInfo = styled.span`
+  font-size: 12px;
   color: lightgrey;
   vertical-align: middle;
   text-align: center;
+  padding: 10px 2px 3px 4px;
 `;
 const Span = styled.div`
-  margin-bottom: 20px;
-  padding-top: 40px;
+  margin-left: 30px;
+  padding-top: 50px;
+  padding-bottom: 20px;
 `;
 
 const Card = () => (
@@ -136,34 +140,26 @@ const Card = () => (
         <CardOld> 23세</CardOld>
         <CardHeight> 162cm</CardHeight>
       </CardSubContainer>
-      <Span>#최근에 가입한 친구들</Span>
-      <RegisterContainer>
-        <RegisterCard>
-          <RegisterImg />
-          <RegisterSubContainer>
-            <RegisterNick>햄찌</RegisterNick> <br />
-            <br />
-            <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
-            <br />
-            <br />
-            <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
-            <br />
-          </RegisterSubContainer>
-        </RegisterCard>
-        <RegisterCard>
-          <RegisterImg />
-          <RegisterSubContainer>
-            <RegisterNick>햄찌</RegisterNick> <br />
-            <br />
-            <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
-            <br />
-            <br />
-            <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
-            <br />
-          </RegisterSubContainer>
-        </RegisterCard>
-      </RegisterContainer>
     </CardContainer>
+    <Span>#최근에 가입한 친구들</Span>
+    <RegisterContainer>
+      <RegisterCard>
+        <RegisterImg />
+        <RegisterSubContainer>
+          <RegisterNick>햄찌</RegisterNick>
+          <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
+          <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
+        </RegisterSubContainer>
+      </RegisterCard>
+      <RegisterCard>
+        <RegisterImg />
+        <RegisterSubContainer>
+          <RegisterNick>햄찌</RegisterNick>
+          <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
+          <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
+        </RegisterSubContainer>
+      </RegisterCard>
+    </RegisterContainer>
   </>
 );
 

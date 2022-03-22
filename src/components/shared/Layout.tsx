@@ -28,7 +28,6 @@ const SubContainer = styled.div`
   }
 `;
 
-
 const Layout = ({ noAni = false, children = null }) => {
   const router = useRouter();
 
