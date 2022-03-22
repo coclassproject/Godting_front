@@ -16,6 +16,8 @@ export const lightTheme = {
   BUTTON_BACKGROUND_COLOR: '#EFEFEF', // 버튼 백그라운드,
   PUBLIC_BLUE: '#3D00FC',
   PUBLIC_WHITE: '#fff',
+  LAYOUT_BACKGROUND_COLOR: '#f2f4f6',
+  LAYOUT_WHITE_COLOR: '#ffffff',
   HDPC: `(min-width: ${responsiveView.HDPC})`,
   PC: `(min-width: ${responsiveView.PC})`,
   NOTEBOOK: `(min-width: ${responsiveView.NOTEBOOK})`,
