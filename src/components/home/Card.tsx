@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { AiOutlineHeart } from 'react-icons/ai';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 const CardContainer = styled.div`
   width: 400px;
@@ -143,22 +149,61 @@ const Card = () => (
     </CardContainer>
     <Span>#최근에 가입한 친구들</Span>
     <RegisterContainer>
-      <RegisterCard>
-        <RegisterImg />
-        <RegisterSubContainer>
-          <RegisterNick>햄찌</RegisterNick>
-          <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
-          <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
-        </RegisterSubContainer>
-      </RegisterCard>
-      <RegisterCard>
-        <RegisterImg />
-        <RegisterSubContainer>
-          <RegisterNick>햄찌</RegisterNick>
-          <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
-          <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
-        </RegisterSubContainer>
-      </RegisterCard>
+      <main className="ExampleComponent">
+        <div className="main-wrap">
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            slidesPerView={3}
+            spaceBetween={150}
+            initialSlide={1}
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log('slide change')}
+          >
+            <SwiperSlide style={{ float: 'left' }}>
+              <RegisterCard>
+                <RegisterImg />
+                <RegisterSubContainer>
+                  <RegisterNick>햄찌</RegisterNick>
+                  <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
+                  <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
+                </RegisterSubContainer>
+              </RegisterCard>
+            </SwiperSlide>
+            <SwiperSlide>
+              <RegisterCard>
+                <RegisterImg />
+                <RegisterSubContainer>
+                  <RegisterNick>햄찌</RegisterNick>
+                  <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
+                  <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
+                </RegisterSubContainer>
+              </RegisterCard>
+            </SwiperSlide>
+            <SwiperSlide>
+              <RegisterCard>
+                <RegisterImg />
+                <RegisterSubContainer>
+                  <RegisterNick>햄찌</RegisterNick>
+                  <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
+                  <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
+                </RegisterSubContainer>
+              </RegisterCard>
+            </SwiperSlide>
+            <SwiperSlide>
+              <RegisterCard>
+                <RegisterImg />
+                <RegisterSubContainer>
+                  <RegisterNick>햄찌</RegisterNick>
+                  <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
+                  <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
+                </RegisterSubContainer>
+              </RegisterCard>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </main>
     </RegisterContainer>
   </>
 );
