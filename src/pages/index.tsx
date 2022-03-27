@@ -5,7 +5,6 @@ import Main from 'src/components/home/Main';
 
 const Home = () => (
   <Layout>
-    <Filter />
     <Main />
   </Layout>
 );
