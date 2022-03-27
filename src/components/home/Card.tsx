@@ -154,7 +154,7 @@ const Card = () => (
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             slidesPerView={3}
-            spaceBetween={150}
+            spaceBetween={180}
             initialSlide={1}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
