@@ -2,7 +2,19 @@ import React, { useState, useCallback } from 'react';
 import styled from '@emotion/styled';
 import { lightTheme } from 'src/theme';
 import { useForm } from 'react-hook-form';
-import { Select } from './select';
+import { INTEREST } from 'src/schema';
+import { CommonTag } from '../shared/Filter/style';
+
+const Container = styled.div`
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const ExtendsCommonTag = styled(CommonTag)`
+  margin-bottom: 0.5rem;
+`;
 
 const Background = styled.div`
   text-align: center;
@@ -12,7 +24,7 @@ const Background = styled.div`
 `;
 const SignUpDiv = styled.div`
   display: flex;
-  margin-top: 85px;
+  margin-top: 50px;
   justify-content: center;
   width: 100%;
   height: 100vh;
@@ -85,6 +97,7 @@ const SelectBox = styled.select`
   border: 1px solid #dcdcdc;
   box-sizing: border-box;
   border-radius: 4px;
+  margin-right: 50px;
 `;
 
 const SelectDiv = styled.div`
@@ -93,6 +106,10 @@ const SelectDiv = styled.div`
 `;
 const SelectSubDiv = styled.div`
   margin-bottom: 130px;
+`;
+
+const MarginDiv = styled.div`
+  margin-bottom: 30px;
 `;
 
 interface DataForm {
@@ -179,7 +196,7 @@ const Register = () => {
               <br /> <br />
               <Input placeholder="인증번호를 입력해주세요." />
               <br /> <br /> <br />
-              <div>
+              <MarginDiv>
                 <Label htmlFor="user-nick">닉네임</Label>
                 <Input
                   // name="user-nick"
@@ -193,7 +210,7 @@ const Register = () => {
                   type="text"
                 />
                 <ValidationLabel>{errors?.nick?.message}</ValidationLabel>
-              </div>
+              </MarginDiv>
               <div>
                 <Label htmlFor="user-gender&age">성별 및 나이</Label>
                 <SelectDiv>
@@ -329,6 +346,11 @@ const Register = () => {
                 </SelectDiv>
                 <br />
               </div>
+              <Container>
+                {INTEREST.map((item) => (
+                  <ExtendsCommonTag key={item}>{item}</ExtendsCommonTag>
+                ))}
+              </Container>
               <RegisterBtn>가입하기</RegisterBtn>
             </form>
           </Div>
