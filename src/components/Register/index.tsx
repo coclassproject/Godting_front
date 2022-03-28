@@ -1,115 +1,37 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import styled from '@emotion/styled';
 import { lightTheme } from 'src/theme';
 import { useForm } from 'react-hook-form';
 import { INTEREST } from 'src/schema';
-import { CommonTag } from '../shared/Filter/style';
+import { BsFillPlusCircleFill } from 'react-icons/bs';
+import { CommonTag, Label } from '../shared/Filter/style';
+import {
+  Background,
+  SignUpDiv,
+  Div,
+  SignUpLabel,
+  Subject,
+  EmailDiv,
+  Input,
+  EmailBtn,
+  ValidationLabel,
+  MarginDiv,
+  SelectDiv,
+  SelectSubDiv,
+  LabelSmall,
+  SelectBox,
+  Container,
+  ExtendsCommonTag,
+  Category,
+  CategoryContainer,
+  RegisterBtn,
+} from './style';
 
-const Container = styled.div`
-  padding: 2rem 0;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-
-const ExtendsCommonTag = styled(CommonTag)`
-  margin-bottom: 0.5rem;
-`;
-
-const Background = styled.div`
-  text-align: center;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-`;
-const SignUpDiv = styled.div`
-  display: flex;
-  margin-top: 50px;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  background-color: white;
-  margin-right: 25px;
-  margin-left: 25px;
-`;
-
-const Div = styled.div`
-  width: 100%;
-  align-items: center;
-  flex-direction: column;
-  text-align: left;
-`;
-const SignUpLabel = styled.label`
-  font-size: 23px;
-`;
-const Input = styled.input`
-  width: 275px;
-  height: 30px;
+const ImageBtn = styled.button`
+  width: 130px;
+  height: 140px;
   border: none;
-  border-bottom: 1px solid #ccc;
-  font-size: 14px;
-`;
-
-const Label = styled.label`
-  font-size: 16px;
-  display: flex;
-  margin-bottom: 25px;
-`;
-const LabelSmall = styled.label`
-  font-size: 14px;
-  display: flex;
-`;
-const ValidationLabel = styled.label`
-  font-size: 14px;
-  float: left;
-  color: #ff0a0a;
-`;
-
-const EmailBtn = styled.button`
-  width: 100px;
-  height: 40px;
-  float: right;
-  border-radius: 6px;
-  background-color: #1c00ff;
-  color: white;
-  border-style: none;
-  cursor: pointer;
-`;
-const EmailDiv = styled.div`
-  display: flex;
-  width: 510px;
-`;
-
-const RegisterBtn = styled.button`
-  cursor: pointer;
-  width: 378px;
-  height: 51px;
-  color: white;
-  border-style: none;
-  border-radius: 6px;
-  background-color: #1c00ff;
-  font-size: 19px;
-`;
-
-const SelectBox = styled.select`
-  width: 134px;
-  height: 44px;
-  border: 1px solid #dcdcdc;
-  box-sizing: border-box;
-  border-radius: 4px;
-  margin-right: 50px;
-`;
-
-const SelectDiv = styled.div`
-  width: 100%;
-  display: flex;
-`;
-const SelectSubDiv = styled.div`
-  margin-bottom: 130px;
-`;
-
-const MarginDiv = styled.div`
-  margin-bottom: 30px;
+  border-radius: 10%;
 `;
 
 interface DataForm {
@@ -121,6 +43,7 @@ interface DataForm {
   lecture: 'string';
   height: 'string';
   body: 'string';
+  picture: 'file';
 }
 
 const Register = () => {
@@ -146,6 +69,7 @@ const Register = () => {
     e.preventDefault();
   };
   */
+  const imageRef = useRef(null);
 
   /* React-Hook-Form */
   const {
@@ -164,9 +88,9 @@ const Register = () => {
           <Div>
             <SignUpLabel>회원가입</SignUpLabel>
             <br /> <br /> <br /> <br /> <br />
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} style={{ height: '150vh' }}>
               <div>
-                <Label htmlFor="user-email">이메일</Label>
+                <Subject htmlFor="user-email">이메일</Subject>
                 <EmailDiv>
                   <Input
                     // name="email"
@@ -197,7 +121,7 @@ const Register = () => {
               <Input placeholder="인증번호를 입력해주세요." />
               <br /> <br /> <br />
               <MarginDiv>
-                <Label htmlFor="user-nick">닉네임</Label>
+                <Subject htmlFor="user-nick">닉네임</Subject>
                 <Input
                   // name="user-nick"
                   // required
@@ -212,7 +136,7 @@ const Register = () => {
                 <ValidationLabel>{errors?.nick?.message}</ValidationLabel>
               </MarginDiv>
               <div>
-                <Label htmlFor="user-gender&age">성별 및 나이</Label>
+                <Subject htmlFor="user-gender&age">성별 및 나이</Subject>
                 <SelectDiv>
                   <SelectSubDiv>
                     <LabelSmall>성별</LabelSmall>
@@ -238,9 +162,9 @@ const Register = () => {
                     </SelectBox>
                   </SelectSubDiv>
                 </SelectDiv>
-                <Label htmlFor="user-height&body">키 및 체형</Label>
+                <Subject htmlFor="user-height&body">키 및 체형</Subject>
                 <SelectDiv>
-                  <div>
+                  <SelectSubDiv>
                     <LabelSmall>키</LabelSmall>
                     <SelectBox name="height" {...register('height', { required: true })}>
                       <option value="">선택해주세요</option>
@@ -287,7 +211,7 @@ const Register = () => {
                       <option value="190">190</option>
                       <option value="191">191</option>
                     </SelectBox>
-                  </div>
+                  </SelectSubDiv>
                   <div>
                     <LabelSmall>체형</LabelSmall>
                     <SelectBox name="body" {...register('body', { required: true })}>
@@ -301,7 +225,7 @@ const Register = () => {
                   </div>
                 </SelectDiv>
                 <br /> <br />
-                <Label htmlFor="user-class&lecture">학번 및 학과</Label>
+                <Subject htmlFor="user-class&lecture">학번 및 학과</Subject>
                 <SelectDiv>
                   <div>
                     <LabelSmall>학번</LabelSmall>
@@ -346,11 +270,39 @@ const Register = () => {
                 </SelectDiv>
                 <br />
               </div>
-              <Container>
-                {INTEREST.map((item) => (
-                  <ExtendsCommonTag key={item}>{item}</ExtendsCommonTag>
-                ))}
-              </Container>
+              <div>
+                <Subject htmlFor="user-favorite">관심사</Subject>
+                <Container>
+                  {INTEREST.map((item) => (
+                    <ExtendsCommonTag key={item}>{item}</ExtendsCommonTag>
+                  ))}
+                </Container>
+              </div>
+              <Category>
+                <Label>군필여부</Label>
+                <CommonTag lang="zh-CN">有</CommonTag>
+                <CommonTag lang="zh-CN">無</CommonTag>
+              </Category>
+              <CategoryContainer>
+                <div>
+                  <Label>흡연</Label>
+                  <CommonTag>&#26377;</CommonTag>
+                  <CommonTag lang="zh-CN">無</CommonTag>
+                </div>
+                <div style={{ marginLeft: '30px' }}>
+                  <Label>주량</Label>
+                  <CommonTag>술찌</CommonTag>
+                  <CommonTag>잘마심</CommonTag>
+                </div>
+              </CategoryContainer>
+              <div style={{ marginTop: '30px', marginBottom: '30px'}}>
+                <Subject htmlFor="user-favorite">사진 등록(필수 아님)</Subject>
+                <input {...register('picture')} type="file" style={{ display: 'none' }} ref={imageRef} />
+                <ImageBtn onClick={() => imageRef.current.click()}>
+                  <BsFillPlusCircleFill size="25" color="#9E9E9E" />
+                </ImageBtn>
+                {/*<img src={`${imagePath.replace(/\/thumb\//, '/original/')}`} alt="sumnail" /> */}
+              </div>
               <RegisterBtn>가입하기</RegisterBtn>
             </form>
           </Div>
