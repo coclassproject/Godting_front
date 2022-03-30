@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { menus } from 'schema';
 import Nav from './Nav';
 import Menu from './Menu';
+import Category from '../home/Category';
+import Card from '../home/Card';
 
 const Container = styled.div`
   background-color: ${(props) => props.theme.LAYOUT_BACKGROUND_COLOR};

@@ -47,13 +47,15 @@ interface DataForm {
 }
 
 const Register = () => {
-  // const [nick, onChangeNick] = useInput('');
+  const [favorite, setFavorite] = useState([]);
+  const onChangefarorite = useCallback((e) => {
+    setFavorite(e.target.value);
+    console.log(e.target.value);
+  }, []);
+  // const [favorite, onChangeNick] = useInput('');
   // const [email, onChangeEmail] = useInput('');
   /*
-  const [nick, setNick] = useState('');
-  const onChangeNick = useCallback((e) => {
-    setNick(e.target.value);
-  }, []);
+  
 
   const [email, setEmail] = useState('');
   const onChangeEmail = useCallback((e) => {
@@ -70,7 +72,7 @@ const Register = () => {
   };
   */
   const imageRef = useRef(null);
-
+  const checkRef = useRef(null);
   /* React-Hook-Form */
   const {
     register,
@@ -273,8 +275,18 @@ const Register = () => {
               <div>
                 <Subject htmlFor="user-favorite">관심사</Subject>
                 <Container>
+                  <input
+                    // {...(register('favorite'), { required: true })}
+                    style={{ display: 'none' }}
+                    type="checkbox"
+                    value={favorite}
+                    onChange={onChangefarorite}
+                    ref={checkRef}
+                  />
                   {INTEREST.map((item) => (
-                    <ExtendsCommonTag key={item}>{item}</ExtendsCommonTag>
+                    <ExtendsCommonTag onClick={() => checkRef.current.click()} key={item}>
+                      {item}
+                    </ExtendsCommonTag>
                   ))}
                 </Container>
               </div>
@@ -295,13 +307,12 @@ const Register = () => {
                   <CommonTag>잘마심</CommonTag>
                 </div>
               </CategoryContainer>
-              <div style={{ marginTop: '30px', marginBottom: '30px'}}>
+              <div style={{ marginTop: '30px', marginBottom: '30px' }}>
                 <Subject htmlFor="user-favorite">사진 등록(필수 아님)</Subject>
-                <input {...register('picture')} type="file" style={{ display: 'none' }} ref={imageRef} />
+                <input {...register('picture')} type="file" ref={imageRef} />
                 <ImageBtn onClick={() => imageRef.current.click()}>
                   <BsFillPlusCircleFill size="25" color="#9E9E9E" />
                 </ImageBtn>
-                {/*<img src={`${imagePath.replace(/\/thumb\//, '/original/')}`} alt="sumnail" /> */}
               </div>
               <RegisterBtn>가입하기</RegisterBtn>
             </form>
