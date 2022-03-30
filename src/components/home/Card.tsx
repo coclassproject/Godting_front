@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 const CardContainer = styled.div`
@@ -50,7 +49,6 @@ const CardHeight = styled.span`
   top: 200px;
   color: white;
 `;
-//
 
 const RegisterContainer = styled.div`
   width: 400px;
@@ -152,16 +150,14 @@ const Card = () => (
       <main className="ExampleComponent">
         <div className="main-wrap">
           <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            modules={[Navigation, A11y]}
             slidesPerView={3}
             spaceBetween={180}
             initialSlide={1}
-            pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log('slide change')}
           >
-            <SwiperSlide style={{ float: 'left' }}>
+            <SwiperSlide>
               <RegisterCard>
                 <RegisterImg />
                 <RegisterSubContainer>
