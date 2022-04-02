@@ -4,6 +4,7 @@ import { lightTheme } from 'src/theme';
 import { useForm } from 'react-hook-form';
 import { INTEREST } from 'src/schema';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
+import Nav from './Nav';
 import { CommonTag, Label } from '../shared/Filter/style';
 import {
   Background,
@@ -17,7 +18,6 @@ import {
   ValidationLabel,
   MarginDiv,
   SelectDiv,
-  SelectSubDiv,
   LabelSmall,
   SelectBox,
   Container,
@@ -44,19 +44,32 @@ interface DataForm {
   height: 'string';
   body: 'string';
   picture: 'file';
+  favorite: 'string';
+  name: 'string';
 }
 
 const Register = () => {
-  const [favorite, setFavorite] = useState([]);
-  const onChangefarorite = useCallback((e) => {
-    setFavorite(e.target.value);
+  const imageRef = useRef(null);
+  const checkRef = useRef(null);
+  const [favorite, setFavorite] = useState('');
+  const onChangefavorite = useCallback((e) => {
+    setFavorite(favorite);
     console.log(e.target.value);
   }, []);
+  const onClickFavorite = useCallback((e) => {
+    checkRef.current.click();
+    console.log(e.target.value);
+  }, []);
+  const favoriteData = [];
+  const interest = INTEREST.forEach((item) => {
+    favoriteData.push(item);
+  });
+  console.log(favoriteData);
   // const [favorite, onChangeNick] = useInput('');
   // const [email, onChangeEmail] = useInput('');
   /*
   
-
+  
   const [email, setEmail] = useState('');
   const onChangeEmail = useCallback((e) => {
     setEmail(e.target.value);
@@ -71,21 +84,21 @@ const Register = () => {
     e.preventDefault();
   };
   */
-  const imageRef = useRef(null);
-  const checkRef = useRef(null);
   /* React-Hook-Form */
+
   const {
     register,
-    watch,
     handleSubmit,
     formState: { errors },
   } = useForm<DataForm>();
   const onSubmit = (data: any) => {
     console.log(data);
   };
+
   return (
     <>
-      <Background>
+      <div>
+        <Nav />
         <SignUpDiv>
           <Div>
             <SignUpLabel>회원가입</SignUpLabel>
@@ -140,15 +153,15 @@ const Register = () => {
               <div>
                 <Subject htmlFor="user-gender&age">성별 및 나이</Subject>
                 <SelectDiv>
-                  <SelectSubDiv>
+                  <div>
                     <LabelSmall>성별</LabelSmall>
                     <SelectBox name="gender" {...register('gender', { required: true })}>
                       <option value="">선택해주세요</option>
                       <option value="male">남성</option>
                       <option value="female">여성</option>
                     </SelectBox>
-                  </SelectSubDiv>
-                  <SelectSubDiv>
+                  </div>
+                  <div>
                     <LabelSmall>나이</LabelSmall>
                     <SelectBox name="age" {...register('age', { required: true })}>
                       <option value="">선택해주세요</option>
@@ -162,11 +175,11 @@ const Register = () => {
                       <option value="27">27</option>
                       <option value="28">28</option>
                     </SelectBox>
-                  </SelectSubDiv>
+                  </div>
                 </SelectDiv>
                 <Subject htmlFor="user-height&body">키 및 체형</Subject>
                 <SelectDiv>
-                  <SelectSubDiv>
+                  <div>
                     <LabelSmall>키</LabelSmall>
                     <SelectBox name="height" {...register('height', { required: true })}>
                       <option value="">선택해주세요</option>
@@ -213,7 +226,7 @@ const Register = () => {
                       <option value="190">190</option>
                       <option value="191">191</option>
                     </SelectBox>
-                  </SelectSubDiv>
+                  </div>
                   <div>
                     <LabelSmall>체형</LabelSmall>
                     <SelectBox name="body" {...register('body', { required: true })}>
@@ -276,15 +289,14 @@ const Register = () => {
                 <Subject htmlFor="user-favorite">관심사</Subject>
                 <Container>
                   <input
-                    // {...(register('favorite'), { required: true })}
+                    {...register('favorite')}
                     style={{ display: 'none' }}
                     type="checkbox"
-                    value={favorite}
-                    onChange={onChangefarorite}
+                    onChange={onChangefavorite}
                     ref={checkRef}
                   />
                   {INTEREST.map((item) => (
-                    <ExtendsCommonTag onClick={() => checkRef.current.click()} key={item}>
+                    <ExtendsCommonTag type="checkbox" onClick={onChangefavorite} key={item} value={item}>
                       {item}
                     </ExtendsCommonTag>
                   ))}
@@ -309,7 +321,7 @@ const Register = () => {
               </CategoryContainer>
               <div style={{ marginTop: '30px', marginBottom: '30px' }}>
                 <Subject htmlFor="user-favorite">사진 등록(필수 아님)</Subject>
-                <input {...register('picture')} type="file" ref={imageRef} />
+                <input {...register('picture')} type="file" ref={imageRef} style={{ display: 'none' }} />
                 <ImageBtn onClick={() => imageRef.current.click()}>
                   <BsFillPlusCircleFill size="25" color="#9E9E9E" />
                 </ImageBtn>
@@ -318,7 +330,7 @@ const Register = () => {
             </form>
           </Div>
         </SignUpDiv>
-      </Background>
+      </div>
     </>
   );
 };

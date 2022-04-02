@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { CommonTag } from '../shared/Filter/style';
+import { lightTheme } from 'src/theme';
 
 export const Container = styled.div`
   padding: 2rem 0;
@@ -7,31 +7,39 @@ export const Container = styled.div`
   align-items: center;
   flex-wrap: wrap;
 `;
+export const CommonTag = styled.div`
+  font-size: 14px;
+  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
+  border-radius: 20px;
+  padding: 0.5rem 1.2rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  background-color: ${(props) => props.theme.BUTTON_BACKGROUND_COLOR};
+  font-family: MingLiU;
+`;
 
 export const ExtendsCommonTag = styled(CommonTag)`
   margin-bottom: 0.5rem;
 `;
 
 export const Background = styled.div`
-  height: 100vh;
+  width: 100%;
+  height: 150vh;
 `;
-export const SignUpDiv = styled.div`
+export const SignUpDiv = styled(Background)`
   display: flex;
   margin-top: 50px;
   justify-content: center;
-  width: 100%;
-  height: 150vh;
   background-color: white;
   margin-right: 25px;
   margin-left: 25px;
 `;
 
-export const Div = styled.div`
+export const Div = styled(Background)`
   flex-direction: column;
   text-align: left;
-  width: 100%;
-  height: 150vh;
 `;
+
 export const SignUpLabel = styled.label`
   font-size: 23px;
 `;
@@ -42,6 +50,7 @@ export const Input = styled.input`
   border-bottom: 1px solid #ccc;
   font-size: 14px;
   margin-top: 5px;
+  color: ${lightTheme.SUBTITLE_AND_CONTENT_COLOR};
 `;
 
 export const Subject = styled.label`
@@ -52,6 +61,7 @@ export const Subject = styled.label`
 export const LabelSmall = styled.label`
   font-size: 14px;
   display: flex;
+  color: ${lightTheme.SUBTITLE_AND_CONTENT_COLOR};
 `;
 export const ValidationLabel = styled.label`
   font-size: 14px;
@@ -93,14 +103,15 @@ export const SelectBox = styled.select`
   box-sizing: border-box;
   border-radius: 4px;
   margin-right: 50px;
+  color: ${lightTheme.SUBTITLE_AND_CONTENT_COLOR};
 `;
 
 export const SelectDiv = styled.div`
   width: 100%;
   display: flex;
-`;
-export const SelectSubDiv = styled.div`
-  margin-bottom: 50px;
+  div {
+    margin-bottom: 50px;
+  }
 `;
 
 export const MarginDiv = styled.div`
