@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 import styled from '@emotion/styled';
 import { lightTheme } from 'src/theme';
-import { useForm } from 'react-hook-form';
+import { useController, useForm } from 'react-hook-form';
 import { INTEREST } from 'src/schema';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import Nav from './Nav';
@@ -48,23 +48,32 @@ interface DataForm {
   name: 'string';
 }
 
+const HEIGHT = Array.from({ length: 41 }, (v, i) => i + 150);
+
 const Register = () => {
   const imageRef = useRef(null);
   const checkRef = useRef(null);
   const [favorite, setFavorite] = useState('');
-  const onChangefavorite = useCallback((e) => {
-    setFavorite(favorite);
-    console.log(e.target.value);
-  }, []);
-  const onClickFavorite = useCallback((e) => {
+
+  // const onChangefavorite = useCallback((e) => {
+  //   setFavorite(favorite);
+  //   console.log(e.target.value);
+  // }, []);
+
+  const onChangeFavorite = (e: React.MouseEvent<HTMLElement>) => {
+    const tmp = e.target as HTMLElement;
     checkRef.current.click();
-    console.log(e.target.value);
-  }, []);
-  const favoriteData = [];
-  const interest = INTEREST.forEach((item) => {
-    favoriteData.push(item);
-  });
-  console.log(favoriteData);
+  };
+  // const onClickFavorite = useCallback((e) => {
+  //   checkRef.current.click();
+  //   console.log(e.target.value);
+  // }, []);
+  // const favoriteData = [];
+  // const interest = INTEREST.forEach((item) => {
+  //   favoriteData.push(item);
+  // });
+  // console.log(favoriteData);
+
   // const [favorite, onChangeNick] = useInput('');
   // const [email, onChangeEmail] = useInput('');
   /*
@@ -79,20 +88,27 @@ const Register = () => {
     // 이메일 형식 : 숫자 8개@bu.ac.kr
     console.log('이메일 유효성 검사 :: ', regExp.test(e.target.value));
   };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-  };
   */
-  /* React-Hook-Form */
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<DataForm>();
+
   const onSubmit = (data: any) => {
-    console.log(data);
+    console.log(data, favorite);
+  };
+
+  const testM = (e) => {
+    console.log(e);
+    console.log('gasg', e.target.value);
+    setFavorite(e.target.value);
+  };
+
+  const onClickInterest = (e) => {
+    const target = e.target as HTMLElement;
+    setFavorite(target.innerText);
   };
 
   return (
@@ -183,48 +199,9 @@ const Register = () => {
                     <LabelSmall>키</LabelSmall>
                     <SelectBox name="height" {...register('height', { required: true })}>
                       <option value="">선택해주세요</option>
-                      <option value="150">150</option>
-                      <option value="151">151</option>
-                      <option value="152">152</option>
-                      <option value="153">153</option>
-                      <option value="154">154</option>
-                      <option value="155">155</option>
-                      <option value="156">156</option>
-                      <option value="157">157</option>
-                      <option value="158">158</option>
-                      <option value="159">159</option>
-                      <option value="160">160</option>
-                      <option value="161">161</option>
-                      <option value="162">162</option>
-                      <option value="163">163</option>
-                      <option value="164">164</option>
-                      <option value="165">165</option>
-                      <option value="166">166</option>
-                      <option value="167">167</option>
-                      <option value="168">168</option>
-                      <option value="169">169</option>
-                      <option value="170">170</option>
-                      <option value="171">171</option>
-                      <option value="172">172</option>
-                      <option value="173">173</option>
-                      <option value="174">174</option>
-                      <option value="175">175</option>
-                      <option value="176">176</option>
-                      <option value="177">177</option>
-                      <option value="178">178</option>
-                      <option value="179">179</option>
-                      <option value="180">180</option>
-                      <option value="181">181</option>
-                      <option value="182">182</option>
-                      <option value="183">183</option>
-                      <option value="184">184</option>
-                      <option value="185">185</option>
-                      <option value="186">186</option>
-                      <option value="187">187</option>
-                      <option value="188">188</option>
-                      <option value="189">189</option>
-                      <option value="190">190</option>
-                      <option value="191">191</option>
+                      {HEIGHT.map((height) => (
+                        <option value={height}>{height}</option>
+                      ))}
                     </SelectBox>
                   </div>
                   <div>
@@ -291,12 +268,14 @@ const Register = () => {
                   <input
                     {...register('favorite')}
                     style={{ display: 'none' }}
-                    type="checkbox"
-                    onChange={onChangefavorite}
+                    type="text"
+                    value={favorite}
+                    // onChange={onChangefavorite}
                     ref={checkRef}
+                    onClick={testM}
                   />
                   {INTEREST.map((item) => (
-                    <ExtendsCommonTag type="checkbox" onClick={onChangefavorite} key={item} value={item}>
+                    <ExtendsCommonTag onClick={onClickInterest} key={item}>
                       {item}
                     </ExtendsCommonTag>
                   ))}

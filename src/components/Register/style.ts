@@ -36,8 +36,8 @@ export const SignUpDiv = styled(Background)`
 `;
 
 export const Div = styled(Background)`
-  flex-direction: column;
-  text-align: left;
+  /* flex-direction: column;
+  text-align: left; */
 `;
 
 export const SignUpLabel = styled.label`

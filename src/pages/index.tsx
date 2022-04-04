@@ -1,12 +1,10 @@
 import React from 'react';
-import Filter from 'src/components/shared/Filter';
-import Layout from 'src/components/shared/Layout';
 import Main from 'src/components/home/Main';
-import Register from 'src/components/Register';
+import Layout from 'src/components/shared/Layout';
 
 const Home = () => (
   <Layout>
-    <Register />
+    <Main />
   </Layout>
 );
 
