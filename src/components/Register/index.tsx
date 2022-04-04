@@ -4,12 +4,9 @@ import { lightTheme } from 'src/theme';
 import { useController, useForm } from 'react-hook-form';
 import { INTEREST } from 'src/schema';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
-import Nav from './Nav';
 import { CommonTag, Label } from '../shared/Filter/style';
 import {
-  Background,
   SignUpDiv,
-  Div,
   SignUpLabel,
   Subject,
   EmailDiv,
@@ -25,6 +22,7 @@ import {
   Category,
   CategoryContainer,
   RegisterBtn,
+  Background,
 } from './style';
 
 const ImageBtn = styled.button`
@@ -35,17 +33,17 @@ const ImageBtn = styled.button`
 `;
 
 interface DataForm {
-  nick: 'string';
-  email: 'string';
-  gender: 'string';
-  age: 'Number';
-  class: 'string';
-  lecture: 'string';
-  height: 'string';
-  body: 'string';
-  picture: 'file';
-  favorite: 'string';
-  name: 'string';
+  nick: string;
+  email: string;
+  gender: string;
+  age: number;
+  class: string;
+  lecture: string;
+  height: string;
+  body: string;
+  picture: File;
+  favorite: string;
+  name: string;
 }
 
 const HEIGHT = Array.from({ length: 41 }, (v, i) => i + 150);
@@ -114,12 +112,11 @@ const Register = () => {
   return (
     <>
       <div>
-        <Nav />
         <SignUpDiv>
-          <Div>
+          <Background>
             <SignUpLabel>회원가입</SignUpLabel>
             <br /> <br /> <br /> <br /> <br />
-            <form onSubmit={handleSubmit(onSubmit)} style={{ height: '150vh' }}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <Subject htmlFor="user-email">이메일</Subject>
                 <EmailDiv>
@@ -307,7 +304,7 @@ const Register = () => {
               </div>
               <RegisterBtn>가입하기</RegisterBtn>
             </form>
-          </Div>
+          </Background>
         </SignUpDiv>
       </div>
     </>
@@ -315,3 +312,4 @@ const Register = () => {
 };
 
 export default Register;
+// 버튼 Padding 넣기

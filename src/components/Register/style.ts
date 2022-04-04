@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   flex-wrap: wrap;
 `;
-export const CommonTag = styled.div`
+export const CommonTag = styled.span`
   font-size: 14px;
   color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
   border-radius: 20px;
@@ -33,11 +33,6 @@ export const SignUpDiv = styled(Background)`
   background-color: white;
   margin-right: 25px;
   margin-left: 25px;
-`;
-
-export const Div = styled(Background)`
-  /* flex-direction: column;
-  text-align: left; */
 `;
 
 export const SignUpLabel = styled.label`
