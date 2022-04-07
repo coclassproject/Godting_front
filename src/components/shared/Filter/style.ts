@@ -1,14 +1,19 @@
 import styled from '@emotion/styled';
+import { ActiveCheckBoxOrRadioColor } from '../type';
 
-export const CommonTag = styled.span`
+export const CommonTag = styled.label<ActiveCheckBoxOrRadioColor>`
   font-size: 14px;
-  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
+  color: ${(props) => (props.activeColor ? props.theme.PUBLIC_WHITE : props.theme.SUBTITLE_AND_CONTENT_COLOR)};
   border-radius: 20px;
   padding: 0.5rem 1.2rem;
   margin-right: 0.5rem;
   cursor: pointer;
-  background-color: ${(props) => props.theme.BUTTON_BACKGROUND_COLOR};
+  background-color: ${(props) => (props.activeColor ? props.theme.PUBLIC_BLUE : props.theme.BUTTON_BACKGROUND_COLOR)};
   font-family: MingLiU;
+`;
+
+export const CheckBoxNone = styled.input`
+  display: none;
 `;
 
 export const ButtonContainer = styled.div`
