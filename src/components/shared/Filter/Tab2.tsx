@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { INTEREST } from 'src/schema';
-import { ButtonContainer, CommonTag } from './style';
+import { ButtonContainer, CheckBoxNone, CommonTag } from './style';
 
 const Container = styled.div`
   padding: 2rem 0;
@@ -21,15 +21,38 @@ const ExtendsButtonContainer = styled(ButtonContainer)`
   transform: translateX(-50%);
 `;
 
-const Tab2 = () => (
-  <Container>
-    {INTEREST.map((item) => (
-      <ExtendsCommonTag key={item}>{item}</ExtendsCommonTag>
-    ))}
-    <ExtendsButtonContainer>
-      <button>등록하기</button>
-    </ExtendsButtonContainer>
-  </Container>
-);
+const Tab2 = () => {
+  const [activeInterest, setActiveInterest] = useState([]);
+
+  const onClickInterest = (e) => {
+    const value = e.target.innerText;
+    if (activeInterest.indexOf(value) === -1) {
+      setActiveInterest((prev) => [...prev, value]);
+    } else {
+      setActiveInterest((prev) => prev.filter((v) => v !== value));
+    }
+  };
+
+  return (
+    <Container>
+      {INTEREST.map((item, index) => (
+        <>
+          <ExtendsCommonTag
+            activeColor={activeInterest.indexOf(item) !== -1}
+            onClick={onClickInterest}
+            htmlFor={`interest-${index}`}
+            key={item}
+          >
+            {item}
+          </ExtendsCommonTag>
+          <CheckBoxNone type="checkbox" value={item} id={`interest-${index}`} />
+        </>
+      ))}
+      <ExtendsButtonContainer>
+        <button>등록하기</button>
+      </ExtendsButtonContainer>
+    </Container>
+  );
+};
 
 export default Tab2;
