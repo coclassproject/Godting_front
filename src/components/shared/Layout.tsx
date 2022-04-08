@@ -30,7 +30,7 @@ const SubContainer = styled.div`
   }
 `;
 
-const Layout = ({ noAni = false, children = null }) => {
+const Layout = ({ noAni = false, children = null, back = false }) => {
   const router = useRouter();
 
   const currentPage = Object.keys(menus).find((key) => menus[key].path === router.pathname);
@@ -51,7 +51,7 @@ const Layout = ({ noAni = false, children = null }) => {
           transition={{ type: 'linear' }}
         >
           <SubContainer>
-            <Nav />
+            <Nav back={back} />
             {children}
             <Menu currentMenu />
           </SubContainer>
