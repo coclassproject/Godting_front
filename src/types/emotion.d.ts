@@ -11,6 +11,7 @@ declare module '@emotion/react' {
     PUBLIC_WHITE: string;
     LAYOUT_BACKGROUND_COLOR: string;
     LAYOUT_WHITE_COLOR: string;
+    SUB_BACKGROUND_COLOR: string;
     HDPC: string;
     PC: string;
     NOTEBOOK: string;
