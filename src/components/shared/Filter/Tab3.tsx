@@ -4,7 +4,7 @@ import { Range, getTrackBackground } from 'react-range';
 import { IoIosArrowDown } from 'react-icons/io';
 import { DEPARTMENT_LIST, MajorObj } from 'src/schema';
 import { VscChromeClose } from 'react-icons/vsc';
-import { ButtonContainer, Label, LabelContainer, StyledRangeLine, StyledRangePointer } from './style';
+import { ButtonContainer, Label, RangeContainer, StyledRangeLine, StyledRangePointer } from './style';
 
 const Container = styled.div`
   padding-top: 2rem;
@@ -104,10 +104,10 @@ const Tab3 = () => {
 
   return (
     <Container>
-      <LabelContainer>
+      <RangeContainer>
         <Label>학번</Label>
         <span>{`${undergrad[0]}학번~${undergrad[1]}학번`}</span>
-      </LabelContainer>
+      </RangeContainer>
       <Range
         values={undergrad}
         step={STEP}

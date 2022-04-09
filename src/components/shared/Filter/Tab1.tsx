@@ -2,22 +2,16 @@ import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { Range, getTrackBackground } from 'react-range';
 import { REGION } from 'src/schema';
-import {
-  ButtonContainer,
-  CheckBoxNone,
-  CommonTag,
-  Label,
-  LabelContainer,
-  StyledRangeLine,
-  StyledRangePointer,
-} from './style';
+import { CheckBoxOrRadioNone, CommonTag, LabelContainer } from 'src/theme/CommonStyle';
+import { ButtonContainer, Label, StyledRangeLine, RangeContainer, StyledRangePointer } from './style';
 
 const Container = styled.div`
+  padding-top: 2rem;
   padding-bottom: 4rem;
-  .region {
+  /* .region {
     margin-top: 2rem;
     margin-bottom: 2.5rem;
-  }
+  } */
 
   .age {
     margin-bottom: 2rem;
@@ -27,9 +21,9 @@ const Container = styled.div`
     margin-bottom: 1.5rem;
   }
 
-  .common {
+  /* .common {
     margin-bottom: 2rem;
-  }
+  } */
 `;
 
 type activeRadioType = '유' | '무' | '상관없음' | '술찌' | '잘마심';
@@ -72,8 +66,8 @@ const Tab1 = () => {
 
   return (
     <Container>
-      <div className="region">
-        <Label>지역</Label>
+      <LabelContainer className="region">
+        <label>지역</label>
         {REGION.map((area, index) => (
           <>
             <CommonTag
@@ -84,15 +78,15 @@ const Tab1 = () => {
             >
               {area}
             </CommonTag>
-            <CheckBoxNone id={`area-${index}`} value={area} type="checkbox" />
+            <CheckBoxOrRadioNone id={`area-${index}`} value={area} type="checkbox" />
           </>
         ))}
-      </div>
+      </LabelContainer>
       <div className="age">
-        <LabelContainer>
+        <RangeContainer>
           <Label htmlFor="age">나이</Label>
           <span>{`${ageValue[0]}세~${ageValue[1]}세`}</span>
-        </LabelContainer>
+        </RangeContainer>
         <Range
           values={ageValue}
           step={AGE_STEP}
@@ -139,10 +133,10 @@ const Tab1 = () => {
         />
       </div>
       <div className="key">
-        <LabelContainer>
+        <RangeContainer>
           <Label htmlFor="key">키</Label>
           <span>{`${heightValue[0]}cm~${heightValue[1]}cm`}</span>
-        </LabelContainer>
+        </RangeContainer>
         <Range
           values={heightValue}
           step={HEIGHT_STEP}
@@ -188,51 +182,51 @@ const Tab1 = () => {
           )}
         />
       </div>
-      <div className="common">
+      <LabelContainer className="common">
         <Label>주량</Label>
         <CommonTag htmlFor="술찌" activeColor={activeDrink === '술찌'} onClick={() => onClickDrink('술찌')}>
           술찌
         </CommonTag>
-        <CheckBoxNone type="radio" value="술찌" id="술찌" name="주량" />
+        <CheckBoxOrRadioNone type="radio" value="술찌" id="술찌" name="주량" />
         <CommonTag activeColor={activeDrink === '잘마심'} onClick={() => onClickDrink('잘마심')}>
           잘마심
         </CommonTag>
-        <CheckBoxNone type="radio" value="잘마심" id="잘마심" name="주량" />
+        <CheckBoxOrRadioNone type="radio" value="잘마심" id="잘마심" name="주량" />
         <CommonTag activeColor={activeDrink === '상관없음'} onClick={() => onClickDrink('상관없음')}>
           상관없음
         </CommonTag>
-        <CheckBoxNone type="radio" value="상관없음" id="상관없음" name="주량" />
-      </div>
-      <div className="common">
+        <CheckBoxOrRadioNone type="radio" value="상관없음" id="상관없음" name="주량" />
+      </LabelContainer>
+      <LabelContainer className="common">
         <Label>흡연</Label>
         <CommonTag activeColor={activeSmoke === '유'} onClick={() => onClickSmoke('유')}>
           &#26377;
         </CommonTag>
-        <CheckBoxNone type="radio" value="유" id="유" name="흡연" />
+        <CheckBoxOrRadioNone type="radio" value="유" id="유" name="흡연" />
         <CommonTag activeColor={activeSmoke === '무'} onClick={() => onClickSmoke('무')} lang="zh-CN">
           無
         </CommonTag>
-        <CheckBoxNone type="radio" value="무" id="무" name="흡연" />
+        <CheckBoxOrRadioNone type="radio" value="무" id="무" name="흡연" />
         <CommonTag activeColor={activeSmoke === '상관없음'} onClick={() => onClickSmoke('상관없음')}>
           상관없음
         </CommonTag>
-        <CheckBoxNone type="radio" value="상관없음" id="상관없음" name="흡연" />
-      </div>
-      <div className="common">
+        <CheckBoxOrRadioNone type="radio" value="상관없음" id="상관없음" name="흡연" />
+      </LabelContainer>
+      <LabelContainer className="common">
         <Label>군필여부</Label>
         <CommonTag activeColor={activeMilitary === '유'} onClick={() => onClickMilitary('유')} lang="zh-CN">
           有
         </CommonTag>
-        <CheckBoxNone type="radio" value="유" id="유" name="군필" />
+        <CheckBoxOrRadioNone type="radio" value="유" id="유" name="군필" />
         <CommonTag activeColor={activeMilitary === '무'} onClick={() => onClickMilitary('무')} lang="zh-CN">
           無
         </CommonTag>
-        <CheckBoxNone type="radio" value="무" id="무" name="군필" />
+        <CheckBoxOrRadioNone type="radio" value="무" id="무" name="군필" />
         <CommonTag activeColor={activeMilitary === '상관없음'} onClick={() => onClickMilitary('상관없음')}>
           상관없음
         </CommonTag>
-        <CheckBoxNone type="radio" value="상관없음" id="상관없음" name="군필" />
-      </div>
+        <CheckBoxOrRadioNone type="radio" value="상관없음" id="상관없음" name="군필" />
+      </LabelContainer>
       <ButtonContainer>
         <button>등록하기</button>
       </ButtonContainer>

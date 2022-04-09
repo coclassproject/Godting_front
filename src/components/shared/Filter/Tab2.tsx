@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { INTEREST } from 'src/schema';
-import { ButtonContainer, CheckBoxNone, CommonTag } from './style';
+import { CheckBoxOrRadioNone, CommonTag } from 'src/theme/CommonStyle';
+import { ButtonContainer } from './style';
 
 const Container = styled.div`
   padding: 2rem 0;
@@ -45,7 +46,7 @@ const Tab2 = () => {
           >
             {item}
           </ExtendsCommonTag>
-          <CheckBoxNone type="checkbox" value={item} id={`interest-${index}`} />
+          <CheckBoxOrRadioNone type="checkbox" value={item} id={`interest-${index}`} />
         </>
       ))}
       <ExtendsButtonContainer>

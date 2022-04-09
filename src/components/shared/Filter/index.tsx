@@ -13,9 +13,10 @@ const Container = styled.div`
   height: 65%;
   position: absolute;
   bottom: 0px;
-  z-index: 80;
+  z-index: 990;
   border-radius: 10px 10px 0 0;
   border-top: 1px solid black;
+  margin: 0 -1.2rem;
 `;
 
 const SubContainer = styled.div`

@@ -6,7 +6,8 @@ import Register from 'src/components/Register';
 
 const Home = () => (
   <Layout>
-    <Register />
+    {/* <Register /> */}
+    <Filter />
   </Layout>
 );
 
