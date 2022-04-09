@@ -16,8 +16,7 @@ import {
   Subject,
   ValidationLabel,
 } from './style';
-//import { Container, ExtendsCommonTag } from '../shared/Filter/Tab2';
-import { ExtendsCommonTag, Container } from '../shared/Filter/Tab2';
+import { Container, ExtendsCommonTag } from './style copy';
 
 interface DataForm {
   nick: string;
@@ -45,7 +44,7 @@ const Sign = () => {
   } = useForm<DataForm>();
 
   const onSubmit = (data: DataForm) => {
-    console.log(data, favorite);
+    console.log(data);
   };
   return (
     <>
@@ -181,15 +180,7 @@ const Sign = () => {
             <div className="favorite">
               <Subject htmlFor="user-favorite">관심사</Subject>
               <Container>
-                <input
-                  {...register('favorite')}
-                  style={{ display: 'none' }}
-                  type="text"
-                 // value={favorite}
-                  // onChange={onChangefavorite}
-                  //ref={checkRef}
-                  //onClick={testM}
-                />
+                <input {...register('favorite')} style={{ display: 'none' }} type="text" />
                 {INTEREST.map((item) => (
                   <ExtendsCommonTag key={item}>{item}</ExtendsCommonTag>
                 ))}

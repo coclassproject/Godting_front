@@ -1,42 +1,32 @@
 import styled from '@emotion/styled';
 import { lightTheme } from 'src/theme';
 
-export const Container = styled.div`
-  padding: 2rem 0;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-export const CommonTag = styled.span`
-  font-size: 14px;
-  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
-  border-radius: 20px;
-  padding: 0.5rem 1.2rem;
-  margin-right: 0.5rem;
-  cursor: pointer;
-  background-color: ${(props) => props.theme.BUTTON_BACKGROUND_COLOR};
-  font-family: MingLiU;
-`;
-
-export const ExtendsCommonTag = styled(CommonTag)`
-  margin-bottom: 0.5rem;
-`;
-
-export const Background = styled.div`
-  width: 100%;
-  height: 150vh;
-`;
-export const SignUpDiv = styled(Background)`
-  display: flex;
+export const SignUpDiv = styled.div`
   margin-top: 50px;
-  justify-content: center;
   background-color: white;
   margin-right: 25px;
   margin-left: 25px;
+  width: 100%;
+  height: 150vh;
+  .email {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    div {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .validation {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .nick {
+    margin-bottom: 50px;
+  }
 `;
 
 export const SignUpLabel = styled.label`
-  font-size: 23px;
+  font-size: 20px;
 `;
 export const Input = styled.input`
   width: 275px;
@@ -45,23 +35,23 @@ export const Input = styled.input`
   border-bottom: 1px solid #ccc;
   font-size: 14px;
   margin-top: 5px;
-  color: ${lightTheme.SUBTITLE_AND_CONTENT_COLOR};
+  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
 `;
 
 export const Subject = styled.label`
   font-size: 16px;
   display: flex;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 `;
 export const LabelSmall = styled.label`
   font-size: 14px;
   display: flex;
-  color: ${lightTheme.SUBTITLE_AND_CONTENT_COLOR};
+  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
 `;
 export const ValidationLabel = styled.label`
   font-size: 14px;
-  float: left;
   color: #ff0a0a;
+  margin-top: 7px;
 `;
 
 export const EmailBtn = styled.button`
@@ -98,6 +88,7 @@ export const SelectBox = styled.select`
   box-sizing: border-box;
   border-radius: 4px;
   margin-right: 50px;
+  margin-top: 10px;
   color: ${lightTheme.SUBTITLE_AND_CONTENT_COLOR};
 `;
 

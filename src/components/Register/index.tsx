@@ -17,12 +17,9 @@ import {
   SelectDiv,
   LabelSmall,
   SelectBox,
-  Container,
-  ExtendsCommonTag,
   Category,
   CategoryContainer,
   RegisterBtn,
-  Background,
 } from './style';
 
 const ImageBtn = styled.button`
@@ -280,19 +277,25 @@ const Register = () => {
               </div>
               <Category>
                 <Label>군필여부</Label>
-                <CommonTag lang="zh-CN">有</CommonTag>
-                <CommonTag lang="zh-CN">無</CommonTag>
+                <CommonTag lang="zh-CN" activeColor={false}>
+                  有
+                </CommonTag>
+                <CommonTag lang="zh-CN" activeColor={false}>
+                  無
+                </CommonTag>
               </Category>
               <CategoryContainer>
                 <div>
                   <Label>흡연</Label>
-                  <CommonTag>&#26377;</CommonTag>
-                  <CommonTag lang="zh-CN">無</CommonTag>
+                  <CommonTag activeColor={false}>&#26377;</CommonTag>
+                  <CommonTag lang="zh-CN" activeColor={false}>
+                    無
+                  </CommonTag>
                 </div>
                 <div style={{ marginLeft: '30px' }}>
                   <Label>주량</Label>
-                  <CommonTag>술찌</CommonTag>
-                  <CommonTag>잘마심</CommonTag>
+                  <CommonTag activeColor={false}>술찌</CommonTag>
+                  <CommonTag activeColor={false}>잘마심</CommonTag>
                 </div>
               </CategoryContainer>
               <div style={{ marginTop: '30px', marginBottom: '30px' }}>
