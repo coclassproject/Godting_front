@@ -4,7 +4,6 @@ import { lightTheme } from 'src/theme';
 import { useController, useForm } from 'react-hook-form';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { INTEREST } from 'src/schema';
-import { CommonTag, Label } from '../shared/Filter/style';
 import {
   EmailBtn,
   Input,
@@ -15,8 +14,11 @@ import {
   SignUpLabel,
   Subject,
   ValidationLabel,
+  Container,
+  ExtendsCommonTag,
+  RegisterBtn,
+  CommonTag,
 } from './style';
-import { Container, ExtendsCommonTag } from './style copy';
 
 interface DataForm {
   nick: string;
@@ -26,9 +28,9 @@ interface DataForm {
   class: number;
   lecture: string;
   height: string;
-  body: string;
+  location: string;
   picture: File;
-  favorite: string;
+  interest: string;
   name: string;
 }
 
@@ -37,6 +39,8 @@ const AGE = Array.from({ length: 10 }, (v, i) => i + 20);
 const CLASS = Array.from({ length: 12 }, (v, i) => i + 10);
 
 const Sign = () => {
+  const [interestActive, setInterestActive] = useState([]);
+  const [armyActive, setArmyActive] = useState([]);
   const {
     register,
     handleSubmit,
@@ -46,6 +50,23 @@ const Sign = () => {
   const onSubmit = (data: DataForm) => {
     console.log(data);
   };
+  const onClickInterest = (i) => {
+    const te = i.target.innerText;
+    if (interestActive.indexOf(te) === -1) {
+      setInterestActive((prev) => [...prev, te]);
+    } else {
+      setInterestActive((prev) => prev.filter((v) => v !== te));
+    }
+  };
+  const onClickArmy = (i) => {
+    const te = i.target.innerText;
+    if (armyActive.indexOf(te) === -1) {
+      setArmyActive((prev) => [...prev, te]);
+    } else {
+      setArmyActive((prev) => prev.filter((v) => v !== te));
+    }
+  };
+
   return (
     <>
       <div>
@@ -113,7 +134,7 @@ const Sign = () => {
             </div>
 
             <div className="height&body">
-              <Subject htmlFor="user-height&body">키 및 체형</Subject>
+              <Subject htmlFor="user-height&body">키 및 지역</Subject>
               <SelectDiv>
                 <div>
                   <LabelSmall>키</LabelSmall>
@@ -125,14 +146,16 @@ const Sign = () => {
                   </SelectBox>
                 </div>
                 <div>
-                  <LabelSmall>체형</LabelSmall>
-                  <SelectBox name="body" {...register('body', { required: true })}>
+                  <LabelSmall>지역</LabelSmall>
+                  <SelectBox name="body" {...register('location', { required: true })}>
                     <option value="">선택해주세요</option>
-                    <option value="탄탄">탄탄</option>
-                    <option value="마른">마른</option>
-                    <option value="몸매좋은">몸매 좋은</option>
-                    <option value="통통한">통통한</option>
-                    <option value="근육질">근육질</option>
+                    <option value="서울">서울</option>
+                    <option value="경기">경기</option>
+                    <option value="인천">인천</option>
+                    <option value="부산">부산</option>
+                    <option value="경상">경상</option>
+                    <option value="전라">전라</option>
+                    <option value="제주">제주</option>
                   </SelectBox>
                 </div>
               </SelectDiv>
@@ -177,15 +200,35 @@ const Sign = () => {
                 </div>
               </SelectDiv>
             </div>
-            <div className="favorite">
-              <Subject htmlFor="user-favorite">관심사</Subject>
+            <div className="interest">
+              <Subject htmlFor="user-interest">관심사</Subject>
               <Container>
-                <input {...register('favorite')} style={{ display: 'none' }} type="text" />
-                {INTEREST.map((item) => (
-                  <ExtendsCommonTag key={item}>{item}</ExtendsCommonTag>
+                {INTEREST.map((item, i) => (
+                  <>
+                    <ExtendsCommonTag
+                      activeColor={interestActive.indexOf(item) !== -1}
+                      htmlFor={`interest-${i}`}
+                      key={item}
+                      onClick={(sx) => onClickInterest(sx)}
+                    >
+                      {item}
+                    </ExtendsCommonTag>
+                    <input type="checkbox" {...register('interest')} value={item} id={`interest-${i}`} />
+                  </>
                 ))}
               </Container>
             </div>
+            <div>
+              <LabelSmall>군필여부</LabelSmall>
+              <CommonTag lang="zh-CN" activeColor={}>
+                有
+              </CommonTag>
+              <CommonTag lang="zh-CN" activeColor={interestActive.indexOf(item) !== -1}>
+                無
+              </CommonTag>
+            </div>
+
+            <RegisterBtn>가입하기</RegisterBtn>
           </form>
         </SignUpDiv>
       </div>

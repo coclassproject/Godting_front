@@ -1,13 +1,15 @@
 import styled from '@emotion/styled';
 import { lightTheme } from 'src/theme';
 
+interface InterestColor {
+  activeColor: boolean;
+}
+
 export const SignUpDiv = styled.div`
   margin-top: 50px;
   background-color: white;
-  margin-right: 25px;
-  margin-left: 25px;
   width: 100%;
-  height: 150vh;
+  height: 100vh;
   .email {
     margin-top: 30px;
     margin-bottom: 50px;
@@ -100,14 +102,42 @@ export const SelectDiv = styled.div`
   }
 `;
 
-export const MarginDiv = styled.div`
-  margin-bottom: 30px;
-`;
-
 export const CategoryContainer = styled.div`
   display: flex;
 `;
 
 export const Category = styled.div`
   margin-bottom: 70px;
+`;
+
+interface InterestColor {
+  activeColor: boolean;
+}
+
+export const Container = styled.form`
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  input {
+    display: none;
+  }
+`;
+
+export const CommonTag = styled.label`
+  font-size: 14px;
+  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
+  border-radius: 20px;
+  padding: 0.5rem 1.2rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  background-color: ${(props) => props.theme.BUTTON_BACKGROUND_COLOR};
+  font-family: MingLiU;
+`;
+
+export const ExtendsCommonTag = styled(CommonTag)<InterestColor>`
+  margin-bottom: 0.5rem;
+  background-color: ${(props) => (props.activeColor ? props.theme.PUBLIC_BLUE : props.theme.BUTTON_BACKGROUND_COLOR)};
+  color: ${(props) => (props.activeColor ? props.theme.PUBLIC_WHITE : props.theme.SUBTITLE_AND_CONTENT_COLOR)};
 `;
