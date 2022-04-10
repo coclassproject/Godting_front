@@ -28,7 +28,7 @@ export const RangeContainer = styled.div`
   }
 `;
 
-export const Label = styled.label`
+export const RangeLabel = styled.label`
   display: block;
   font-size: 14px;
   margin-bottom: 1.2rem;

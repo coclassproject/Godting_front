@@ -3,15 +3,11 @@ import React, { useState } from 'react';
 import { Range, getTrackBackground } from 'react-range';
 import { REGION } from 'src/schema';
 import { CheckBoxOrRadioNone, CommonTag, LabelContainer } from 'src/theme/CommonStyle';
-import { ButtonContainer, Label, StyledRangeLine, RangeContainer, StyledRangePointer } from './style';
+import { ButtonContainer, StyledRangeLine, RangeContainer, StyledRangePointer, RangeLabel } from './style';
 
 const Container = styled.div`
   padding-top: 2rem;
   padding-bottom: 4rem;
-  /* .region {
-    margin-top: 2rem;
-    margin-bottom: 2.5rem;
-  } */
 
   .age {
     margin-bottom: 2rem;
@@ -20,10 +16,6 @@ const Container = styled.div`
   .key {
     margin-bottom: 1.5rem;
   }
-
-  /* .common {
-    margin-bottom: 2rem;
-  } */
 `;
 
 type activeRadioType = '유' | '무' | '상관없음' | '술찌' | '잘마심';
@@ -67,7 +59,7 @@ const Tab1 = () => {
   return (
     <Container>
       <LabelContainer className="region">
-        <label>지역</label>
+        <label className="title">지역</label>
         {REGION.map((area, index) => (
           <>
             <CommonTag
@@ -84,7 +76,7 @@ const Tab1 = () => {
       </LabelContainer>
       <div className="age">
         <RangeContainer>
-          <Label htmlFor="age">나이</Label>
+          <RangeLabel htmlFor="age">나이</RangeLabel>
           <span>{`${ageValue[0]}세~${ageValue[1]}세`}</span>
         </RangeContainer>
         <Range
@@ -134,7 +126,7 @@ const Tab1 = () => {
       </div>
       <div className="key">
         <RangeContainer>
-          <Label htmlFor="key">키</Label>
+          <RangeLabel htmlFor="key">키</RangeLabel>
           <span>{`${heightValue[0]}cm~${heightValue[1]}cm`}</span>
         </RangeContainer>
         <Range
@@ -183,7 +175,7 @@ const Tab1 = () => {
         />
       </div>
       <LabelContainer className="common">
-        <Label>주량</Label>
+        <label className="title">주량</label>
         <CommonTag htmlFor="술찌" activeColor={activeDrink === '술찌'} onClick={() => onClickDrink('술찌')}>
           술찌
         </CommonTag>
@@ -198,7 +190,7 @@ const Tab1 = () => {
         <CheckBoxOrRadioNone type="radio" value="상관없음" id="상관없음" name="주량" />
       </LabelContainer>
       <LabelContainer className="common">
-        <Label>흡연</Label>
+        <label className="title">흡연</label>
         <CommonTag activeColor={activeSmoke === '유'} onClick={() => onClickSmoke('유')}>
           &#26377;
         </CommonTag>
@@ -213,7 +205,7 @@ const Tab1 = () => {
         <CheckBoxOrRadioNone type="radio" value="상관없음" id="상관없음" name="흡연" />
       </LabelContainer>
       <LabelContainer className="common">
-        <Label>군필여부</Label>
+        <label className="title">군필여부</label>
         <CommonTag activeColor={activeMilitary === '유'} onClick={() => onClickMilitary('유')} lang="zh-CN">
           有
         </CommonTag>

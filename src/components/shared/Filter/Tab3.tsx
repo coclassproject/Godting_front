@@ -4,14 +4,14 @@ import { Range, getTrackBackground } from 'react-range';
 import { IoIosArrowDown } from 'react-icons/io';
 import { DEPARTMENT_LIST, MajorObj } from 'src/schema';
 import { VscChromeClose } from 'react-icons/vsc';
-import { ButtonContainer, Label, RangeContainer, StyledRangeLine, StyledRangePointer } from './style';
+import { ButtonContainer, RangeLabel, RangeContainer, StyledRangeLine, StyledRangePointer } from './style';
 
 const Container = styled.div`
   padding-top: 2rem;
   padding-bottom: 4rem;
 `;
 
-const ExtendsLabel = styled(Label)`
+const ExtendsLabel = styled(RangeLabel)`
   margin-bottom: 0.5rem;
 `;
 
@@ -105,7 +105,7 @@ const Tab3 = () => {
   return (
     <Container>
       <RangeContainer>
-        <Label>학번</Label>
+        <RangeLabel>학번</RangeLabel>
         <span>{`${undergrad[0]}학번~${undergrad[1]}학번`}</span>
       </RangeContainer>
       <Range

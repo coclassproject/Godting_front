@@ -6,7 +6,6 @@ import { BsFillPlusCircleFill, BsPlusCircle } from 'react-icons/bs';
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  background-color: ${(props) => props.theme.SUB_BACKGROUND_COLOR};
 `;
 
 const PublicContainer = styled.div`
@@ -85,7 +84,7 @@ const Button = styled.button`
 `;
 
 const TeamNew = () => (
-  <Layout>
+  <Layout bgColor>
     <Container>
       <QualificationContainer>
         <div>
