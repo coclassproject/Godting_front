@@ -1,31 +1,43 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
-import { Range, getTrackBackground } from 'react-range';
 import { REGION } from 'src/schema';
-import { CheckBoxOrRadioNone, CommonTag, LabelContainer } from 'src/theme/CommonStyle';
-import { ButtonContainer, StyledRangeLine, RangeContainer, StyledRangePointer, RangeLabel } from './style';
+import { CheckBoxOrRadioNone, CommonTag, LabelContainer, RangeContainer } from 'src/theme/CommonStyle';
+import CustomRange from '../CustomRange';
 
 const Container = styled.div`
   padding-top: 2rem;
   padding-bottom: 4rem;
+`;
 
-  .age {
-    margin-bottom: 2rem;
-  }
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
 
-  .key {
-    margin-bottom: 1.5rem;
+  button {
+    width: 270px;
+    border: none;
+    background-color: ${(props) => props.theme.PUBLIC_BLUE};
+    color: ${(props) => props.theme.PUBLIC_WHITE};
+    border-radius: 5px;
+    height: 40px;
+    font-size: 14px;
   }
 `;
 
 type activeRadioType = '유' | '무' | '상관없음' | '술찌' | '잘마심';
 
-const AGE_STEP = 1;
-const AGE_MIN = 20;
-const AGE_MAX = 39;
-const HEIGHT_STEP = 5;
-const HEIGHT_MIN = 140;
-const HEIGHT_MAX = 190;
+const AGE_OPTION = {
+  step: 1,
+  min: 20,
+  max: 39,
+};
+
+const HEIGHT_OPTION = {
+  step: 1,
+  min: 140,
+  max: 190,
+};
 
 const Tab1 = () => {
   const [ageValue, setAgeValue] = useState([25, 30]);
@@ -58,7 +70,7 @@ const Tab1 = () => {
 
   return (
     <Container>
-      <LabelContainer className="region">
+      <LabelContainer>
         <label className="title">지역</label>
         {REGION.map((area, index) => (
           <>
@@ -74,106 +86,20 @@ const Tab1 = () => {
           </>
         ))}
       </LabelContainer>
-      <div className="age">
-        <RangeContainer>
-          <RangeLabel htmlFor="age">나이</RangeLabel>
+      <RangeContainer>
+        <div className="labelContainer">
+          <label htmlFor="age">나이</label>
           <span>{`${ageValue[0]}세~${ageValue[1]}세`}</span>
-        </RangeContainer>
-        <Range
-          values={ageValue}
-          step={AGE_STEP}
-          min={AGE_MIN}
-          max={AGE_MAX}
-          onChange={(values) => setAgeValue(values)}
-          renderTrack={({ props, children }) => (
-            <StyledRangeLine
-              onMouseDown={props.onMouseDown}
-              onTouchStart={props.onTouchStart}
-              style={{
-                ...props.style,
-              }}
-            >
-              <div
-                ref={props.ref}
-                style={{
-                  height: '5px',
-                  width: '100%',
-                  borderRadius: '2px',
-                  background: getTrackBackground({
-                    values: ageValue,
-                    colors: ['#f5f5f5', '#3D00FC', '#f5f5f5'],
-                    min: AGE_MIN,
-                    max: AGE_MAX,
-                  }),
-                  alignSelf: 'center',
-                }}
-              >
-                {children}
-              </div>
-            </StyledRangeLine>
-          )}
-          renderThumb={({ props }) => (
-            <StyledRangePointer
-              {...props}
-              style={{
-                ...props.style,
-              }}
-            >
-              <div />
-            </StyledRangePointer>
-          )}
-        />
-      </div>
-      <div className="key">
-        <RangeContainer>
-          <RangeLabel htmlFor="key">키</RangeLabel>
+        </div>
+        <CustomRange value={ageValue} onChangeValue={setAgeValue} option={AGE_OPTION} />
+      </RangeContainer>
+      <RangeContainer>
+        <div className="labelContainer">
+          <label htmlFor="key">키</label>
           <span>{`${heightValue[0]}cm~${heightValue[1]}cm`}</span>
-        </RangeContainer>
-        <Range
-          values={heightValue}
-          step={HEIGHT_STEP}
-          min={HEIGHT_MIN}
-          max={HEIGHT_MAX}
-          onChange={(values) => setHeightValue(values)}
-          renderTrack={({ props, children }) => (
-            <StyledRangeLine
-              onMouseDown={props.onMouseDown}
-              onTouchStart={props.onTouchStart}
-              style={{
-                ...props.style,
-              }}
-            >
-              <div
-                ref={props.ref}
-                style={{
-                  height: '5px',
-                  width: '100%',
-                  borderRadius: '2px',
-                  background: getTrackBackground({
-                    values: heightValue,
-                    colors: ['#f5f5f5', '#3D00FC', '#f5f5f5'],
-                    min: HEIGHT_MIN,
-                    max: HEIGHT_MAX,
-                  }),
-                  alignSelf: 'center',
-                }}
-              >
-                {children}
-              </div>
-            </StyledRangeLine>
-          )}
-          renderThumb={({ props }) => (
-            <StyledRangePointer
-              {...props}
-              style={{
-                ...props.style,
-              }}
-            >
-              <div />
-            </StyledRangePointer>
-          )}
-        />
-      </div>
+        </div>
+        <CustomRange value={heightValue} onChangeValue={setHeightValue} option={HEIGHT_OPTION} />
+      </RangeContainer>
       <LabelContainer className="common">
         <label className="title">주량</label>
         <CommonTag htmlFor="술찌" activeColor={activeDrink === '술찌'} onClick={() => onClickDrink('술찌')}>

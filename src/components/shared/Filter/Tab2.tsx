@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { INTEREST } from 'src/schema';
 import { CheckBoxOrRadioNone, CommonTag, LabelContainer } from 'src/theme/CommonStyle';
-import { ButtonContainer } from './style';
+import { ButtonContainer } from './Tab1';
 
 const Container = styled(LabelContainer)`
   padding: 2rem 0;

@@ -56,3 +56,43 @@ export const FullButton = styled.button`
   margin-top: 2rem;
   cursor: pointer;
 `;
+
+export const RangeContainer = styled.div`
+  /* range 스타일 컨테이너 */
+  margin-bottom: 2rem;
+
+  .labelContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      font-size: 14px;
+      margin-bottom: 1.2rem;
+      color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
+    }
+
+    span {
+      font-size: 14px;
+      margin-bottom: 1.2rem;
+      color: ${(props) => props.theme.PUBLIC_BLUE};
+    }
+  }
+`;
+
+export const StyledRangeLine = styled.div`
+  /* 커스텀 range 컴포넌트 */
+  height: 6px;
+  width: 100%;
+`;
+
+export const StyledRangePointer = styled.div`
+  /* 커스텀 range 컴포넌트 */
+  width: 13px;
+  height: 13px;
+  border-radius: 30px;
+  background-color: ${(props) => props.theme.PUBLIC_BLUE};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
