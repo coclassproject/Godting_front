@@ -4,15 +4,13 @@ import { Range, getTrackBackground } from 'react-range';
 import { IoIosArrowDown } from 'react-icons/io';
 import { DEPARTMENT_LIST, MajorObj } from 'src/schema';
 import { VscChromeClose } from 'react-icons/vsc';
-import { ButtonContainer, Label, RangeContainer, StyledRangeLine, StyledRangePointer } from './style';
+import { RangeContainer, StyledRangeLine, StyledRangePointer } from 'src/theme/CommonStyle';
+import { ButtonContainer } from './Tab1';
+import CustomRange from '../CustomRange';
 
 const Container = styled.div`
   padding-top: 2rem;
   padding-bottom: 4rem;
-`;
-
-const ExtendsLabel = styled(Label)`
-  margin-bottom: 0.5rem;
 `;
 
 const DepartmentContainer = styled.div`
@@ -40,6 +38,13 @@ const DepartmentContainer = styled.div`
 const ListContainer = styled.div`
   padding-left: 1rem;
   padding-top: 1rem;
+
+  label {
+    font-size: 14px;
+    margin-bottom: 1.2rem;
+    color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
+    margin-bottom: 0.5rem;
+  }
 
   .list {
     display: flex;
@@ -72,10 +77,13 @@ const Hr = styled.hr`
   opacity: 0.2;
 `;
 
+const COLLEGE_NUMBER_OPTION = {
+  step: 1,
+  min: 15,
+  max: 22,
+};
+
 const Tab3 = () => {
-  const STEP = 1;
-  const MIN = 15;
-  const MAX = 22;
   const [undergrad, setUndergrad] = useState([17, 20]);
   const [major, setMajor] = useState<[number, string]>([null, '']);
   const [open, setOpen] = useState(false);
@@ -105,56 +113,15 @@ const Tab3 = () => {
   return (
     <Container>
       <RangeContainer>
-        <Label>학번</Label>
-        <span>{`${undergrad[0]}학번~${undergrad[1]}학번`}</span>
+        <div className="labelContainer">
+          <label>학번</label>
+          <span>{`${undergrad[0]}학번~${undergrad[1]}학번`}</span>
+        </div>
+        <CustomRange value={undergrad} onChangeValue={setUndergrad} option={COLLEGE_NUMBER_OPTION} />
       </RangeContainer>
-      <Range
-        values={undergrad}
-        step={STEP}
-        min={MIN}
-        max={MAX}
-        onChange={(values) => setUndergrad(values)}
-        renderTrack={({ props, children }) => (
-          <StyledRangeLine
-            onMouseDown={props.onMouseDown}
-            onTouchStart={props.onTouchStart}
-            style={{
-              ...props.style,
-            }}
-          >
-            <div
-              ref={props.ref}
-              style={{
-                height: '5px',
-                width: '100%',
-                borderRadius: '2px',
-                background: getTrackBackground({
-                  values: undergrad,
-                  colors: ['#f5f5f5', '#3D00FC', '#f5f5f5'],
-                  min: MIN,
-                  max: MAX,
-                }),
-                alignSelf: 'center',
-              }}
-            >
-              {children}
-            </div>
-          </StyledRangeLine>
-        )}
-        renderThumb={({ props }) => (
-          <StyledRangePointer
-            {...props}
-            style={{
-              ...props.style,
-            }}
-          >
-            <div />
-          </StyledRangePointer>
-        )}
-      />
       <DepartmentContainer>
         <div className="tag">
-          <ExtendsLabel>학과</ExtendsLabel>
+          <label>학과</label>
           {choiceMajor[0] &&
             choiceMajor.map((choice) => (
               <div className="choiceMajor">

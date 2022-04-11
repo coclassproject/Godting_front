@@ -1,4 +1,6 @@
 export const REGION = ['서율', '경기', '인천', '부산', '경남'];
+export const PARTICIPANT = [1, 2, 3, 4]; // 미팅방 생성 시 팀 인원
+export const COLLEGE_NUMBER = [15, 16, 17, 18, 19, 20, 21, 22]; // 미팅방 생성 시 학번
 
 export const INTEREST = [
   '독서',
