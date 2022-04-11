@@ -1,39 +1,43 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
-import { Range, getTrackBackground } from 'react-range';
 import { REGION } from 'src/schema';
-import { CheckBoxOrRadioNone, CommonTag, LabelContainer } from 'src/theme/CommonStyle';
-import { ButtonContainer, Label, StyledRangeLine, RangeContainer, StyledRangePointer } from './style';
+import { CheckBoxOrRadioNone, CommonTag, LabelContainer, RangeContainer } from 'src/theme/CommonStyle';
+import CustomRange from '../CustomRange';
 
 const Container = styled.div`
   padding-top: 2rem;
   padding-bottom: 4rem;
-  /* .region {
-    margin-top: 2rem;
-    margin-bottom: 2.5rem;
-  } */
+`;
 
-  .age {
-    margin-bottom: 2rem;
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+
+  button {
+    width: 270px;
+    border: none;
+    background-color: ${(props) => props.theme.PUBLIC_BLUE};
+    color: ${(props) => props.theme.PUBLIC_WHITE};
+    border-radius: 5px;
+    height: 40px;
+    font-size: 14px;
   }
-
-  .key {
-    margin-bottom: 1.5rem;
-  }
-
-  /* .common {
-    margin-bottom: 2rem;
-  } */
 `;
 
 type activeRadioType = '유' | '무' | '상관없음' | '술찌' | '잘마심';
 
-const AGE_STEP = 1;
-const AGE_MIN = 20;
-const AGE_MAX = 39;
-const HEIGHT_STEP = 5;
-const HEIGHT_MIN = 140;
-const HEIGHT_MAX = 190;
+const AGE_OPTION = {
+  step: 1,
+  min: 20,
+  max: 39,
+};
+
+const HEIGHT_OPTION = {
+  step: 1,
+  min: 140,
+  max: 190,
+};
 
 const Tab1 = () => {
   const [ageValue, setAgeValue] = useState([25, 30]);
@@ -66,8 +70,8 @@ const Tab1 = () => {
 
   return (
     <Container>
-      <LabelContainer className="region">
-        <label>지역</label>
+      <LabelContainer>
+        <label className="title">지역</label>
         {REGION.map((area, index) => (
           <>
             <CommonTag
@@ -82,108 +86,22 @@ const Tab1 = () => {
           </>
         ))}
       </LabelContainer>
-      <div className="age">
-        <RangeContainer>
-          <Label htmlFor="age">나이</Label>
+      <RangeContainer>
+        <div className="labelContainer">
+          <label htmlFor="age">나이</label>
           <span>{`${ageValue[0]}세~${ageValue[1]}세`}</span>
-        </RangeContainer>
-        <Range
-          values={ageValue}
-          step={AGE_STEP}
-          min={AGE_MIN}
-          max={AGE_MAX}
-          onChange={(values) => setAgeValue(values)}
-          renderTrack={({ props, children }) => (
-            <StyledRangeLine
-              onMouseDown={props.onMouseDown}
-              onTouchStart={props.onTouchStart}
-              style={{
-                ...props.style,
-              }}
-            >
-              <div
-                ref={props.ref}
-                style={{
-                  height: '5px',
-                  width: '100%',
-                  borderRadius: '2px',
-                  background: getTrackBackground({
-                    values: ageValue,
-                    colors: ['#f5f5f5', '#3D00FC', '#f5f5f5'],
-                    min: AGE_MIN,
-                    max: AGE_MAX,
-                  }),
-                  alignSelf: 'center',
-                }}
-              >
-                {children}
-              </div>
-            </StyledRangeLine>
-          )}
-          renderThumb={({ props }) => (
-            <StyledRangePointer
-              {...props}
-              style={{
-                ...props.style,
-              }}
-            >
-              <div />
-            </StyledRangePointer>
-          )}
-        />
-      </div>
-      <div className="key">
-        <RangeContainer>
-          <Label htmlFor="key">키</Label>
+        </div>
+        <CustomRange value={ageValue} onChangeValue={setAgeValue} option={AGE_OPTION} />
+      </RangeContainer>
+      <RangeContainer>
+        <div className="labelContainer">
+          <label htmlFor="key">키</label>
           <span>{`${heightValue[0]}cm~${heightValue[1]}cm`}</span>
-        </RangeContainer>
-        <Range
-          values={heightValue}
-          step={HEIGHT_STEP}
-          min={HEIGHT_MIN}
-          max={HEIGHT_MAX}
-          onChange={(values) => setHeightValue(values)}
-          renderTrack={({ props, children }) => (
-            <StyledRangeLine
-              onMouseDown={props.onMouseDown}
-              onTouchStart={props.onTouchStart}
-              style={{
-                ...props.style,
-              }}
-            >
-              <div
-                ref={props.ref}
-                style={{
-                  height: '5px',
-                  width: '100%',
-                  borderRadius: '2px',
-                  background: getTrackBackground({
-                    values: heightValue,
-                    colors: ['#f5f5f5', '#3D00FC', '#f5f5f5'],
-                    min: HEIGHT_MIN,
-                    max: HEIGHT_MAX,
-                  }),
-                  alignSelf: 'center',
-                }}
-              >
-                {children}
-              </div>
-            </StyledRangeLine>
-          )}
-          renderThumb={({ props }) => (
-            <StyledRangePointer
-              {...props}
-              style={{
-                ...props.style,
-              }}
-            >
-              <div />
-            </StyledRangePointer>
-          )}
-        />
-      </div>
+        </div>
+        <CustomRange value={heightValue} onChangeValue={setHeightValue} option={HEIGHT_OPTION} />
+      </RangeContainer>
       <LabelContainer className="common">
-        <Label>주량</Label>
+        <label className="title">주량</label>
         <CommonTag htmlFor="술찌" activeColor={activeDrink === '술찌'} onClick={() => onClickDrink('술찌')}>
           술찌
         </CommonTag>
@@ -198,7 +116,7 @@ const Tab1 = () => {
         <CheckBoxOrRadioNone type="radio" value="상관없음" id="상관없음" name="주량" />
       </LabelContainer>
       <LabelContainer className="common">
-        <Label>흡연</Label>
+        <label className="title">흡연</label>
         <CommonTag activeColor={activeSmoke === '유'} onClick={() => onClickSmoke('유')}>
           &#26377;
         </CommonTag>
@@ -213,7 +131,7 @@ const Tab1 = () => {
         <CheckBoxOrRadioNone type="radio" value="상관없음" id="상관없음" name="흡연" />
       </LabelContainer>
       <LabelContainer className="common">
-        <Label>군필여부</Label>
+        <label className="title">군필여부</label>
         <CommonTag activeColor={activeMilitary === '유'} onClick={() => onClickMilitary('유')} lang="zh-CN">
           有
         </CommonTag>

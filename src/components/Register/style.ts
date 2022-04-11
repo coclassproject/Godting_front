@@ -67,20 +67,23 @@ export const EmailBtn = styled.button`
   cursor: pointer;
   margin-left: 10px;
 `;
-export const EmailDiv = styled.div`
-  display: flex;
-  width: 510px;
+export const ImageBtn = styled.button`
+  width: 130px;
+  height: 140px;
+  border: none;
+  border-radius: 10%;
 `;
 
 export const RegisterBtn = styled.button`
   cursor: pointer;
-  width: 378px;
-  height: 51px;
+  width: 380px;
+  height: 50px;
   color: white;
   border-style: none;
   border-radius: 6px;
   background-color: #1c00ff;
   font-size: 19px;
+  margin-bottom: 100px;
 `;
 
 export const SelectBox = styled.select`
@@ -100,14 +103,6 @@ export const SelectDiv = styled.div`
   div {
     margin-bottom: 50px;
   }
-`;
-
-export const CategoryContainer = styled.div`
-  display: flex;
-`;
-
-export const Category = styled.div`
-  margin-bottom: 70px;
 `;
 
 interface InterestColor {

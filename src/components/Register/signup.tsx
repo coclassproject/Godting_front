@@ -18,6 +18,7 @@ import {
   ExtendsCommonTag,
   RegisterBtn,
   CommonTag,
+  ImageBtn,
 } from './style';
 
 interface DataForm {
@@ -39,6 +40,7 @@ const AGE = Array.from({ length: 10 }, (v, i) => i + 20);
 const CLASS = Array.from({ length: 12 }, (v, i) => i + 10);
 
 const Sign = () => {
+  const imageRef = useRef(null);
   const [interestActive, setInterestActive] = useState([]);
   const [armyActive, setArmyActive] = useState([]);
   const {
@@ -58,14 +60,7 @@ const Sign = () => {
       setInterestActive((prev) => prev.filter((v) => v !== te));
     }
   };
-  const onClickArmy = (i) => {
-    const te = i.target.innerText;
-    if (armyActive.indexOf(te) === -1) {
-      setArmyActive((prev) => [...prev, te]);
-    } else {
-      setArmyActive((prev) => prev.filter((v) => v !== te));
-    }
-  };
+  const onClickArmy = () => {};
 
   return (
     <>
@@ -220,14 +215,40 @@ const Sign = () => {
             </div>
             <div>
               <LabelSmall>군필여부</LabelSmall>
-              <CommonTag lang="zh-CN" activeColor={}>
-                有
-              </CommonTag>
-              <CommonTag lang="zh-CN" activeColor={interestActive.indexOf(item) !== -1}>
-                無
-              </CommonTag>
+              <Container>
+                <CommonTag lang="zh-CN" activeColor onClick={(sx) => onClickArmy(sx)}>
+                  有
+                </CommonTag>
+                <CommonTag lang="zh-CN" activeColor>
+                  無
+                </CommonTag>
+              </Container>
             </div>
-
+            <SelectDiv>
+              <div>
+                <LabelSmall>흡연</LabelSmall>
+                <Container>
+                  <CommonTag activeColor={false}>&#26377;</CommonTag>
+                  <CommonTag lang="zh-CN" activeColor={false}>
+                    無
+                  </CommonTag>
+                </Container>
+              </div>
+              <div>
+                <LabelSmall>주량</LabelSmall>
+                <Container>
+                  <CommonTag activeColor={false}>술찌</CommonTag>
+                  <CommonTag activeColor={false}>잘마심</CommonTag>
+                </Container>
+              </div>
+            </SelectDiv>
+            <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+              <Subject htmlFor="user-favorite">사진 등록(필수 아님)</Subject>
+              <input {...register('picture')} type="file" ref={imageRef} style={{ display: 'none' }} />
+              <ImageBtn onClick={() => imageRef.current.click()}>
+                <BsFillPlusCircleFill size="25" color="#9E9E9E" />
+              </ImageBtn>
+            </div>
             <RegisterBtn>가입하기</RegisterBtn>
           </form>
         </SignUpDiv>

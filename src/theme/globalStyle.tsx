@@ -19,7 +19,7 @@ const GlobalStyle = () => (
       body {
         overflow-x: hidden;
         width: 100%;
-        font-family: NanumSquare, 'Noto Sans KR', notokr, 'Nanum Gothic', 'Malgun Gothic', sans-serif;
+        font-family: 'Noto Sans KR', NanumSquare, notokr, 'Nanum Gothic', 'Malgun Gothic', sans-serif;
       }
 
       a {
