@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { MdTune } from 'react-icons/md';
 import { A11y, Navigation } from 'swiper';
@@ -13,6 +13,7 @@ const Container = styled.div`
   width: 100%;
   height: 50px;
   display: flex;
+  position: relative;
   flex-direction: row-reverse;
   span {
     display: inline-flex;
@@ -135,12 +136,34 @@ const Span = styled.div`
   padding-bottom: 20px;
 `;
 
-const HomeComponent = () => {
+interface HomeComponentProps {
+  setNoMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
   const [open, setOpen] = useState(false);
+  const filterRef = useRef(null);
 
   const openFilter = () => {
     setOpen(true);
+    setNoMenu(true);
   };
+
+  const handleClickOutside = ({ target }) => {
+    console.log(filterRef.current);
+    console.log(filterRef.current?.contains(target));
+    if (open && !filterRef.current?.contains(target)) {
+      setOpen(false);
+      setNoMenu(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('click', handleClickOutside);
+    return () => {
+      window.removeEventListener('click', handleClickOutside);
+    };
+  }, [open]);
 
   return (
     <>
@@ -152,7 +175,7 @@ const HomeComponent = () => {
           </IconContainer>
         </CategoryContainer>
       </Container>
-      {open && <Filter />}
+      {open && <Filter ref={filterRef} />}
       <CardContainer>
         <CardSubContainer>
           <CardButton>
