@@ -4,7 +4,6 @@ import Category from './Category';
 
 const Main = () => (
   <>
-    <Category />
     <Card />
   </>
 );
