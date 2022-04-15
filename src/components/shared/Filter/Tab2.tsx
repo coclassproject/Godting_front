@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { INTEREST } from 'src/schema';
 import { CheckBoxOrRadioNone, CommonTag, LabelContainer } from 'src/theme/CommonStyle';
+import { SubmitHandler } from 'react-hook-form';
 import { ButtonContainer } from './Tab1';
+import { FilterInput } from '../type';
 
 const Container = styled(LabelContainer)`
   padding: 2rem 0;
@@ -20,7 +22,7 @@ const ExtendsButtonContainer = styled(ButtonContainer)`
   transform: translateX(-50%);
 `;
 
-const Tab2 = () => {
+const Tab2 = ({ register, handleSubmit }) => {
   const [activeInterest, setActiveInterest] = useState([]);
 
   const onClickInterest = (e) => {
@@ -30,6 +32,10 @@ const Tab2 = () => {
     } else {
       setActiveInterest((prev) => prev.filter((v) => v !== value));
     }
+  };
+
+  const onSubmit: SubmitHandler<FilterInput> = (data) => {
+    console.log(data);
   };
 
   return (
@@ -45,12 +51,12 @@ const Tab2 = () => {
             >
               {item}
             </ExtendsCommonTag>
-            <CheckBoxOrRadioNone type="checkbox" value={item} id={`interest-${index}`} />
+            <CheckBoxOrRadioNone {...register('interest')} type="checkbox" value={item} id={`interest-${index}`} />
           </>
         ))}
       </div>
       <ExtendsButtonContainer>
-        <button>등록하기</button>
+        <button onClick={handleSubmit(onSubmit)}>등록하기</button>
       </ExtendsButtonContainer>
     </Container>
   );

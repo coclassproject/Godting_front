@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { Range, getTrackBackground } from 'react-range';
+import React, { useState } from 'react';
+import { SubmitHandler } from 'react-hook-form';
 import { IoIosArrowDown } from 'react-icons/io';
-import { DEPARTMENT_LIST, MajorObj } from 'src/schema';
 import { VscChromeClose } from 'react-icons/vsc';
-import { RangeContainer, StyledRangeLine, StyledRangePointer } from 'src/theme/CommonStyle';
-import { ButtonContainer } from './Tab1';
+import { DEPARTMENT_LIST, MajorObj } from 'src/schema';
+import { RangeContainer } from 'src/theme/CommonStyle';
 import CustomRange from '../CustomRange';
+import { FilterInput } from '../type';
+import { ButtonContainer } from './Tab1';
 
 const Container = styled.div`
   padding-top: 2rem;
@@ -83,7 +84,7 @@ const COLLEGE_NUMBER_OPTION = {
   max: 22,
 };
 
-const Tab3 = () => {
+const Tab3 = ({ handleSubmit }) => {
   const [undergrad, setUndergrad] = useState([17, 20]);
   const [major, setMajor] = useState<[number, string]>([null, '']);
   const [open, setOpen] = useState(false);
@@ -108,6 +109,11 @@ const Tab3 = () => {
       }
       return [...prev, selectMajor];
     });
+  };
+
+  const onSubmit: SubmitHandler<FilterInput> = (data) => {
+    const values = { ...data, undergrad, major };
+    console.log(values);
   };
 
   return (
@@ -153,7 +159,7 @@ const Tab3 = () => {
         </ListContainer>
       </DepartmentContainer>
       <ButtonContainer>
-        <button>등록하기</button>
+        <button onClick={handleSubmit(onSubmit)}>등록하기</button>
       </ButtonContainer>
     </Container>
   );

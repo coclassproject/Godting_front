@@ -150,8 +150,6 @@ const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
   };
 
   const handleClickOutside = ({ target }) => {
-    console.log(filterRef.current);
-    console.log(filterRef.current?.contains(target));
     if (open && !filterRef.current?.contains(target)) {
       setOpen(false);
       setNoMenu(false);

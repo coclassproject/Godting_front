@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import { useForm } from 'react-hook-form';
 import Tab1 from './Tab1';
 import Tab2 from './Tab2';
 import Tab3 from './Tab3';
+import { FilterInput } from '../type';
 
 interface PageTitleColor {
   textColor: boolean;
@@ -18,6 +20,7 @@ const Container = styled.div`
   border-top: 1px solid black;
   margin: 0 -1.2rem;
   background-color: ${(props) => props.theme.PUBLIC_WHITE};
+  overflow-y: auto;
 `;
 
 const SubContainer = styled.div`
@@ -39,6 +42,7 @@ const PageTitle = styled.span<PageTitleColor>`
 
 // eslint-disable-next-line no-empty-pattern
 const Filter = React.forwardRef(({}, ref: React.MutableRefObject<any>) => {
+  const { register, handleSubmit, control } = useForm<FilterInput>();
   const [page, setPage] = useState(1);
 
   const onClickPage = (pageId: number) => {
@@ -59,9 +63,9 @@ const Filter = React.forwardRef(({}, ref: React.MutableRefObject<any>) => {
             학번,과
           </PageTitle>
         </div>
-        {page === 1 && <Tab1 />}
-        {page === 2 && <Tab2 />}
-        {page === 3 && <Tab3 />}
+        {page === 1 && <Tab1 register={register} handleSubmit={handleSubmit} />}
+        {page === 2 && <Tab2 register={register} handleSubmit={handleSubmit} />}
+        {page === 3 && <Tab3 handleSubmit={handleSubmit} />}
       </SubContainer>
     </Container>
   );
