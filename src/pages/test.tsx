@@ -13,9 +13,7 @@ const Container = styled.form`
   align-items: center;
   flex-wrap: wrap;
 
-  input {
-    display: none;
-  }
+  
 `;
 
 export const CommonTag = styled.label`
@@ -65,7 +63,7 @@ const Test = () => {
             >
               {item}
             </ExtendsCommonTag>
-            <input type="checkbox" {...register('interest')} value={item} id={`interest-${i}`} />
+            <input type="radio" name="dd" {...register('interest')} value={item} id={`interest-${i}`} />
           </>
         ))}
         <button>제출</button>

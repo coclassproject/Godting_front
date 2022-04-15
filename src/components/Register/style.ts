@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { lightTheme } from 'src/theme';
-
+import { FullButton } from 'src/theme/CommonStyle';
 interface InterestColor {
   activeColor: boolean;
 }
@@ -14,8 +14,6 @@ export const SignUpDiv = styled.div`
     margin-top: 30px;
     margin-bottom: 50px;
     div {
-      display: flex;
-      flex-wrap: wrap;
     }
     .validation {
       display: flex;
@@ -25,13 +23,18 @@ export const SignUpDiv = styled.div`
   .nick {
     margin-bottom: 50px;
   }
+  form {
+    .img {
+      margin-bottom: 2rem;
+    }
+  }
 `;
 
 export const SignUpLabel = styled.label`
   font-size: 20px;
 `;
 export const Input = styled.input`
-  width: 275px;
+  width: 70%;
   height: 30px;
   border: none;
   border-bottom: 1px solid #ccc;
@@ -39,13 +42,15 @@ export const Input = styled.input`
   margin-top: 5px;
   color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
 `;
-
+export const IntroInput = styled(Input)`
+  width: 90%;
+`;
 export const Subject = styled.label`
   font-size: 16px;
   display: flex;
   margin-bottom: 20px;
 `;
-export const LabelSmall = styled.label`
+export const LittleSubject = styled.label`
   font-size: 14px;
   display: flex;
   color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
@@ -57,12 +62,13 @@ export const ValidationLabel = styled.label`
 `;
 
 export const EmailBtn = styled.button`
-  width: 100px;
+  display: inline-block;
+  width: 25%;
   height: 40px;
-  float: right;
   border-radius: 6px;
-  background-color: #1c00ff;
-  color: white;
+  font-size: 0.8rem;
+  background-color: ${(props) => props.theme.PUBLIC_BLUE};
+  color: ${(props) => props.theme.PUBLIC_WHITE};
   border-style: none;
   cursor: pointer;
   margin-left: 10px;
@@ -74,16 +80,9 @@ export const ImageBtn = styled.button`
   border-radius: 10%;
 `;
 
-export const RegisterBtn = styled.button`
-  cursor: pointer;
-  width: 380px;
-  height: 50px;
-  color: white;
-  border-style: none;
-  border-radius: 6px;
-  background-color: #1c00ff;
-  font-size: 19px;
-  margin-bottom: 100px;
+export const RegisterBtn = styled(FullButton)`
+  margin-bottom: 150px;
+  margin-top: 5rem;
 `;
 
 export const SelectBox = styled.select`
@@ -101,20 +100,15 @@ export const SelectDiv = styled.div`
   width: 100%;
   display: flex;
   div {
-    margin-bottom: 50px;
+    margin-bottom: 0.5rem;
   }
 `;
-
-interface InterestColor {
-  activeColor: boolean;
-}
 
 export const Container = styled.form`
   padding: 2rem 0;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
   input {
     display: none;
   }
