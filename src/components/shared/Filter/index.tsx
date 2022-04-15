@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import { useForm } from 'react-hook-form';
 import Tab1 from './Tab1';
 import Tab2 from './Tab2';
 import Tab3 from './Tab3';
+import { FilterInput } from '../type';
 
-type PageTitleColor = {
+interface PageTitleColor {
   textColor: boolean;
-};
+}
 
 const Container = styled.div`
   width: 100%;
   height: 65%;
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   z-index: 990;
   border-radius: 10px 10px 0 0;
   border-top: 1px solid black;
   margin: 0 -1.2rem;
+  background-color: ${(props) => props.theme.PUBLIC_WHITE};
+  overflow-y: auto;
 `;
 
 const SubContainer = styled.div`
@@ -36,7 +40,9 @@ const PageTitle = styled.span<PageTitleColor>`
   border-bottom: ${(props) => (props.textColor ? `5px solid ${props.theme.SUBTITLE_AND_CONTENT_COLOR}` : null)};
 `;
 
-const Filter = () => {
+// eslint-disable-next-line no-empty-pattern
+const Filter = React.forwardRef(({}, ref: React.MutableRefObject<any>) => {
+  const { register, handleSubmit, control } = useForm<FilterInput>();
   const [page, setPage] = useState(1);
 
   const onClickPage = (pageId: number) => {
@@ -44,7 +50,7 @@ const Filter = () => {
   };
 
   return (
-    <Container>
+    <Container ref={ref}>
       <SubContainer>
         <div className="nav">
           <PageTitle textColor={page === 1} onClick={() => onClickPage(1)}>
@@ -57,12 +63,12 @@ const Filter = () => {
             학번,과
           </PageTitle>
         </div>
-        {page === 1 && <Tab1 />}
-        {page === 2 && <Tab2 />}
-        {page === 3 && <Tab3 />}
+        {page === 1 && <Tab1 register={register} handleSubmit={handleSubmit} />}
+        {page === 2 && <Tab2 register={register} handleSubmit={handleSubmit} />}
+        {page === 3 && <Tab3 handleSubmit={handleSubmit} />}
       </SubContainer>
     </Container>
   );
-};
+});
 
 export default Filter;

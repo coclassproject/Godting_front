@@ -6,6 +6,27 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { MdTune } from 'react-icons/md';
+
+const Container = styled.div`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row-reverse;
+  span {
+    display: inline-flex;
+  }
+`;
+
+const CategoryContainer = styled.div`
+  padding: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+`;
+
+const IconContainer = styled.div`
+  margin: -3px 8px 0px 10px;
+`;
 
 const CardContainer = styled.div`
   width: 400px;
@@ -115,6 +136,14 @@ const Span = styled.div`
 
 const Card = () => (
   <>
+    <Container>
+      <CategoryContainer>
+        <span>서울</span>
+        <IconContainer>
+          <MdTune size="1.3rem" />
+        </IconContainer>
+      </CategoryContainer>
+    </Container>
     <CardContainer>
       <CardSubContainer>
         <CardButton>
