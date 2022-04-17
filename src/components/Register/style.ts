@@ -1,15 +1,23 @@
 import styled from '@emotion/styled';
 import { lightTheme } from 'src/theme';
-import { FullButton } from 'src/theme/CommonStyle';
+import { FullButton, CommonTag } from 'src/theme/CommonStyle';
+
 interface InterestColor {
   activeColor: boolean;
 }
 
-export const SignUpDiv = styled.div`
+export const Background = styled.div`
+  width: 100%;
+  height: 150vh;
+`;
+export const SignUpDiv = styled(Background)`
   margin-top: 50px;
   background-color: white;
   width: 100%;
   height: 100vh;
+  .subject {
+    font-size: 20px;
+  }
   .email {
     margin-top: 30px;
     margin-bottom: 50px;
@@ -21,18 +29,27 @@ export const SignUpDiv = styled.div`
     }
   }
   .nick {
-    margin-bottom: 50px;
+    margin-bottom: 3rem;
+  }
+  .gender {
+    margin-bottom: 3rem;
+  }
+  .height {
+    margin-bottom: 3rem;
+  }
+  .class {
+    margin-bottom: 3rem;
   }
   form {
     .img {
       margin-bottom: 2rem;
+      input {
+        display: none;
+      }
     }
   }
 `;
 
-export const SignUpLabel = styled.label`
-  font-size: 20px;
-`;
 export const Input = styled.input`
   width: 70%;
   height: 30px;
@@ -57,7 +74,7 @@ export const LittleSubject = styled.label`
 `;
 export const ValidationLabel = styled.label`
   font-size: 14px;
-  color: #ff0a0a;
+  color: ${(props) => props.theme.VALIDATION_COLOR};
   margin-top: 7px;
 `;
 
@@ -93,7 +110,7 @@ export const SelectBox = styled.select`
   border-radius: 4px;
   margin-right: 50px;
   margin-top: 10px;
-  color: ${lightTheme.SUBTITLE_AND_CONTENT_COLOR};
+  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
 `;
 
 export const SelectDiv = styled.div`
@@ -114,19 +131,15 @@ export const Container = styled.form`
   }
 `;
 
-export const CommonTag = styled.label`
-  font-size: 14px;
-  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
-  border-radius: 20px;
-  padding: 0.5rem 1.2rem;
-  margin-right: 0.5rem;
-  cursor: pointer;
-  background-color: ${(props) => props.theme.BUTTON_BACKGROUND_COLOR};
-  font-family: MingLiU;
-`;
-
 export const ExtendsCommonTag = styled(CommonTag)<InterestColor>`
   margin-bottom: 0.5rem;
   background-color: ${(props) => (props.activeColor ? props.theme.PUBLIC_BLUE : props.theme.BUTTON_BACKGROUND_COLOR)};
   color: ${(props) => (props.activeColor ? props.theme.PUBLIC_WHITE : props.theme.SUBTITLE_AND_CONTENT_COLOR)};
+`;
+
+export const Img = styled.img`
+  width: 130px;
+  height: 140px;
+  border: none;
+  border-radius: 10%;
 `;

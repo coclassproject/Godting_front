@@ -62,9 +62,3 @@ export const MajorObj = [
   ['레저스포츠산업과', '스포츠건강관리과', '생활스포츠과', '태권도과'],
   ['피아노', '뮤지컬', '실용음악', '연기예술'],
 ];
-
-export const ARMY = ['有', '無'];
-
-export const DRINK = ['술찌', '잘마심'];
-
-export const SMOKE = ['有', '無'];

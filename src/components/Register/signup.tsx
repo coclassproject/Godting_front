@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { lightTheme } from 'src/theme';
 import { useForm } from 'react-hook-form';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
-import { ARMY, INTEREST, DRINK, SMOKE } from 'src/schema';
+import { INTEREST, REGION } from 'src/schema';
 import { CheckBoxOrRadioNone } from 'src/theme/CommonStyle';
 import {
   EmailBtn,
@@ -10,7 +10,6 @@ import {
   SelectBox,
   SelectDiv,
   SignUpDiv,
-  SignUpLabel,
   Subject,
   ValidationLabel,
   Container,
@@ -19,6 +18,7 @@ import {
   ImageBtn,
   IntroInput,
   LittleSubject,
+  Img,
 } from './style';
 
 interface DataForm {
@@ -29,7 +29,7 @@ interface DataForm {
   class: number;
   lecture: string;
   height: string;
-  location: string;
+  region: string;
   picture: File;
   interest: string;
   name: string;
@@ -39,36 +39,31 @@ interface DataForm {
   introduce: string;
 }
 
+type activeRadioType = '유' | '무' | '상관없음' | '못마심' | '잘마심';
+
 const HEIGHT = Array.from({ length: 41 }, (v, i) => i + 150);
 const AGE = Array.from({ length: 10 }, (v, i) => i + 20);
 const CLASS = Array.from({ length: 12 }, (v, i) => i + 10);
 
 const Sign = () => {
-  const imageRef = useRef(null);
-  const ArmyRef = useRef(null);
-  const [interestActive, setInterestActive] = useState([]);
-  const [armyActive, setArmyActive] = useState([]);
-  const [smokeActive, setSmokeActive] = useState([]);
-  const [drinkActive, setDrinkActive] = useState([]);
-  const [armyTest, setArmyTest] = useState(false);
-  const onClickTest = (i) => {
-    console.log(i.target.innerText);
-    const te = i.target.innerText;
-    if (te === '有') {
-      setArmyTest((prev) => !prev);
-    } else {
-      setArmyTest((prev) => !prev);
-    }
+  /* 라디오 타입 state */
+  const [activeDrink, setActiveDrink] = useState('');
+  const onClickDrink = (value: activeRadioType) => {
+    setActiveDrink(value);
   };
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<DataForm>();
 
-  const onSubmit = (data: DataForm) => {
-    console.log(data);
+  const [activeArmy, setActiveArmy] = useState('');
+  const onClickArmy = (value: activeRadioType) => {
+    setActiveArmy(value);
   };
+
+  const [activeSmoke, setActiveSmoke] = useState('');
+  const onClickSmoke = (value: activeRadioType) => {
+    setActiveSmoke(value);
+  };
+
+  const [interestActive, setInterestActive] = useState([]);
+
   const onClickInterest = (i) => {
     const te = i.target.innerText;
     if (interestActive.indexOf(te) === -1) {
@@ -78,38 +73,35 @@ const Sign = () => {
     }
   };
 
-  const onClickArmy = (i) => {
-    const te = i.target.innerText;
-    console.log(i);
-    if (armyActive.indexOf(te) === -1) {
-      setArmyActive((prev) => [...prev, te]);
-    } else {
-      setArmyActive((prev) => prev.filter((v) => v !== te));
-    }
-  };
-  const onClickSmoke = (i) => {
-    const te = i.target.innerText;
-    if (smokeActive.indexOf(te) === -1) {
-      setSmokeActive((prev) => [...prev, te]);
-    } else {
-      setSmokeActive((prev) => prev.filter((v) => v !== te));
-    }
+  /* 이미지 state */
+  const imageRef = useRef(null);
+  const [image, setImage] = useState('');
+
+  /* REACT-HOOK-FORM */
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<DataForm>();
+
+  const convert2base64 = (file) => {
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImage(reader.result.toString());
+    };
   };
 
-  const onClickDrink = (i) => {
-    const te = i.target.innerText;
-    if (drinkActive.indexOf(te) === -1) {
-      setDrinkActive((prev) => [...prev, te]);
-    } else {
-      setDrinkActive((prev) => prev.filter((v) => v !== te));
-    }
+  const onSubmit = (data: DataForm) => {
+    console.log(data);
   };
 
   return (
     <>
       <div>
         <SignUpDiv>
-          <SignUpLabel>회원가입</SignUpLabel>
+          <label className="subject">회원가입</label>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="email">
               <Subject htmlFor="user-email">이메일 인증</Subject>
@@ -148,7 +140,7 @@ const Sign = () => {
               <ValidationLabel>{errors?.nick?.message}</ValidationLabel>
             </div>
 
-            <div className="gender&age">
+            <div className="gender">
               <Subject htmlFor="user-gender&age">성별 및 나이</Subject>
               <SelectDiv>
                 <div>
@@ -171,7 +163,7 @@ const Sign = () => {
               </SelectDiv>
             </div>
 
-            <div className="height&body">
+            <div className="height">
               <Subject htmlFor="user-height&body">키 및 지역</Subject>
               <SelectDiv>
                 <div>
@@ -185,20 +177,16 @@ const Sign = () => {
                 </div>
                 <div>
                   <LittleSubject>지역</LittleSubject>
-                  <SelectBox name="body" {...register('location', { required: true })}>
+                  <SelectBox name="body" {...register('region', { required: true })}>
                     <option value="">선택해주세요</option>
-                    <option value="서울">서울</option>
-                    <option value="경기">경기</option>
-                    <option value="인천">인천</option>
-                    <option value="부산">부산</option>
-                    <option value="경상">경상</option>
-                    <option value="전라">전라</option>
-                    <option value="제주">제주</option>
+                    {REGION.map((i) => (
+                      <option value={i}>{i}</option>
+                    ))}
                   </SelectBox>
                 </div>
               </SelectDiv>
             </div>
-            <div className="class&lecture">
+            <div className="class">
               <Subject htmlFor="user-class&lecture">학번 및 학과</Subject>
               <SelectDiv>
                 <div>
@@ -259,81 +247,69 @@ const Sign = () => {
             <div>
               <LittleSubject>군필여부</LittleSubject>
               <Container>
-                {ARMY.map((item, i) => (
-                  <>
-                    <ExtendsCommonTag
-                      activeColor={armyActive.indexOf(item) !== -1}
-                      htmlFor="army"
-                      key={item}
-                      onClick={(sx) => onClickArmy(sx)}
-                    >
-                      {item}
-                    </ExtendsCommonTag>
-                    <CheckBoxOrRadioNone name="Eom" type="radio" {...register('army')} value={item} id="army" />
-                  </>
-                ))}
-                {/*
-
-                <ExtendsCommonTag activeColor={armyTest} htmlFor="有" onClick={(sx) => onClickTest(sx)}>
-                  <CheckBoxOrRadioNone
-                    name="ARMY"
-                    type="radio"
-                    {...register('army')}
-                    value="有"
-                    id="有"
-
-                  />
+                <ExtendsCommonTag
+                  htmlFor="만기전역"
+                  activeColor={activeArmy === '유'}
+                  onClick={() => onClickArmy('유')}
+                  lang="zh-CN"
+                >
                   有
                 </ExtendsCommonTag>
-                <ExtendsCommonTag activeColor={armyTest} htmlFor="無" onClick={(sx) => onClickTest(sx)}>
-                  <CheckBoxOrRadioNone
-                    name="ARMY"
-                    type="radio"
-                    {...register('army')}
-                    value="無"
-                    id="無"
-
-                  />
+                <CheckBoxOrRadioNone {...register('army')} type="radio" value="유" id="만기전역" name="army" />
+                <ExtendsCommonTag
+                  htmlFor="미필"
+                  activeColor={activeArmy === '무'}
+                  onClick={() => onClickArmy('무')}
+                  lang="zh-CN"
+                >
                   無
                 </ExtendsCommonTag>
-                */}
+                <CheckBoxOrRadioNone {...register('army')} type="radio" value="무" id="미필" name="army" />
               </Container>
             </div>
             <SelectDiv>
               <div>
                 <LittleSubject>흡연</LittleSubject>
                 <Container>
-                  {SMOKE.map((item, i) => (
-                    <>
-                      <ExtendsCommonTag
-                        activeColor={smokeActive.indexOf(item) !== -1}
-                        htmlFor={`smoke-${i}`}
-                        key={item}
-                        onClick={(sx) => onClickSmoke(sx)}
-                      >
-                        {item}
-                      </ExtendsCommonTag>
-                      <CheckBoxOrRadioNone type="radio" {...register('smoke')} value={item} id={`smoke-${i}`} />
-                    </>
-                  ))}
+                  <ExtendsCommonTag
+                    htmlFor="유"
+                    activeColor={activeSmoke === '유'}
+                    onClick={() => onClickSmoke('유')}
+                    lang="zh-CN"
+                  >
+                    &#26377;
+                  </ExtendsCommonTag>
+                  <CheckBoxOrRadioNone {...register('smoke')} type="radio" value="유" id="유" name="smoke" />
+                  <ExtendsCommonTag
+                    htmlFor="무"
+                    activeColor={activeSmoke === '무'}
+                    onClick={() => onClickSmoke('무')}
+                    lang="zh-CN"
+                  >
+                    無
+                  </ExtendsCommonTag>
+                  <CheckBoxOrRadioNone {...register('smoke')} type="radio" value="무" id="무" name="smoke" />
                 </Container>
               </div>
               <div>
                 <LittleSubject>주량</LittleSubject>
                 <Container>
-                  {DRINK.map((item, i) => (
-                    <>
-                      <ExtendsCommonTag
-                        activeColor={drinkActive.indexOf(item) !== -1}
-                        htmlFor={`drink-${i}`}
-                        key={item}
-                        onClick={(sx) => onClickDrink(sx)}
-                      >
-                        {item}
-                      </ExtendsCommonTag>
-                      <CheckBoxOrRadioNone type="radio" {...register('drink')} value={item} id={`drink-${i}`} />
-                    </>
-                  ))}
+                  <ExtendsCommonTag
+                    htmlFor="못마심"
+                    activeColor={activeDrink === '못마심'}
+                    onClick={() => onClickDrink('못마심')}
+                  >
+                    못마심
+                  </ExtendsCommonTag>
+                  <CheckBoxOrRadioNone {...register('drink')} type="radio" value="못마심" id="못마심" name="drink" />
+                  <ExtendsCommonTag
+                    htmlFor="잘마심"
+                    activeColor={activeDrink === '잘마심'}
+                    onClick={() => onClickDrink('잘마심')}
+                  >
+                    잘마심
+                  </ExtendsCommonTag>
+                  <CheckBoxOrRadioNone {...register('drink')} type="radio" value="잘마심" id="잘마심" name="drink" />
                 </Container>
               </div>
             </SelectDiv>
@@ -343,6 +319,7 @@ const Sign = () => {
               <ImageBtn onClick={() => imageRef.current.click()}>
                 <BsFillPlusCircleFill size="25" color="#9E9E9E" />
               </ImageBtn>
+              {image ? <Img src={image} /> : null}
             </div>
             <div>
               <Subject>인사말 적기</Subject>

@@ -12,8 +12,6 @@ const Container = styled.form`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
-  
 `;
 
 export const CommonTag = styled.label`
