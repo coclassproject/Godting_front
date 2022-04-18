@@ -1,24 +1,23 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { lightTheme } from 'src/theme';
+import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { INTEREST, REGION } from 'src/schema';
 import { CheckBoxOrRadioNone } from 'src/theme/CommonStyle';
 import {
+  Container,
   EmailBtn,
+  ExtendsCommonTag,
+  ImageBtn,
+  Img,
   Input,
+  IntroInput,
+  LittleSubject,
+  RegisterBtn,
   SelectBox,
   SelectDiv,
   SignUpDiv,
   Subject,
   ValidationLabel,
-  Container,
-  ExtendsCommonTag,
-  RegisterBtn,
-  ImageBtn,
-  IntroInput,
-  LittleSubject,
-  Img,
 } from './style';
 
 interface DataForm {
