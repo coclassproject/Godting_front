@@ -17,5 +17,6 @@ declare module '@emotion/react' {
     NOTEBOOK: string;
     TABLET: string;
     MOBILE: string;
+    VALIDATION_COLOR: string;
   }
 }

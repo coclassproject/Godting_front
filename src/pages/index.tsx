@@ -10,10 +10,9 @@ const Home = () => {
   const [noMenu, setNoMenu] = useState(false);
 
   return (
-    /*<Layout noMenu={noMenu}>
+    <Layout noMenu={noMenu}>
       <HomeComponent setNoMenu={setNoMenu} />
-    </Layout>*/
-    <SignUp />
+    </Layout>
   );
 };
 

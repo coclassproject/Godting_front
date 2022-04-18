@@ -46,23 +46,20 @@ const AGE = Array.from({ length: 10 }, (v, i) => i + 20);
 const CLASS = Array.from({ length: 12 }, (v, i) => i + 10);
 
 const Sign = () => {
-  /* 라디오 타입 state */
   const [activeDrink, setActiveDrink] = useState('');
+  const [activeArmy, setActiveArmy] = useState('');
+  const [activeSmoke, setActiveSmoke] = useState('');
+  const [interestActive, setInterestActive] = useState([]);
+
   const onClickDrink = (value: activeRadioType) => {
     setActiveDrink(value);
   };
-
-  const [activeArmy, setActiveArmy] = useState('');
   const onClickArmy = (value: activeRadioType) => {
     setActiveArmy(value);
   };
-
-  const [activeSmoke, setActiveSmoke] = useState('');
   const onClickSmoke = (value: activeRadioType) => {
     setActiveSmoke(value);
   };
-
-  const [interestActive, setInterestActive] = useState([]);
 
   const onClickInterest = (i) => {
     const te = i.target.innerText;
@@ -73,11 +70,9 @@ const Sign = () => {
     }
   };
 
-  /* 이미지 state */
-  const imageRef = useRef(null);
+  const imageRef = useRef<HTMLInputElement>(null);
   const [image, setImage] = useState('');
 
-  /* REACT-HOOK-FORM */
   const {
     register,
     handleSubmit,
@@ -95,6 +90,7 @@ const Sign = () => {
 
   const onSubmit = (data: DataForm) => {
     console.log(data);
+    console.log(data.picture);
   };
 
   return (
@@ -125,7 +121,7 @@ const Sign = () => {
                 <ValidationLabel>ㄴ 대학교 웹메일 계정만 웹메일이 발송 가능합니다.</ValidationLabel>
                 <ValidationLabel>ㄴ 형식: @bu.ac.kr</ValidationLabel>
               </div>
-              <Input placeholder="인증번호를 입력해주세요." />
+              <Input className="auth" placeholder="인증번호를 입력해주세요." />
             </div>
 
             <div className="nick">
@@ -179,8 +175,8 @@ const Sign = () => {
                   <LittleSubject>지역</LittleSubject>
                   <SelectBox name="body" {...register('region', { required: true })}>
                     <option value="">선택해주세요</option>
-                    {REGION.map((i) => (
-                      <option value={i}>{i}</option>
+                    {REGION.map((region) => (
+                      <option value={region}>{region}</option>
                     ))}
                   </SelectBox>
                 </div>
@@ -193,8 +189,8 @@ const Sign = () => {
                   <LittleSubject>학번</LittleSubject>
                   <SelectBox name="class" {...register('class', { required: true })}>
                     <option value="">선택해주세요</option>
-                    {CLASS.map((i) => (
-                      <option value={i}>{i}</option>
+                    {CLASS.map((classNum) => (
+                      <option value={classNum}>{classNum}</option>
                     ))}
                   </SelectBox>
                 </div>
@@ -268,7 +264,7 @@ const Sign = () => {
               </Container>
             </div>
             <SelectDiv>
-              <div>
+              <div className="smoke">
                 <LittleSubject>흡연</LittleSubject>
                 <Container>
                   <ExtendsCommonTag
@@ -291,7 +287,7 @@ const Sign = () => {
                   <CheckBoxOrRadioNone {...register('smoke')} type="radio" value="무" id="무" name="smoke" />
                 </Container>
               </div>
-              <div>
+              <div className="drink">
                 <LittleSubject>주량</LittleSubject>
                 <Container>
                   <ExtendsCommonTag
@@ -315,11 +311,11 @@ const Sign = () => {
             </SelectDiv>
             <div className="img">
               <Subject>사진 등록(필수 아님)</Subject>
-              <CheckBoxOrRadioNone {...register('picture')} type="file" ref={imageRef} />
+              <CheckBoxOrRadioNone {...register('picture')} accept="image/*" type="file" ref={imageRef} />
               <ImageBtn onClick={() => imageRef.current.click()}>
                 <BsFillPlusCircleFill size="25" color="#9E9E9E" />
               </ImageBtn>
-              {image ? <Img src={image} /> : null}
+              {image && <Img src={image} />}
             </div>
             <div>
               <Subject>인사말 적기</Subject>

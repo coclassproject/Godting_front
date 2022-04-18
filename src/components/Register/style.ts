@@ -21,11 +21,10 @@ export const SignUpDiv = styled(Background)`
   .email {
     margin-top: 30px;
     margin-bottom: 50px;
-    div {
-    }
     .validation {
       display: flex;
       flex-direction: column;
+      margin-bottom: 2rem;
     }
   }
   .nick {
@@ -118,6 +117,9 @@ export const SelectDiv = styled.div`
   display: flex;
   div {
     margin-bottom: 0.5rem;
+  }
+  .drink {
+    margin-left: 3rem;
   }
 `;
 
