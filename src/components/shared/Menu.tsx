@@ -5,10 +5,11 @@ import Link from 'next/link';
 
 const Container = styled.div`
   width: 100%;
-  z-index: 20;
+  z-index: 100;
   bottom: 0px;
   position: fixed;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: ${(props) => props.theme.PUBLIC_WHITE};
 
   @media ${(props) => props.theme.TABLET} {
     max-width: 448px;

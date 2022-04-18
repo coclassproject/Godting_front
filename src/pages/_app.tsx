@@ -28,7 +28,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           type="text/css"
           href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css"
         />
-        <title>Sungkyu</title>
+        <title>Godting</title>
       </Head>
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
