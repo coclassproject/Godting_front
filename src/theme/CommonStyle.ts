@@ -11,7 +11,7 @@ export const CommonTag = styled.label<ActiveCheckBoxOrRadioColor>`
   cursor: pointer;
   background-color: ${(props) => (props.activeColor ? props.theme.PUBLIC_BLUE : props.theme.BUTTON_BACKGROUND_COLOR)};
   font-family: MingLiU;
-  width: 8%;
+  width: 8%
   text-align: center;
 `;
 

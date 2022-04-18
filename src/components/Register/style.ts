@@ -1,99 +1,104 @@
 import styled from '@emotion/styled';
 import { lightTheme } from 'src/theme';
+import { FullButton, CommonTag } from 'src/theme/CommonStyle';
 
-export const Container = styled.div`
-  padding: 2rem 0;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-export const CommonTag = styled.div`
-  font-size: 14px;
-  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
-  border-radius: 20px;
-  padding: 0.5rem 1.2rem;
-  margin-right: 0.5rem;
-  cursor: pointer;
-  background-color: ${(props) => props.theme.BUTTON_BACKGROUND_COLOR};
-  font-family: MingLiU;
-`;
-
-export const ExtendsCommonTag = styled(CommonTag)`
-  margin-bottom: 0.5rem;
-`;
+interface InterestColor {
+  activeColor: boolean;
+}
 
 export const Background = styled.div`
   width: 100%;
   height: 150vh;
 `;
 export const SignUpDiv = styled(Background)`
-  display: flex;
   margin-top: 50px;
-  justify-content: center;
   background-color: white;
-  margin-right: 25px;
-  margin-left: 25px;
+  width: 100%;
+  height: 100vh;
+  .subject {
+    font-size: 20px;
+  }
+  .email {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    .validation {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+    }
+  }
+  .nick {
+    margin-bottom: 3rem;
+  }
+  .gender {
+    margin-bottom: 3rem;
+  }
+  .height {
+    margin-bottom: 3rem;
+  }
+  .class {
+    margin-bottom: 3rem;
+  }
+  form {
+    .img {
+      margin-bottom: 2rem;
+      input {
+        display: none;
+      }
+    }
+  }
 `;
 
-export const Div = styled(Background)`
-  flex-direction: column;
-  text-align: left;
-`;
-
-export const SignUpLabel = styled.label`
-  font-size: 23px;
-`;
 export const Input = styled.input`
-  width: 275px;
+  width: 70%;
   height: 30px;
   border: none;
   border-bottom: 1px solid #ccc;
   font-size: 14px;
   margin-top: 5px;
-  color: ${lightTheme.SUBTITLE_AND_CONTENT_COLOR};
+  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
 `;
-
+export const IntroInput = styled(Input)`
+  width: 90%;
+`;
 export const Subject = styled.label`
   font-size: 16px;
   display: flex;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 `;
-export const LabelSmall = styled.label`
+export const LittleSubject = styled.label`
   font-size: 14px;
   display: flex;
-  color: ${lightTheme.SUBTITLE_AND_CONTENT_COLOR};
+  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
 `;
 export const ValidationLabel = styled.label`
   font-size: 14px;
-  float: left;
-  color: #ff0a0a;
+  color: ${(props) => props.theme.VALIDATION_COLOR};
+  margin-top: 7px;
 `;
 
 export const EmailBtn = styled.button`
-  width: 100px;
+  display: inline-block;
+  width: 25%;
   height: 40px;
-  float: right;
   border-radius: 6px;
-  background-color: #1c00ff;
-  color: white;
+  font-size: 0.8rem;
+  background-color: ${(props) => props.theme.PUBLIC_BLUE};
+  color: ${(props) => props.theme.PUBLIC_WHITE};
   border-style: none;
   cursor: pointer;
   margin-left: 10px;
 `;
-export const EmailDiv = styled.div`
-  display: flex;
-  width: 510px;
+export const ImageBtn = styled.button`
+  width: 130px;
+  height: 140px;
+  border: none;
+  border-radius: 10%;
 `;
 
-export const RegisterBtn = styled.button`
-  cursor: pointer;
-  width: 378px;
-  height: 51px;
-  color: white;
-  border-style: none;
-  border-radius: 6px;
-  background-color: #1c00ff;
-  font-size: 19px;
+export const RegisterBtn = styled(FullButton)`
+  margin-bottom: 150px;
+  margin-top: 5rem;
 `;
 
 export const SelectBox = styled.select`
@@ -103,25 +108,40 @@ export const SelectBox = styled.select`
   box-sizing: border-box;
   border-radius: 4px;
   margin-right: 50px;
-  color: ${lightTheme.SUBTITLE_AND_CONTENT_COLOR};
+  margin-top: 10px;
+  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
 `;
 
 export const SelectDiv = styled.div`
   width: 100%;
   display: flex;
   div {
-    margin-bottom: 50px;
+    margin-bottom: 0.5rem;
+  }
+  .drink {
+    margin-left: 3rem;
   }
 `;
 
-export const MarginDiv = styled.div`
-  margin-bottom: 30px;
-`;
-
-export const CategoryContainer = styled.div`
+export const Container = styled.form`
+  padding: 2rem 0;
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  input {
+    display: none;
+  }
 `;
 
-export const Category = styled.div`
-  margin-bottom: 70px;
+export const ExtendsCommonTag = styled(CommonTag)<InterestColor>`
+  margin-bottom: 0.5rem;
+  background-color: ${(props) => (props.activeColor ? props.theme.PUBLIC_BLUE : props.theme.BUTTON_BACKGROUND_COLOR)};
+  color: ${(props) => (props.activeColor ? props.theme.PUBLIC_WHITE : props.theme.SUBTITLE_AND_CONTENT_COLOR)};
+`;
+
+export const Img = styled.img`
+  width: 130px;
+  height: 140px;
+  border: none;
+  border-radius: 10%;
 `;
