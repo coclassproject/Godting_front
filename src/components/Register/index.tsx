@@ -107,7 +107,6 @@ const Register = () => {
                   {...register('email', {
                     required: true,
                     pattern: {
-                      // /\d{8}+@bu.ac.kr$/
                       value: /[A-Za-z0-9]+@\w[bu]+\.\w[ac]+\.\w[kr]$/,
                       message: '이메일 형식이 틀렸습니다.',
                     },
