@@ -39,7 +39,15 @@ const ChildrenContainer = styled.div<IBgColor>`
   background-color: ${(props) => (props.bgColor ? props.theme.SUB_BACKGROUND_COLOR : props.theme.PUBLIC_WHITE)};
 `;
 
-const Layout = ({ noAni = false, children = null, back = false, bgColor = false, noMenu = false }) => {
+const Layout = ({
+  noAni = false,
+  children = null,
+  back = false,
+  bgColor = false,
+  noMenu = false,
+  title = '',
+  component = false,
+}) => {
   const router = useRouter();
 
   const currentPage = Object.keys(menus).find((key) => menus[key].path === router.pathname);
@@ -60,7 +68,7 @@ const Layout = ({ noAni = false, children = null, back = false, bgColor = false,
           transition={{ type: 'linear' }}
         >
           <SubContainer>
-            <Nav back={back} />
+            <Nav back={back} title={title} component={component} />
             <ChildrenContainer bgColor={bgColor}>{children}</ChildrenContainer>
             {!noMenu && <Menu currentMenu />}
           </SubContainer>
