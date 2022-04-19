@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { useForm } from 'react-hook-form';
+import { FilterInput, FilterSetOpen } from '../type';
 import Tab1 from './Tab1';
 import Tab2 from './Tab2';
 import Tab3 from './Tab3';
-import { FilterInput } from '../type';
 
 interface PageTitleColor {
   textColor: boolean;
@@ -41,7 +41,7 @@ const PageTitle = styled.span<PageTitleColor>`
 `;
 
 // eslint-disable-next-line no-empty-pattern
-const Filter = React.forwardRef(({}, ref: React.MutableRefObject<any>) => {
+const Filter = React.forwardRef(({ setOpen }: FilterSetOpen, ref: React.MutableRefObject<any>) => {
   const { register, handleSubmit, control } = useForm<FilterInput>();
   const [page, setPage] = useState(1);
 
@@ -63,9 +63,9 @@ const Filter = React.forwardRef(({}, ref: React.MutableRefObject<any>) => {
             학번,과
           </PageTitle>
         </div>
-        {page === 1 && <Tab1 register={register} handleSubmit={handleSubmit} />}
-        {page === 2 && <Tab2 register={register} handleSubmit={handleSubmit} />}
-        {page === 3 && <Tab3 handleSubmit={handleSubmit} />}
+        {page === 1 && <Tab1 register={register} setOpen={setOpen} handleSubmit={handleSubmit} />}
+        {page === 2 && <Tab2 register={register} setOpen={setOpen} handleSubmit={handleSubmit} />}
+        {page === 3 && <Tab3 setOpen={setOpen} handleSubmit={handleSubmit} />}
       </SubContainer>
     </Container>
   );
