@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Filter from '../shared/Filter';
+import Filter from '../shared/filter';
 
 const Container = styled.div`
   width: 100%;
@@ -149,19 +149,19 @@ const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
     setNoMenu(true);
   };
 
-  const handleClickOutside = ({ target }) => {
-    if (open && !filterRef.current?.contains(target)) {
-      setOpen(false);
-      setNoMenu(false);
-    }
-  };
+  // const handleClickOutside = ({ target }) => {
+  //   if (open && !filterRef.current?.contains(target)) {
+  //     setOpen(false);
+  //     setNoMenu(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener('click', handleClickOutside);
-    return () => {
-      window.removeEventListener('click', handleClickOutside);
-    };
-  }, [open]);
+  // useEffect(() => {
+  //   window.addEventListener('click', handleClickOutside);
+  //   return () => {
+  //     window.removeEventListener('click', handleClickOutside);
+  //   };
+  // }, [open]);
 
   return (
     <>
@@ -173,7 +173,7 @@ const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
           </IconContainer>
         </CategoryContainer>
       </Container>
-      {open && <Filter ref={filterRef} />}
+      {open && <Filter ref={filterRef} setOpen={setOpen} />}
       <CardContainer>
         <CardSubContainer>
           <CardButton>

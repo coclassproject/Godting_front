@@ -4,7 +4,7 @@ import { SubmitHandler } from 'react-hook-form';
 import { REGION } from 'src/schema';
 import { CheckBoxOrRadioNone, CommonTag, LabelContainer, RangeContainer } from 'src/theme/CommonStyle';
 import CustomRange from '../CustomRange';
-import { FilterInput } from '../type';
+import { FilterInput, FilterProps } from '../type';
 
 const Container = styled.div`
   padding-top: 2rem;
@@ -42,7 +42,7 @@ const HEIGHT_OPTION = {
   max: 190,
 };
 
-const Tab1 = ({ register, handleSubmit }) => {
+const Tab1 = ({ register, handleSubmit, setOpen }: FilterProps) => {
   const [ageValue, setAgeValue] = useState([25, 30]);
   const [heightValue, setHeightValue] = useState([160, 175]);
   const [activeArea, setActiveArea] = useState([]);
