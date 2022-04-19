@@ -84,7 +84,7 @@ const Button = styled.button`
 `;
 
 const TeamNew = () => (
-  <Layout bgColor>
+  <Layout bgColor back title="새 미팅방">
     <Container>
       <QualificationContainer>
         <div>

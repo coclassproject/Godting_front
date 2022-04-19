@@ -16,7 +16,7 @@ const ExtendsCommonTag = styled(CommonTag)`
 `;
 
 const TeamCreate = () => (
-  <Layout>
+  <Layout back title="조건 설정하기" component>
     <LabelContainer>
       <span>팀 인원</span>
       <div className="container">
