@@ -11,25 +11,24 @@ interface IBgColor {
 }
 
 const Container = styled.div`
-  height: 112vh;
   background-color: ${(props) => props.theme.LAYOUT_BACKGROUND_COLOR};
 `;
 
 const SubContainer = styled.div`
   background-color: ${(props) => props.theme.LAYOUT_WHITE_COLOR};
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   left: 0px;
   top: 0px;
   padding-bottom: 5rem;
   position: relative;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  overflow-y: auto;
 
   @media ${(props) => props.theme.TABLET} {
     margin-left: auto;
     margin-right: auto;
     max-width: 448px;
-    height: 100vh;
   }
 `;
 
@@ -45,6 +44,7 @@ const Layout = ({
   back = false,
   bgColor = false,
   noMenu = false,
+  noNav = false,
   title = '',
   component = false,
 }) => {
@@ -68,7 +68,7 @@ const Layout = ({
           transition={{ type: 'linear' }}
         >
           <SubContainer>
-            <Nav back={back} title={title} component={component} />
+            {!noNav && <Nav back={back} title={title} component={component} />}
             <ChildrenContainer bgColor={bgColor}>{children}</ChildrenContainer>
             {!noMenu && <Menu currentMenu />}
           </SubContainer>

@@ -18,13 +18,14 @@ const COLLEGE_NUMBER_OPTION = {
   max: 22,
 };
 
-const Tab3 = ({ handleSubmit, setOpen }: FilterProps) => {
+const Tab3 = ({ handleSubmit, setOpen, setNoMenu }: FilterProps) => {
   const [undergrad, setUndergrad] = useState([17, 20]);
 
   const onSubmit: SubmitHandler<FilterInput> = (data) => {
     const values = { ...data, undergrad };
     console.log(values);
     setOpen(false);
+    setNoMenu(false);
   };
 
   return (

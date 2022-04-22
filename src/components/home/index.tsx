@@ -64,7 +64,7 @@ const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
           </IconContainer>
         </CategoryContainer>
       </Container>
-      {open && <Filter ref={filterRef} setOpen={setOpen} />}
+      {open && <Filter ref={filterRef} setOpen={setOpen} setNoMenu={setNoMenu} />}
       <CardContainer>
         <CardSubContainer>
           <CardButton>

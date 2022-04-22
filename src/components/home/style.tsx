@@ -126,3 +126,5 @@ export const Span = styled.div`
   padding-top: 50px;
   padding-bottom: 20px;
 `;
+
+/* modal */
