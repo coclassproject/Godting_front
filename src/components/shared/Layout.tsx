@@ -23,6 +23,7 @@ const SubContainer = styled.div`
   padding-bottom: 5rem;
   position: relative;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  overflow-y: auto;
 
   @media ${(props) => props.theme.TABLET} {
     margin-left: auto;
@@ -43,6 +44,7 @@ const Layout = ({
   back = false,
   bgColor = false,
   noMenu = false,
+  noNav = false,
   title = '',
   component = false,
 }) => {
@@ -66,7 +68,7 @@ const Layout = ({
           transition={{ type: 'linear' }}
         >
           <SubContainer>
-            <Nav back={back} title={title} component={component} />
+            {!noNav && <Nav back={back} title={title} component={component} />}
             <ChildrenContainer bgColor={bgColor}>{children}</ChildrenContainer>
             {!noMenu && <Menu currentMenu />}
           </SubContainer>
