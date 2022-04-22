@@ -44,6 +44,7 @@ const Layout = ({
   back = false,
   bgColor = false,
   noMenu = false,
+  noNav = false,
   title = '',
   component = false,
 }) => {
@@ -67,7 +68,7 @@ const Layout = ({
           transition={{ type: 'linear' }}
         >
           <SubContainer>
-            <Nav back={back} title={title} component={component} />
+            {!noNav && <Nav back={back} title={title} component={component} />}
             <ChildrenContainer bgColor={bgColor}>{children}</ChildrenContainer>
             {!noMenu && <Menu currentMenu />}
           </SubContainer>
