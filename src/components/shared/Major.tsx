@@ -11,6 +11,8 @@ const DepartmentContainer = styled.div`
     label {
       display: block;
       padding-bottom: 0.5rem;
+      font-size: 14px;
+      color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
     }
     .choiceMajor {
       display: inline-flex;

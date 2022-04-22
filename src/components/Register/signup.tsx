@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { INTEREST, REGION } from 'src/schema';
 import { CheckBoxOrRadioNone } from 'src/theme/CommonStyle';
+import Major from '../shared/Major';
 import {
   Container,
   EmailBtn,
@@ -193,33 +194,8 @@ const Sign = () => {
                     ))}
                   </SelectBox>
                 </div>
-                <div>
-                  <LittleSubject>학과</LittleSubject>
-                  <SelectBox name="lecture" {...register('lecture', { required: true })}>
-                    <option value="">선택해주세요</option>
-                    <option value="기독교학부">기독교학부</option>
-                    <option value="어문학부">어문학부</option>
-                    <option value="사회복지학부">사회복지학부</option>
-                    <option value="경찰학부">경찰학부</option>
-                    <option value="경상학부">경상학부</option>
-                    <option value="관광학부">관광학부</option>
-                    <option value="사범학부">사범학부</option>
-                    <option value="유아교육과">유아교육과</option>
-                    <option value="특수교육과">특수교육과</option>
-                    <option value="유아특수교육과">유아특수교육과</option>
-                    <option value="특수체육교육과">특수체육교육과</option>
-                    <option value="컴퓨터공학부">컴퓨터공학부</option>
-                    <option value="보건학부">보건학부</option>
-                    <option value="물리치료학과">물리치료학과</option>
-                    <option value="작업치료학과">작업치료학과</option>
-                    <option value="디자인영상학부">디자인영상학부</option>
-                    <option value="스포츠과학부">스포츠과학부</option>
-                    <option value="문화예술학부">문화예술학부</option>
-                    <option value="혁신융합학부">혁신융합학부</option>
-                    <option value="첨단IT학부">첨단IT학부</option>
-                  </SelectBox>
-                </div>
               </SelectDiv>
+              <Major />
             </div>
             <div className="interest">
               <Subject htmlFor="user-interest">관심사</Subject>

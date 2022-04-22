@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
-import { lightTheme } from 'src/theme';
-import { FullButton, CommonTag } from 'src/theme/CommonStyle';
+import { CommonTag, FullButton } from 'src/theme/CommonStyle';
 
 interface InterestColor {
   activeColor: boolean;
@@ -8,13 +7,10 @@ interface InterestColor {
 
 export const Background = styled.div`
   width: 100%;
-  height: 150vh;
 `;
 export const SignUpDiv = styled(Background)`
-  margin-top: 50px;
   background-color: white;
   width: 100%;
-  height: 100vh;
   .subject {
     font-size: 20px;
   }
