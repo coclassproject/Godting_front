@@ -11,14 +11,13 @@ interface IBgColor {
 }
 
 const Container = styled.div`
-  height: 112vh;
   background-color: ${(props) => props.theme.LAYOUT_BACKGROUND_COLOR};
 `;
 
 const SubContainer = styled.div`
   background-color: ${(props) => props.theme.LAYOUT_WHITE_COLOR};
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   left: 0px;
   top: 0px;
   padding-bottom: 5rem;
@@ -29,7 +28,6 @@ const SubContainer = styled.div`
     margin-left: auto;
     margin-right: auto;
     max-width: 448px;
-    height: 100vh;
   }
 `;
 
