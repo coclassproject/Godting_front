@@ -15,6 +15,7 @@ export interface FilterInput {
 
 export interface FilterSetOpen {
   setOpen: React.Dispatch<SetStateAction<boolean>>;
+  setNoMenu: React.Dispatch<SetStateAction<boolean>>;
 }
 
 export interface FilterProps extends FilterSetOpen {

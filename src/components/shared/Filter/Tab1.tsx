@@ -42,7 +42,7 @@ const HEIGHT_OPTION = {
   max: 190,
 };
 
-const Tab1 = ({ register, handleSubmit, setOpen }: FilterProps) => {
+const Tab1 = ({ register, handleSubmit, setOpen, setNoMenu }: FilterProps) => {
   const [ageValue, setAgeValue] = useState([25, 30]);
   const [heightValue, setHeightValue] = useState([160, 175]);
   const [activeArea, setActiveArea] = useState([]);

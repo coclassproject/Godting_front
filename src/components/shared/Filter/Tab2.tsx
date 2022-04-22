@@ -22,7 +22,7 @@ const ExtendsButtonContainer = styled(ButtonContainer)`
   transform: translateX(-50%);
 `;
 
-const Tab2 = ({ register, handleSubmit, setOpen }: FilterProps) => {
+const Tab2 = ({ register, handleSubmit, setOpen, setNoMenu }: FilterProps) => {
   const [activeInterest, setActiveInterest] = useState([]);
 
   const onClickInterest = (e) => {
