@@ -1,5 +1,5 @@
 import React from 'react';
-import Sign from 'src/components/register/signup';
+import Sign from 'src/components/register';
 import Layout from 'src/components/shared/Layout';
 
 const SignUp = () => (

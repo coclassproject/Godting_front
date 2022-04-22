@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Filter from '../shared/Filter';
+import Filter from '../shared/filter';
 
 const Container = styled.div`
   width: 100%;

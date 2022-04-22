@@ -45,7 +45,7 @@ const HEIGHT = Array.from({ length: 41 }, (v, i) => i + 150);
 const AGE = Array.from({ length: 10 }, (v, i) => i + 20);
 const CLASS = Array.from({ length: 12 }, (v, i) => i + 10);
 
-const Sign = () => {
+const Register = () => {
   const [activeDrink, setActiveDrink] = useState('');
   const [activeArmy, setActiveArmy] = useState('');
   const [activeSmoke, setActiveSmoke] = useState('');
@@ -315,4 +315,4 @@ const Sign = () => {
   );
 };
 
-export default Sign;
+export default Register;
