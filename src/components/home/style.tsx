@@ -47,7 +47,7 @@ export const CardButton = styled.button`
   bottom: 200px;
   border-radius: 100%;
   color: ${(props) => props.theme.LINE_WHITE_COLOR};
-  background-color: white;
+  background-color: ${(props) => props.theme.PUBLIC_WHITE};
   border: 1px solid ${(props) => props.theme.LINE_WHITE_COLOR};
   cursor: pointer;
 `;
@@ -85,7 +85,6 @@ export const RegisterCard = styled.div`
   border-radius: 10px;
   width: 175px;
   height: 230px;
-  float: left;
   box-shadow: 0px 2px 12px 1px rgba(0, 0, 0, 0.08);
   text-align: center;
   margin: 6px;
@@ -173,7 +172,7 @@ export const ModalCard = styled.div`
     }
   }
   .info {
-    background: #f8f8fa;
+    background: ${(props) => props.theme.SUB_BACKGROUND_COLOR};
     border-radius: 5px;
     width: 310px;
     height: 130px;
@@ -182,7 +181,7 @@ export const ModalCard = styled.div`
     margin: 20px -5px;
     .container {
       margin: 0 auto;
-      border-bottom: 1px solid #efefef;
+      border-bottom: 1px solid ${(props) => props.theme.BUTTON_BACKGROUND_COLOR};
       height: 33%;
       width: 80%;
       .infoDetail {
