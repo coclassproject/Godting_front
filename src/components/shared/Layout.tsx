@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/dist/client/router';
 import React from 'react';
-import { menus } from 'schema';
+import { menus } from 'src/schema';
 import Menu from './Menu';
 import Nav from './Nav';
 
@@ -14,7 +14,7 @@ const Container = styled.div`
   background-color: ${(props) => props.theme.LAYOUT_BACKGROUND_COLOR};
 `;
 
-const SubContainer = styled.div`
+const SubContainer = styled.div<IBgColor>`
   background-color: ${(props) => props.theme.LAYOUT_WHITE_COLOR};
   width: 100%;
   min-height: 100vh;
@@ -24,6 +24,7 @@ const SubContainer = styled.div`
   position: relative;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   overflow-y: auto;
+  background-color: ${(props) => (props.bgColor ? props.theme.SUB_BACKGROUND_COLOR : props.theme.PUBLIC_WHITE)};
 
   @media ${(props) => props.theme.TABLET} {
     margin-left: auto;
@@ -32,10 +33,9 @@ const SubContainer = styled.div`
   }
 `;
 
-const ChildrenContainer = styled.div<IBgColor>`
+const ChildrenContainer = styled.div`
   padding: 2rem 1.2rem;
   height: 100%;
-  background-color: ${(props) => (props.bgColor ? props.theme.SUB_BACKGROUND_COLOR : props.theme.PUBLIC_WHITE)};
 `;
 
 const Layout = ({
@@ -67,9 +67,9 @@ const Layout = ({
           animate={!isMenu && 'enter'}
           transition={{ type: 'linear' }}
         >
-          <SubContainer>
+          <SubContainer bgColor={bgColor}>
             {!noNav && <Nav back={back} title={title} component={component} />}
-            <ChildrenContainer bgColor={bgColor}>{children}</ChildrenContainer>
+            <ChildrenContainer>{children}</ChildrenContainer>
             {!noMenu && <Menu currentMenu />}
           </SubContainer>
         </motion.div>
