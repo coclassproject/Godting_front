@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useEffect, useRef, useState } from 'react';
-import { AiOutlineHeart } from 'react-icons/ai';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { MdTune } from 'react-icons/md';
 import { A11y, Navigation } from 'swiper';
 import 'swiper/css';
@@ -26,6 +26,7 @@ import {
   RegisterSubContainer,
   Span,
 } from './style';
+import ModalPage from './ModalPage';
 
 interface HomeComponentProps {
   setNoMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -39,7 +40,7 @@ const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
     setOpen(true);
     setNoMenu(true);
   };
-
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   // const handleClickOutside = ({ target }) => {
   //   if (open && !filterRef.current?.contains(target)) {
   //     setOpen(false);
@@ -109,7 +110,7 @@ const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
             >
               <SwiperSlide>
                 <RegisterCard>
-                  <RegisterImg />
+                  <RegisterImg onClick={() => setModalIsOpen(true)} />
                   <RegisterSubContainer>
                     <RegisterNick>햄찌</RegisterNick>
                     <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
@@ -151,6 +152,7 @@ const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
           </div>
         </main>
       </RegisterContainer>
+      <ModalPage modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
     </>
   );
 };

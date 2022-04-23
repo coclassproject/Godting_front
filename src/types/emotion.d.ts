@@ -9,6 +9,7 @@ declare module '@emotion/react' {
     BUTTON_BACKGROUND_COLOR: string;
     PUBLIC_BLUE: string;
     PUBLIC_WHITE: string;
+    PUBLIC_LIGHTGREY: string;
     LAYOUT_BACKGROUND_COLOR: string;
     LAYOUT_WHITE_COLOR: string;
     SUB_BACKGROUND_COLOR: string;

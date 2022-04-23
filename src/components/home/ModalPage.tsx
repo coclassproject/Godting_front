@@ -1,55 +1,81 @@
 import React, { useState } from 'react';
+import { AiFillHeart } from 'react-icons/ai';
+import { VscChromeClose } from 'react-icons/vsc';
 import Modal from 'react-modal';
-import styled from '@emotion/styled';
+import { ModalCard, ModalImg, ModalComment, ModalBtn } from './style';
 
-import { RegisterCard, RegisterImg, RegisterSubContainer, RegisterNick, RegisterLecture, RegisterInfo } from './style';
-
-const ModalPage = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  return (
-    <>
-      <button onClick={() => setModalIsOpen(true)}>Modal Open</button>
-      <Modal
-        style={{
-          overlay: {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(255, 255, 255, 0.75)',
-          },
-          content: {
-            position: 'absolute',
-            top: '40px',
-            left: '40px',
-            right: '40px',
-            bottom: '40px',
-            border: '1px solid #ccc',
-            background: '#fff',
-            overflow: 'auto',
-            WebkitOverflowScrolling: 'touch',
-            borderRadius: '4px',
-            outline: 'none',
-            padding: '20px',
-          },
-        }}
-        isOpen
-      >
-        <button onClick={() => setModalIsOpen(false)}>Modal Open</button>
-      </Modal>
-    </>
-  );
-};
+const ModalPage = ({ modalIsOpen, setModalIsOpen }) => (
+  <>
+    <Modal
+      isOpen={modalIsOpen}
+      style={{
+        overlay: {
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          zIndex: 100,
+        },
+        content: {
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          background: '#FFFFFF',
+          overflow: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          borderRadius: '5px',
+          outline: 'none',
+          padding: '20px',
+          width: '300px',
+          height: '500px',
+        },
+      }}
+    >
+      <ModalCard>
+        <div className="exit">
+          <VscChromeClose color="#666666" size="24px" onClick={() => setModalIsOpen(false)} />
+        </div>
+        <ModalImg />
+        <div className="all">
+          <span className="nick">햄찌</span>
+          <div className="lectureHeart">
+            <span className="lecture">19학번 문화상품디자인연계학과</span>
+            <span className="heart">
+              <AiFillHeart color="#FF00FF" size="18px" /> 12
+            </span>
+          </div>
+        </div>
+        <div className="info">
+          <div className="container">
+            <div className="infoDetail">
+              <span className="subject">나이</span>
+              <span className="detail">21세</span>
+            </div>
+          </div>
+          <div className="container">
+            <div className="infoDetail">
+              <span className="subject">키</span>
+              <span className="detail">165cm</span>
+            </div>
+          </div>
+          <div className="container">
+            <div className="infoDetail">
+              <span className="subject">관심사</span>
+              <span className="detail">#맛집탐방, #운동</span>
+            </div>
+          </div>
+        </div>
+        <ModalComment>
+          <span className="comment">comments</span>
+          <span className="commentDetail">재미있게 놀아요! 대학와서 미팅해보고 싶었습니다</span>
+        </ModalComment>
+        <ModalBtn>소개팅 신청하기</ModalBtn>
+      </ModalCard>
+    </Modal>
+  </>
+);
 
 export default ModalPage;
-{
-  /* <RegisterCard>
-<RegisterImg />
-<RegisterSubContainer>
-  <RegisterNick>햄찌</RegisterNick>
-  <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
-  <RegisterInfo># 여행 # 맛집탐방</RegisterInfo>
-</RegisterSubContainer>
-</RegisterCard> */
-}

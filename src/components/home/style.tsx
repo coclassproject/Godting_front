@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { FullButton } from 'src/theme/CommonStyle';
 
 export const Container = styled.div`
   width: 100%;
@@ -55,13 +56,13 @@ export const CardOld = styled.span`
   position: absolute;
   right: 135px;
   top: 180px;
-  color: white;
+  color: ${(props) => props.theme.LAYOUT_WHITE_COLOR};
 `;
 export const CardHeight = styled.span`
   position: absolute;
   right: 120px;
   top: 200px;
-  color: white;
+  color: ${(props) => props.theme.LAYOUT_WHITE_COLOR};
 `;
 
 export const RegisterContainer = styled.div`
@@ -93,7 +94,7 @@ export const RegisterImg = styled.div`
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: lightgrey;
+  background-color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
   display: inline-block;
   justify-content: center;
   align-items: center;
@@ -116,7 +117,7 @@ export const RegisterLecture = styled.span`
 `;
 export const RegisterInfo = styled.span`
   font-size: 12px;
-  color: lightgrey;
+  color: ${(props) => props.theme.PUBLIC_LIGHTGREY}
   vertical-align: middle;
   text-align: center;
   padding: 10px 2px 3px 4px;
@@ -128,3 +129,99 @@ export const Span = styled.div`
 `;
 
 /* modal */
+
+export const ModalBtn = styled(FullButton)`
+  margin-top: 35px;
+  font-size: 14px;
+  line-height: 20px;
+`;
+
+export const ModalCard = styled.div`
+  width: 300px;
+  height: 450px;
+  display: absolute;
+  text-align: center;
+  vertical-align: middle;
+  flex-direction: column;
+  .exit {
+    margin-left: 95%;
+  }
+  .all {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    .nick {
+      height: auto;
+      font-weight: bold;
+      font-size: 14px;
+      color: ${(props) => props.theme.TITLE_BLACK_COLOR};
+      text-align: center;
+      vertical-align: middle;
+      padding-top: 10px;
+    }
+    .lectureHeart {
+      margin-top: 10px;
+    }
+    .lecture {
+      font-size: 14px;
+      color: ${(props) => props.theme.TITLE_BLACK_COLOR};
+      padding: 10px 0px 3px 40px;
+    }
+    .heart {
+      float: right;
+      color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
+    }
+  }
+  .info {
+    background: #f8f8fa;
+    border-radius: 5px;
+    width: 310px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px -5px;
+    .container {
+      margin: 0 auto;
+      border-bottom: 1px solid #efefef;
+      height: 33%;
+      width: 80%;
+      .infoDetail {
+        text-align: left;
+        margin-top: 15px;
+        span {
+          line-height: 33%;
+          vertical-align: middle;
+        }
+        .subject {
+          display: inline-block;
+          width: 45px;
+          margin-right: 10px;
+          color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
+        }
+        .detail {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+`;
+export const ModalImg = styled.div`
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  display: inline-block;
+`;
+export const ModalComment = styled.div`
+  display: flex;
+  flex-direction: column;
+  span {
+    font-size: 14px;
+    text-align: left;
+  }
+  .comment {
+    margin-bottom: 10px;
+    color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
+  }
+`;
