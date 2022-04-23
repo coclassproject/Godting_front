@@ -102,14 +102,14 @@ export const RegisterImg = styled.div`
 export const RegisterNick = styled.span`
   font-weight: bold;
   font-size: 14px;
-  color: grey;
+  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
   text-align: center;
   vertical-align: middle;
   padding-top: 10px;
 `;
 export const RegisterLecture = styled.span`
   font-size: 12px;
-  color: grey;
+  color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
   vertical-align: middle;
   text-align: center;
   padding: 10px 2px 3px 4px;
