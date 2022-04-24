@@ -21,6 +21,7 @@ export const lightTheme = {
   LAYOUT_WHITE_COLOR: '#ffffff',
   SUB_BACKGROUND_COLOR: '#F8F8FA',
   VALIDATION_COLOR: '#ff0a0a',
+  MATCH_TAB_BORDER_COLOR: '#DCDCDC',
   HDPC: `(min-width: ${responsiveView.HDPC})`,
   PC: `(min-width: ${responsiveView.PC})`,
   NOTEBOOK: `(min-width: ${responsiveView.NOTEBOOK})`,
