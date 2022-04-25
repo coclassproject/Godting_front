@@ -42,10 +42,15 @@ const ModalPage = ({ modalIsOpen, setModalIsOpen }) => (
         <div className="all">
           <span className="nick">햄찌</span>
           <div className="lectureHeart">
+            <div className="heart hidden">
+              <AiFillHeart color="#FF00FF" size="18px" />
+              <span>12</span>
+            </div>
             <span className="lecture">19학번 문화상품디자인연계학과</span>
-            <span className="heart">
-              <AiFillHeart color="#FF00FF" size="18px" /> 12
-            </span>
+            <div className="heart">
+              <AiFillHeart color="#FF00FF" size="18px" />
+              <span>12</span>
+            </div>
           </div>
         </div>
         <div className="info">

@@ -144,6 +144,7 @@ export const ModalCard = styled.div`
   flex-direction: column;
   .exit {
     margin-left: 95%;
+    cursor: pointer;
   }
   .all {
     text-align: center;
@@ -160,15 +161,26 @@ export const ModalCard = styled.div`
     }
     .lectureHeart {
       margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hidden {
+      visibility: hidden;
     }
     .lecture {
       font-size: 14px;
       color: ${(props) => props.theme.TITLE_BLACK_COLOR};
-      padding: 10px 0px 3px 40px;
     }
     .heart {
-      float: right;
+      display: flex;
+      align-items: center;
       color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
+
+      span {
+        font-size: 14px;
+        margin-left: 0.3rem;
+      }
     }
   }
   .info {
