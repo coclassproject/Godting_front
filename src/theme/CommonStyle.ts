@@ -11,8 +11,8 @@ export const CommonTag = styled.label<ActiveCheckBoxOrRadioColor>`
   cursor: pointer;
   background-color: ${(props) => (props.activeColor ? props.theme.PUBLIC_BLUE : props.theme.BUTTON_BACKGROUND_COLOR)};
   font-family: MingLiU;
-  width: 8%
   text-align: center;
+  width: 25px;
 `;
 
 export const CheckBoxOrRadioNone = styled.input`
@@ -88,8 +88,8 @@ export const StyledRangeLine = styled.div`
 
 export const StyledRangePointer = styled.div`
   /* 커스텀 range 컴포넌트 */
-  width: 13px;
-  height: 13px;
+  width: 10px;
+  height: 10px;
   border-radius: 30px;
   background-color: ${(props) => props.theme.PUBLIC_BLUE};
   display: flex;

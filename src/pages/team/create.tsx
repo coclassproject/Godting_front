@@ -4,10 +4,15 @@ import { BsFillArrowLeftSquareFill } from 'react-icons/bs';
 import CustomRange from 'src/components/shared/CustomRange';
 import Layout from 'src/components/shared/Layout';
 import { REGION, PARTICIPANT, COLLEGE_NUMBER } from 'src/schema';
-import { CheckBoxOrRadioNone, CommonTag, LabelContainer, RangeContainer } from 'src/theme/CommonStyle';
+import { CheckBoxOrRadioNone, CommonTag, FullButton, LabelContainer, RangeContainer } from 'src/theme/CommonStyle';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ko from 'date-fns/locale/ko';
+import Major from 'src/components/shared/Major';
+
+const FirstLabelContainer = styled(LabelContainer)`
+  margin-bottom: 4rem;
+`;
 
 const ExtendsLabelContainer = styled(LabelContainer)`
   .title {
@@ -17,6 +22,14 @@ const ExtendsLabelContainer = styled(LabelContainer)`
 
 const ExtendsCommonTag = styled(CommonTag)`
   margin-bottom: 0.5rem;
+`;
+
+const AgeTitle = styled.span`
+  font-size: 1rem;
+  color: ${(props) => props.theme.TITLE_BLACK_COLOR};
+  display: block;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
 `;
 
 const AVGAGE_OPTION = {
@@ -32,7 +45,7 @@ const TeamCreate = () => {
 
   return (
     <Layout>
-      <LabelContainer>
+      <FirstLabelContainer>
         <span>팀 인원</span>
         <div className="container">
           {PARTICIPANT.map((person, index) => (
@@ -44,7 +57,7 @@ const TeamCreate = () => {
             </>
           ))}
         </div>
-      </LabelContainer>
+      </FirstLabelContainer>
       <LabelContainer>
         <span>미팅 지역</span>
         <div className="container">
@@ -72,9 +85,8 @@ const TeamCreate = () => {
           ))}
         </div>
       </ExtendsLabelContainer>
-      <LabelContainer>
-        <span>평균 나이</span>
-      </LabelContainer>
+      <Major />
+      <AgeTitle>평균 나이</AgeTitle>
       <RangeContainer>
         <div className="labelContainer">
           <label>{null}</label>
@@ -89,6 +101,7 @@ const TeamCreate = () => {
         showTimeSelect
         onSelect={(date) => setStartDate(date)}
       />
+      <FullButton>등록하기</FullButton>
     </Layout>
   );
 };
