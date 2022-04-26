@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { menus } from 'schema';
 import Link from 'next/link';
+import { menus } from 'src/schema';
 
 const Container = styled.div`
   width: 100%;
