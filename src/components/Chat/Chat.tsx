@@ -1,7 +1,5 @@
 import React from 'react';
 
-const ChatDetail = () => {
-
-}
+const ChatDetail = () => {};
 
 export default ChatDetail;

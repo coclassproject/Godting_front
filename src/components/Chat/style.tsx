@@ -27,14 +27,12 @@ export const ChatListBox = styled.div`
     }
     .subject {
       margin-right: 5%;
-      font-weight: 500;
+      font-weight: bold;
       font-size: 14px;
-      line-height: 20px;
-      letter-spacing: -0.015em;
       color: ${(props) => props.theme.TITLE_BLACK_COLOR};
     }
     .number {
-      font-weight: 500;
+      font-weight: bold;
       font-size: 16px;
       line-height: 19px;
       color: ${(props) => props.theme.PUBLIC_BLUE};
