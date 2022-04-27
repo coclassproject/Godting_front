@@ -38,6 +38,7 @@ export const CardSubContainer = styled.div`
   justify-content: center;
   position: relative;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 4.41%, rgba(3, 3, 3, 0.22) 100%);
+  cursor: pointer;
 `;
 export const CardButton = styled.button`
   position: absolute;
@@ -122,7 +123,7 @@ export const RegisterInfo = styled.span`
   padding: 10px 2px 3px 4px;
 `;
 export const Span = styled.div`
-  margin-left: 30px;
+  margin-left: 10px;
   padding-top: 50px;
   padding-bottom: 20px;
 `;
