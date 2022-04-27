@@ -29,7 +29,7 @@ const ModalPage = ({ modalIsOpen, setModalIsOpen }) => (
           borderRadius: '5px',
           outline: 'none',
           padding: '20px',
-          width: '350px',
+          width: '35g0px',
           height: '550px',
         },
       }}
