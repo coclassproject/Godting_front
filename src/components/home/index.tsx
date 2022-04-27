@@ -67,7 +67,7 @@ const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
       </Container>
       {open && <Filter ref={filterRef} setOpen={setOpen} setNoMenu={setNoMenu} />}
       <CardContainer>
-        <CardSubContainer>
+        <CardSubContainer onClick={() => setModalIsOpen(true)}>
           <CardButton>
             <AiOutlineHeart size="20" />
           </CardButton>
@@ -110,7 +110,7 @@ const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
             >
               <SwiperSlide>
                 <RegisterCard>
-                  <RegisterImg onClick={() => setModalIsOpen(true)} />
+                  <RegisterImg />
                   <RegisterSubContainer>
                     <RegisterNick>햄찌</RegisterNick>
                     <RegisterLecture>19학번 문화상품디자인연계</RegisterLecture>
