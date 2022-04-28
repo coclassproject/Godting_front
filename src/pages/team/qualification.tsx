@@ -9,6 +9,7 @@ import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ko from 'date-fns/locale/ko';
 import Major from 'src/components/shared/Major';
+import CustomInput from 'src/components/shared/CustomInput';
 
 const FirstLabelContainer = styled(LabelContainer)`
   margin-bottom: 4rem;
@@ -38,13 +39,13 @@ const AVGAGE_OPTION = {
   max: 30,
 };
 
-const TeamCreate = () => {
+const TeamQualification = () => {
   const [avgAge, setAvgAge] = useState([20, 27]);
   const [startDate, setStartDate] = useState(new Date());
   registerLocale('ko', ko);
 
   return (
-    <Layout>
+    <Layout back title="조건 설정하기">
       <FirstLabelContainer>
         <span>팀 인원</span>
         <div className="container">
@@ -94,16 +95,20 @@ const TeamCreate = () => {
         </div>
         <CustomRange value={avgAge} onChangeValue={setAvgAge} option={AVGAGE_OPTION} />
       </RangeContainer>
-      <DatePicker
-        selected={startDate}
-        locale="ko"
-        dateFormat="MMMM d일, aa hh:mm"
-        showTimeSelect
-        onSelect={(date) => setStartDate(date)}
-      />
+      <LabelContainer>
+        <span>날짜 및 시간</span>
+        <DatePicker
+          selected={startDate}
+          locale="ko"
+          dateFormat="MMMM d일, aa hh:mm"
+          showTimeSelect
+          onChange={(date) => setStartDate(date)}
+          customInput={<CustomInput />}
+        />
+      </LabelContainer>
       <FullButton>등록하기</FullButton>
     </Layout>
   );
 };
 
-export default TeamCreate;
+export default TeamQualification;
