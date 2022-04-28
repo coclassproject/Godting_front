@@ -5,13 +5,13 @@ export const RequestContainer = styled.div`
     font-size: 1rem;
     color: ${(props) => props.theme.TITLE_BLACK_COLOR};
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
   }
 `;
 
-export const Box = styled.div`
+export const MeetingBox = styled.div`
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: ${(props) => props.theme.PUBLIC_WHITE};
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
   margin-bottom: 2rem;
@@ -72,7 +72,7 @@ export const Box = styled.div`
   }
 `;
 
-export const ReceiveBox = styled(Box)`
+export const ReceiveBox = styled(MeetingBox)`
   height: 120px;
 
   .padding {
@@ -114,5 +114,73 @@ export const ReceiveBox = styled(Box)`
         cursor: pointer;
       }
     }
+  }
+`;
+
+export const BtnContainer = styled.div`
+  & > button {
+    font-size: 14px;
+    color: ${(props) => props.theme.PUBLIC_BLUE};
+    border: 1px solid rgba(61, 0, 252, 0.2);
+    border-radius: 5px;
+    background-color: ${(props) => props.theme.PUBLIC_WHITE};
+    padding: 0.3rem 0.8rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+`;
+
+export const BlindDateBox = styled.div`
+  width: 100%;
+  border-radius: 5px;
+  background-color: ${(props) => props.theme.PUBLIC_WHITE};
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  padding: 1rem;
+
+  .container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    .contents {
+      display: flex;
+      gap: 0.5rem;
+
+      .infoContainer {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        justify-content: space-between;
+
+        .name {
+          font-weight: 500;
+        }
+
+        & > div {
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
+        }
+      }
+    }
+
+    .time {
+      font-size: 14px;
+      color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
+    }
+  }
+
+  .img {
+    width: 55px;
+    height: 55px;
+    border-radius: 9999px;
+    background-color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
+  }
+`;
+
+export const ExtendsBlindDateBox = styled(BlindDateBox)`
+  .container {
+    align-items: center;
   }
 `;

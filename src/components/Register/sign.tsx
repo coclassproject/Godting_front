@@ -126,9 +126,13 @@ const Register = () => {
             <div className="nick">
               <Subject htmlFor="user-nick">닉네임</Subject>
               <Input
-                placeholder="닉네임을 입력해주세요."
+                placeholder="닉네임을 입력해주세요.(최대12자)"
                 {...register('nick', {
                   required: true,
+                  maxLength: {
+                    value: 12,
+                    message: '최대 12자로 입력할 수 있습니다',
+                  },
                 })}
                 type="text"
               />

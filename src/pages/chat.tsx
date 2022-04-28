@@ -3,7 +3,7 @@ import Layout from 'src/components/shared/Layout';
 import ChatList from 'src/components/Chat/ChatList';
 
 const chat = () => (
-  <Layout>
+  <Layout noMenu bgColor back title="채팅">
     <ChatList />
   </Layout>
 );
