@@ -12,7 +12,7 @@ export const CommonTag = styled.label<ActiveCheckBoxOrRadioColor>`
   background-color: ${(props) => (props.activeColor ? props.theme.PUBLIC_BLUE : props.theme.BUTTON_BACKGROUND_COLOR)};
   font-family: MingLiU;
   text-align: center;
-  width: 25px;
+  min-width: 60px;
 `;
 
 export const CheckBoxOrRadioNone = styled.input`
@@ -47,7 +47,7 @@ export const LabelContainer = styled.div`
 export const FullButton = styled.button`
   /* 너비를 100%로 갖는 버튼 */
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: ${(props) => props.theme.PUBLIC_BLUE};
   color: ${(props) => props.theme.PUBLIC_WHITE};
   height: 50px;
