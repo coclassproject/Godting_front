@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box, ReceiveBox, RequestContainer } from './style';
+import { MeetingBox, ReceiveBox, RequestContainer } from './style';
 
 const Meeting = () => (
   <RequestContainer>
     <span className="infoText">보낸사람</span>
-    <Box>
+    <MeetingBox>
       <span className="title">내용을 입력해 주세요 내용을 입력해 주세요 내용</span>
       <div className="requestInfo">
         <div className="profile">
@@ -18,7 +18,7 @@ const Meeting = () => (
           <span>d-1</span>
         </div>
       </div>
-    </Box>
+    </MeetingBox>
     <span className="infoText">매칭 현황</span>
     <ReceiveBox>
       <div className="padding">
