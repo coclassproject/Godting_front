@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 import { INTEREST } from 'src/schema';
 import { CheckBoxOrRadioNone, CommonTag, LabelContainer } from 'src/theme/CommonStyle';
 import { SubmitHandler } from 'react-hook-form';
+import { FilterInput, FilterProps } from 'src/components/shared/type';
 import { ButtonContainer } from './Tab1';
-import { FilterInput, FilterProps } from '../type';
 
 const Container = styled(LabelContainer)`
   padding: 2rem 0;

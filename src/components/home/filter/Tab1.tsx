@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
+import CustomRange from 'src/components/shared/CustomRange';
+import { FilterInput, FilterProps } from 'src/components/shared/type';
 import { REGION } from 'src/schema';
 import { CheckBoxOrRadioNone, CommonTag, LabelContainer, RangeContainer } from 'src/theme/CommonStyle';
-import CustomRange from '../CustomRange';
-import { FilterInput, FilterProps } from '../type';
 
 const Container = styled.div`
   padding-top: 2rem;

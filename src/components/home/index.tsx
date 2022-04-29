@@ -7,7 +7,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Filter from '../shared/Filter';
 import {
   CardButton,
   CardContainer,
@@ -27,6 +26,7 @@ import {
   Span,
 } from './style';
 import ModalPage from './ModalPage';
+import Filter from './filter';
 
 interface HomeComponentProps {
   setNoMenu: React.Dispatch<React.SetStateAction<boolean>>;

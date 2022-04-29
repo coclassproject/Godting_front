@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
+import CustomRange from 'src/components/shared/CustomRange';
+import Major from 'src/components/shared/Major';
+import { FilterInput, FilterProps } from 'src/components/shared/type';
 import { RangeContainer } from 'src/theme/CommonStyle';
-import CustomRange from '../CustomRange';
-import Major from '../Major';
-import { FilterInput, FilterProps } from '../type';
 import { ButtonContainer } from './Tab1';
 
 const Container = styled.div`
