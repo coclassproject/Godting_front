@@ -228,13 +228,14 @@ export const ChatDiv = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 100px;
+  margin-top: 60%;
   .files {
     width: 15%;
     justify-content: space-around;
     display: flex;
     flex-direction: row-reverse;
     color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
+    cursor: pointer;
   }
 `;
 export const ChatInput = styled.input`
