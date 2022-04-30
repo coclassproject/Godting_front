@@ -13,6 +13,7 @@ export const lightTheme = {
   SUBTITLE_AND_CONTENT_COLOR: '#666666', // 부제목 및 본문 내용에 사용
   ICON_COLOR_AND_BOTTOM_CONTENT: '#9E9E9E', // 아이콘 색상 및 제일 하위의 내용에 사용,
   LINE_WHITE_COLOR: '#f5f5f5', // 라인,
+  LINE_GREY_COLOR: '#E7E7E8',
   BUTTON_BACKGROUND_COLOR: '#EFEFEF', // 버튼 백그라운드,
   PUBLIC_BLUE: '#3D00FC',
   PUBLIC_WHITE: '#fff',
