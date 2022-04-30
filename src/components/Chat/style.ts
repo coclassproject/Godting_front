@@ -125,17 +125,50 @@ export const OtherContainer = styled.div`
   padding-left: 1rem;
   margin-bottom: 3rem;
   .nick {
+    margin-left: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
   }
   .time {
+    margin-left: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
     flex-direction: row;
     flex-wrap: wrap;
   }
 `;
 
 export const MeContainer = styled(OtherContainer)`
-  justify-content: flex-end;
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-end;
+    align-items: flex-end;
+    margin-right: 20px;
+    .nick-right {
+      margin-right: 20px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
+    }
+    .time-right {
+      margin-right: 20px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
   padding-right: 1rem;
-  padding-left: 0;
+  padding-left: 3rem;
 `;
 export const BubbleLeft = styled.div`
   position: relative;
@@ -145,7 +178,10 @@ export const BubbleLeft = styled.div`
   filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.08));
   border-radius: 10px;
   margin-left: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   span {
+    font-size: 14px;
     position: relative;
     z-index: 999;
   }
@@ -164,7 +200,6 @@ export const BubbleLeft = styled.div`
 export const BubbleRight = styled(BubbleLeft)`
   background-color: ${(props) => props.theme.PUBLIC_BLUE};
   color: ${(props) => props.theme.PUBLIC_WHITE};
-  margin-right: 20px;
   filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.08));
   &:after {
     border-top: 15px solid ${(props) => props.theme.PUBLIC_BLUE};
@@ -177,8 +212,37 @@ export const BubbleRight = styled(BubbleLeft)`
 `;
 
 export const Circle = styled.div`
+  margin-top: 20px;
   width: 56px;
   height: 56px;
   border-radius: 50%;
   background-color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
+`;
+
+export const ChatDiv = styled.div`
+  width: 100%;
+  height: 45px;
+  background: ${(props) => props.theme.PUBLIC_WHITE};
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 100px;
+  .files {
+    width: 15%;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row-reverse;
+    color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
+  }
+`;
+export const ChatInput = styled.input`
+  margin-left: 20px;
+  width: 75%;
+  height: 90%;
+  font-weight: 400;
+  font-size: 14px;
+  color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
+  border: none;
 `;

@@ -1,6 +1,17 @@
 import React from 'react';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { BubbleLeft, BubbleRight, ChatSubject, Circle, Container, MeContainer, OtherContainer } from './style';
+import { BsImage } from 'react-icons/bs';
+import { AiOutlineLink } from 'react-icons/ai';
+import {
+  BubbleLeft,
+  BubbleRight,
+  ChatDiv,
+  ChatInput,
+  ChatSubject,
+  Circle,
+  Container,
+  MeContainer,
+  OtherContainer,
+} from './style';
 
 const ChatDetail = () => (
   <>
@@ -11,20 +22,32 @@ const ChatDetail = () => (
       <div className="day">2022년 03월 10일</div>
       <OtherContainer>
         <Circle />
-        <span className="nick">치즈</span>
-        <BubbleLeft>
-          <span>잘부탁드립니다잘부탁드립니다잘부탁드립니다 있습니다.</span>
-        </BubbleLeft>
-        <span className="time">오후 04:12</span>
+        <div>
+          <span className="nick">치즈</span>
+          <BubbleLeft>
+            <span className="chat">잘부탁드립니다잘부탁드립니다잘부탁드립니다 있습니다.</span>
+          </BubbleLeft>
+          <span className="time">오후 04:12</span>
+        </div>
       </OtherContainer>
 
       <MeContainer>
-        <BubbleRight>
-          <span>잘부탁드립니다잘부탁드립니다잘부탁드립니다 있습니다.</span>
-        </BubbleRight>
-        <span className="nick">치즈</span>
+        <div className="container">
+          <span className="nick-right">치즈</span>
+          <BubbleRight>
+            <span className="chat">잘부탁드립니다잘부탁드립니다잘부탁드립니다 있습니다.</span>
+          </BubbleRight>
+          <span className="time-right">오후 04:13</span>
+        </div>
         <Circle />
       </MeContainer>
+      <ChatDiv>
+        <ChatInput type="text" placeholder="메시지 보내기..." />
+        <div className="files">
+          <AiOutlineLink size="23px" />
+          <BsImage size="23px" />
+        </div>
+      </ChatDiv>
     </Container>
   </>
 );
