@@ -151,14 +151,14 @@ export const MeContainer = styled(OtherContainer)`
     align-items: flex-end;
     margin-right: 20px;
     .nick-right {
-      margin-right: 20px;
+      margin-right: 5px;
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
       color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
     }
     .time-right {
-      margin-right: 20px;
+      margin-right: 5px;
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
