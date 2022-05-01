@@ -74,10 +74,14 @@ const Hr = styled.hr`
   opacity: 0.2;
 `;
 
-const Major = () => {
+interface MajorProps {
+  choiceMajor: string[];
+  setChoiceMajor: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+const Major = ({ choiceMajor, setChoiceMajor }: MajorProps) => {
   const [major, setMajor] = useState<[number, string]>([null, '']);
   const [dropDown, setDropDown] = useState(false);
-  const [choiceMajor, setChoiceMajor] = useState<string[]>([null]);
 
   const removeChoiceMajor = (choice: string) => {
     setChoiceMajor((prev) => prev.filter((v) => v !== choice));

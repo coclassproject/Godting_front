@@ -1,48 +1,14 @@
 import React, { useState } from 'react';
-import styled from '@emotion/styled';
 import { useForm } from 'react-hook-form';
-import { FilterInput, FilterSetOpen } from '../type';
+import { Container, PageTitle, SubContainer } from 'src/components/shared/Filter/style';
+import UndergradMajorTab from 'src/components/shared/Filter/UndergradMajorTab';
+import { HomeFilterInput, FilterSetOpen } from 'src/components/shared/type';
 import Tab1 from './Tab1';
 import Tab2 from './Tab2';
-import Tab3 from './Tab3';
-
-interface PageTitleColor {
-  textColor: boolean;
-}
-
-const Container = styled.div`
-  width: 100%;
-  height: 65%;
-  position: absolute;
-  bottom: 0;
-  z-index: 990;
-  border-radius: 10px 10px 0 0;
-  border-top: 1px solid black;
-  margin: 0 -1.2rem;
-  background-color: ${(props) => props.theme.PUBLIC_WHITE};
-  overflow-y: auto;
-`;
-
-const SubContainer = styled.div`
-  padding: 1.5rem;
-
-  .nav {
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid ${(props) => props.theme.BUTTON_BACKGROUND_COLOR};
-  }
-`;
-
-const PageTitle = styled.span<PageTitleColor>`
-  margin-right: 1rem;
-  padding-bottom: 0.7rem;
-  cursor: pointer;
-  color: ${(props) => (props.textColor ? props.theme.TITLE_BLACK_COLOR : props.theme.SUBTITLE_AND_CONTENT_COLOR)};
-  border-bottom: ${(props) => (props.textColor ? `5px solid ${props.theme.SUBTITLE_AND_CONTENT_COLOR}` : null)};
-`;
 
 // eslint-disable-next-line no-empty-pattern
 const Filter = React.forwardRef(({ setOpen, setNoMenu }: FilterSetOpen, ref: React.MutableRefObject<any>) => {
-  const { register, handleSubmit, control } = useForm<FilterInput>();
+  const { register, handleSubmit } = useForm<HomeFilterInput>();
   const [page, setPage] = useState(1);
 
   const onClickPage = (pageId: number) => {
@@ -65,7 +31,7 @@ const Filter = React.forwardRef(({ setOpen, setNoMenu }: FilterSetOpen, ref: Rea
         </div>
         {page === 1 && <Tab1 setNoMenu={setNoMenu} register={register} setOpen={setOpen} handleSubmit={handleSubmit} />}
         {page === 2 && <Tab2 setNoMenu={setNoMenu} register={register} setOpen={setOpen} handleSubmit={handleSubmit} />}
-        {page === 3 && <Tab3 setNoMenu={setNoMenu} setOpen={setOpen} handleSubmit={handleSubmit} />}
+        {page === 3 && <UndergradMajorTab setNoMenu={setNoMenu} setOpen={setOpen} handleSubmit={handleSubmit} />}
       </SubContainer>
     </Container>
   );
