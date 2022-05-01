@@ -42,6 +42,7 @@ const AVGAGE_OPTION = {
 const TeamQualification = () => {
   const [avgAge, setAvgAge] = useState([20, 27]);
   const [startDate, setStartDate] = useState(new Date());
+  const [submitMajor, setSubmitMajor] = useState<string[]>(null);
   registerLocale('ko', ko);
 
   return (
@@ -86,7 +87,7 @@ const TeamQualification = () => {
           ))}
         </div>
       </ExtendsLabelContainer>
-      <Major />
+      <Major setSubmitMajor={setSubmitMajor} />
       <AgeTitle>평균 나이</AgeTitle>
       <RangeContainer>
         <div className="labelContainer">
