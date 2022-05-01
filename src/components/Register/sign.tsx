@@ -50,6 +50,7 @@ const Register = () => {
   const [activeArmy, setActiveArmy] = useState('');
   const [activeSmoke, setActiveSmoke] = useState('');
   const [interestActive, setInterestActive] = useState([]);
+  const [submitMajor, setSubmitMajor] = useState<string[]>(null);
 
   const onClickDrink = (value: activeRadioType) => {
     setActiveDrink(value);
@@ -198,7 +199,7 @@ const Register = () => {
                   </SelectBox>
                 </div>
               </SelectDiv>
-              <Major />
+              <Major setSubmitMajor={setSubmitMajor} />
             </div>
             <div className="interest">
               <Subject htmlFor="user-interest">관심사</Subject>
