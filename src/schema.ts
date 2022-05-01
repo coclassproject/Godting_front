@@ -96,6 +96,6 @@ export const menus = {
     icon: RiUser3Line,
     activeIcon: RiUser3Fill,
     title: '채팅',
-    path: '/users/mypage',
+    path: '/chat',
   },
 };
