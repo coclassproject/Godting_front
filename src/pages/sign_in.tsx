@@ -3,22 +3,18 @@ import React from 'react';
 import Layout from 'src/components/shared/Layout';
 
 const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  max-width: 300px;
+  margin: 0 auto;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -60%);
 
   .text {
-    text-align: center;
     font-size: 1.2rem;
     color: ${(props) => props.theme.TITLE_BLACK_COLOR};
     line-height: 1.8rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 
     span:nth-of-type(2) {
       font-weight: bold;
@@ -26,7 +22,7 @@ const Container = styled.div`
   }
 
   img {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.3rem;
     cursor: pointer;
   }
 `;
@@ -40,9 +36,8 @@ const SignIn = () => (
         <span>갓팅 서비스를 즐겨보세요</span>
       </div>
       <img src="/kakao.png" alt="kakao login button" />
-      <img src="/kakao.png" alt="kakao login button" />
-      <img src="/kakao.png" alt="kakao login button" />
-      {/* <img src="/naver.png" alt="naver login button" /> */}
+      <img src="/naver.png" alt="naver login button" />
+      <img src="/kakao.png" alt="google login button" />
     </Container>
   </Layout>
 );
