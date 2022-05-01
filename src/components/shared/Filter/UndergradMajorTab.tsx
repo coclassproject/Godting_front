@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import CustomRange from 'src/components/shared/CustomRange';
 import Major from 'src/components/shared/Major';
-import { FilterInput, FilterProps } from 'src/components/shared/type';
+import { HomeFilterInput, HomeFilterProps, MeetingFilterInput, MeetingFilterProps } from 'src/components/shared/type';
 import { RangeContainer } from 'src/theme/CommonStyle';
-import { ButtonContainer } from './Tab1';
+import { ButtonContainer } from './style';
 
 const Container = styled.div`
   padding-top: 2rem;
@@ -18,11 +18,12 @@ const COLLEGE_NUMBER_OPTION = {
   max: 22,
 };
 
-const Tab3 = ({ handleSubmit, setOpen, setNoMenu }: FilterProps) => {
+const UndergradMajorTab = ({ handleSubmit, setOpen, setNoMenu }: HomeFilterProps | MeetingFilterProps) => {
   const [undergrad, setUndergrad] = useState([17, 20]);
+  const [choiceMajor, setChoiceMajor] = useState<string[]>([null]);
 
-  const onSubmit: SubmitHandler<FilterInput> = (data) => {
-    const values = { ...data, undergrad };
+  const onSubmit: SubmitHandler<HomeFilterInput | MeetingFilterInput> = (data) => {
+    const values = { ...data, undergrad, major: choiceMajor };
     console.log(values);
     setOpen(false);
     setNoMenu(false);
@@ -37,7 +38,7 @@ const Tab3 = ({ handleSubmit, setOpen, setNoMenu }: FilterProps) => {
         </div>
         <CustomRange value={undergrad} onChangeValue={setUndergrad} option={COLLEGE_NUMBER_OPTION} />
       </RangeContainer>
-      <Major />
+      <Major choiceMajor={choiceMajor} setChoiceMajor={setChoiceMajor} />
       <ButtonContainer>
         <button onClick={handleSubmit(onSubmit)}>등록하기</button>
       </ButtonContainer>
@@ -45,4 +46,4 @@ const Tab3 = ({ handleSubmit, setOpen, setNoMenu }: FilterProps) => {
   );
 };
 
-export default Tab3;
+export default UndergradMajorTab;

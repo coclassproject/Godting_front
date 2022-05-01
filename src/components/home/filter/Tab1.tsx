@@ -1,32 +1,10 @@
-import styled from '@emotion/styled';
 import React, { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import CustomRange from 'src/components/shared/CustomRange';
-import { FilterInput, FilterProps } from 'src/components/shared/type';
+import { ButtonContainer, Tab1Container } from 'src/components/shared/Filter/style';
+import { HomeFilterInput, HomeFilterProps } from 'src/components/shared/type';
 import { REGION } from 'src/schema';
 import { CheckBoxOrRadioNone, CommonTag, LabelContainer, RangeContainer } from 'src/theme/CommonStyle';
-
-const Container = styled.div`
-  padding-top: 2rem;
-  padding-bottom: 4rem;
-`;
-
-export const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 2.5rem;
-
-  button {
-    width: 270px;
-    border: none;
-    background-color: ${(props) => props.theme.PUBLIC_BLUE};
-    color: ${(props) => props.theme.PUBLIC_WHITE};
-    border-radius: 5px;
-    height: 40px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-`;
 
 type activeRadioType = '유' | '무' | '상관없음' | '술찌' | '잘마심';
 
@@ -42,7 +20,7 @@ const HEIGHT_OPTION = {
   max: 190,
 };
 
-const Tab1 = ({ register, handleSubmit, setOpen, setNoMenu }: FilterProps) => {
+const Tab1 = ({ register, handleSubmit, setOpen, setNoMenu }: HomeFilterProps) => {
   const [ageValue, setAgeValue] = useState([25, 30]);
   const [heightValue, setHeightValue] = useState([160, 175]);
   const [activeArea, setActiveArea] = useState([]);
@@ -72,13 +50,15 @@ const Tab1 = ({ register, handleSubmit, setOpen, setNoMenu }: FilterProps) => {
     setActiveMilitary(value);
   };
 
-  const onSubmit: SubmitHandler<FilterInput> = (data) => {
+  const onSubmit: SubmitHandler<HomeFilterInput> = (data) => {
     const values = { ...data, age: ageValue, height: heightValue };
     console.log(values);
+    setOpen(false);
+    setNoMenu(false);
   };
 
   return (
-    <Container>
+    <Tab1Container>
       <LabelContainer>
         <label className="title">지역</label>
         {REGION.map((area, index) => (
@@ -177,7 +157,7 @@ const Tab1 = ({ register, handleSubmit, setOpen, setNoMenu }: FilterProps) => {
       <ButtonContainer>
         <button onClick={handleSubmit(onSubmit)}>등록하기</button>
       </ButtonContainer>
-    </Container>
+    </Tab1Container>
   );
 };
 

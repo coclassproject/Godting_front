@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Container, PageTitle, SubContainer } from 'src/components/shared/Filter/style';
-import { FilterInput, FilterSetOpen } from 'src/components/shared/type';
+import UndergradMajorTab from 'src/components/shared/Filter/UndergradMajorTab';
+import { HomeFilterInput, FilterSetOpen } from 'src/components/shared/type';
 import Tab1 from './Tab1';
 import Tab2 from './Tab2';
-import Tab3 from './Tab3';
 
 // eslint-disable-next-line no-empty-pattern
 const Filter = React.forwardRef(({ setOpen, setNoMenu }: FilterSetOpen, ref: React.MutableRefObject<any>) => {
-  const { register, handleSubmit, control } = useForm<FilterInput>();
+  const { register, handleSubmit } = useForm<HomeFilterInput>();
   const [page, setPage] = useState(1);
 
   const onClickPage = (pageId: number) => {
@@ -31,7 +31,7 @@ const Filter = React.forwardRef(({ setOpen, setNoMenu }: FilterSetOpen, ref: Rea
         </div>
         {page === 1 && <Tab1 setNoMenu={setNoMenu} register={register} setOpen={setOpen} handleSubmit={handleSubmit} />}
         {page === 2 && <Tab2 setNoMenu={setNoMenu} register={register} setOpen={setOpen} handleSubmit={handleSubmit} />}
-        {page === 3 && <Tab3 setNoMenu={setNoMenu} setOpen={setOpen} handleSubmit={handleSubmit} />}
+        {page === 3 && <UndergradMajorTab setNoMenu={setNoMenu} setOpen={setOpen} handleSubmit={handleSubmit} />}
       </SubContainer>
     </Container>
   );

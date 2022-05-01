@@ -13,6 +13,7 @@ export const CommonTag = styled.label<ActiveCheckBoxOrRadioColor>`
   font-family: MingLiU;
   text-align: center;
   min-width: 60px;
+  display: inline-block;
 `;
 
 export const CheckBoxOrRadioNone = styled.input`

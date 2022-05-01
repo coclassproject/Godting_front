@@ -34,13 +34,14 @@ interface HomeComponentProps {
 
 const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
   const [open, setOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const filterRef = useRef(null);
 
   const openFilter = () => {
     setOpen(true);
     setNoMenu(true);
   };
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   // const handleClickOutside = ({ target }) => {
   //   if (open && !filterRef.current?.contains(target)) {
   //     setOpen(false);

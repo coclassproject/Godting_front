@@ -5,7 +5,7 @@ export interface ActiveCheckBoxOrRadioColor {
   activeColor: boolean;
 }
 
-export interface FilterInput {
+export interface HomeFilterInput {
   area?: string[];
   drink?: string;
   smoke?: string;
@@ -13,12 +13,22 @@ export interface FilterInput {
   interest?: string[];
 }
 
+export interface MeetingFilterInput {
+  area?: string[];
+  participant?: number;
+}
+
 export interface FilterSetOpen {
   setOpen: React.Dispatch<SetStateAction<boolean>>;
   setNoMenu: React.Dispatch<SetStateAction<boolean>>;
 }
 
-export interface FilterProps extends FilterSetOpen {
-  register?: UseFormRegister<FilterInput>;
-  handleSubmit: UseFormHandleSubmit<FilterInput>;
+export interface HomeFilterProps extends FilterSetOpen {
+  register?: UseFormRegister<HomeFilterInput>;
+  handleSubmit: UseFormHandleSubmit<HomeFilterInput>;
+}
+
+export interface MeetingFilterProps extends FilterSetOpen {
+  register?: UseFormRegister<MeetingFilterInput>;
+  handleSubmit: UseFormHandleSubmit<MeetingFilterInput>;
 }
