@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ModalPage from '../home/ModalPage';
+import CustomModal from '../shared/modal';
 import { MeetingBox, ReceiveBox, RequestContainer } from './style';
 
 const Meeting = () => {
@@ -52,7 +52,7 @@ const Meeting = () => {
           </div>
         </ReceiveBox>
       </RequestContainer>
-      <ModalPage modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
+      <CustomModal requestOrAceept type="미팅" modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
     </>
   );
 };

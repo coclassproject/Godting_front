@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ModalPage from '../home/ModalPage';
+import CustomModal from '../shared/modal';
 import { BlindDateBox, BtnContainer, ExtendsBlindDateBox, RequestContainer } from './style';
 
 const BlindDate = () => {
@@ -44,7 +44,7 @@ const BlindDate = () => {
           </div>
         </ExtendsBlindDateBox>
       </RequestContainer>
-      <ModalPage modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
+      <CustomModal requestOrAceept type="소개팅" modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
     </>
   );
 };

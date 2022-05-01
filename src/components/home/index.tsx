@@ -25,8 +25,8 @@ import {
   RegisterSubContainer,
   Span,
 } from './style';
-import ModalPage from './ModalPage';
 import Filter from './filter';
+import CustomModal from '../shared/modal';
 
 interface HomeComponentProps {
   setNoMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -153,7 +153,7 @@ const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
           </div>
         </main>
       </RegisterContainer>
-      <ModalPage modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
+      <CustomModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} type="소개팅" />
     </>
   );
 };
