@@ -75,12 +75,12 @@ const Hr = styled.hr`
 `;
 
 interface MajorProps {
-  choiceMajor: string[];
-  setChoiceMajor: React.Dispatch<React.SetStateAction<string[]>>;
+  setSubmitMajor: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const Major = ({ choiceMajor, setChoiceMajor }: MajorProps) => {
+const Major = ({ setSubmitMajor }: MajorProps) => {
   const [major, setMajor] = useState<[number, string]>([null, '']);
+  const [choiceMajor, setChoiceMajor] = useState<string[]>([null]);
   const [dropDown, setDropDown] = useState(false);
 
   const removeChoiceMajor = (choice: string) => {

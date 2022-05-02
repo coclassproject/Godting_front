@@ -20,10 +20,10 @@ const COLLEGE_NUMBER_OPTION = {
 
 const UndergradMajorTab = ({ handleSubmit, setOpen, setNoMenu }: HomeFilterProps | MeetingFilterProps) => {
   const [undergrad, setUndergrad] = useState([17, 20]);
-  const [choiceMajor, setChoiceMajor] = useState<string[]>([null]);
+  const [submitMajor, setSubmitMajor] = useState<string[]>(null);
 
   const onSubmit: SubmitHandler<HomeFilterInput | MeetingFilterInput> = (data) => {
-    const values = { ...data, undergrad, major: choiceMajor };
+    const values = { ...data, undergrad, major: submitMajor };
     console.log(values);
     setOpen(false);
     setNoMenu(false);
@@ -38,7 +38,7 @@ const UndergradMajorTab = ({ handleSubmit, setOpen, setNoMenu }: HomeFilterProps
         </div>
         <CustomRange value={undergrad} onChangeValue={setUndergrad} option={COLLEGE_NUMBER_OPTION} />
       </RangeContainer>
-      <Major choiceMajor={choiceMajor} setChoiceMajor={setChoiceMajor} />
+      <Major setSubmitMajor={setSubmitMajor} />
       <ButtonContainer>
         <button onClick={handleSubmit(onSubmit)}>등록하기</button>
       </ButtonContainer>

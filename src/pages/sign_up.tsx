@@ -3,7 +3,7 @@ import Sign from 'src/components/Register';
 import Layout from 'src/components/shared/Layout';
 
 const SignUp = () => (
-  <Layout>
+  <Layout back component>
     <Sign />
   </Layout>
 );
