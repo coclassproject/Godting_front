@@ -1,31 +1,91 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Navigation } from 'swiper';
-import { Container, SwiperDiv, Back } from './style';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { BsChevronRight } from 'react-icons/bs';
+import { BiPencil } from 'react-icons/bi';
+import { Container, SwiperDiv, Back, ButtonDiv, SubContainer } from './style';
 
 const Mypage = () => (
   <>
-    
     <Back>
-    <Container>
+      <SubContainer>
+        <div className="content1">
+          <div className="class">
+            <span>18학번</span>
+          </div>
+          <span className="nick">닉네임닉네임닉네임</span>
+          <span className="lecture">시각디자인학과</span>
+        </div>
+        <div className="content2">
+          <div className="img">
+            <div className="edit">
+              <BiPencil className="icons" size="24px" />
+            </div>
+          </div>
+        </div>
+      </SubContainer>
+      <Container>
         <div className="favorite">
-          <span>소개팅 좋아요 한 목록</span>
+          <span className="subject">소개팅 좋아요 한 목록</span>
           <Swiper
             modules={[Navigation, A11y]}
             slidesPerView={3}
-            spaceBetween={180}
+            spaceBetween={280}
             initialSlide={1}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log('slide change')}
           >
             <SwiperSlide>
-              <SwiperDiv />
+              <SwiperDiv>
+                <div className="img" />
+                <div className="content">
+                  <span className="name">하연</span>
+                  <span className="lecture">문화상품디자인연계학과</span>
+                </div>
+              </SwiperDiv>
+            </SwiperSlide>
+            <SwiperSlide>
+              <SwiperDiv>
+                <div className="img" />
+                <div className="content">
+                  <span className="name">하연</span>
+                  <span className="lecture">문화상품디자인연계학과</span>
+                </div>
+              </SwiperDiv>
+            </SwiperSlide>
+            <SwiperSlide>
+              <SwiperDiv>
+                <div className="img" />
+                <div className="content">
+                  <span className="name">하연</span>
+                  <span className="lecture">문화상품디자인연계학과</span>
+                </div>
+              </SwiperDiv>
+            </SwiperSlide>
+            <SwiperSlide>
+              <SwiperDiv>
+                <div className="img" />
+                <div className="content">
+                  <span className="name">하연</span>
+                  <span className="lecture">문화상품디자인연계학과</span>
+                </div>
+              </SwiperDiv>
             </SwiperSlide>
           </Swiper>
+          <ButtonDiv>
+            <div className="logout">
+              로그아웃 <BsChevronRight size="20px" />
+            </div>
+            <div className="resign">
+              회원탈퇴 <BsChevronRight size="20px" />
+            </div>
+          </ButtonDiv>
         </div>
       </Container>
     </Back>
-   
   </>
 );
 
