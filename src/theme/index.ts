@@ -17,6 +17,7 @@ export const lightTheme = {
   BUTTON_BACKGROUND_COLOR: '#EFEFEF', // 버튼 백그라운드,
   PUBLIC_BLUE: '#3D00FC',
   PUBLIC_WHITE: '#fff',
+  PUBLIC_PURPLE: '#9A00FD',
   PUBLIC_LIGHTGREY: '#C4C4C4',
   LAYOUT_BACKGROUND_COLOR: '#f2f4f6',
   LAYOUT_WHITE_COLOR: '#ffffff',
