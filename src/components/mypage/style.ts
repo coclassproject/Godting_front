@@ -26,7 +26,7 @@ export const SwiperDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-top: 20px;
   width: 260px;
   height: 90px;
@@ -119,6 +119,7 @@ export const SubContainer = styled.div`
     height: 30%;
     color: ${(props) => props.theme.PUBLIC_WHITE};
     .class {
+      font-size: 14px;
       display: flex;
       border: none;
       width: 70px;
