@@ -63,27 +63,28 @@ export const Container = styled.div`
   background-color: ${(props) => props.theme.PUBLIC_WHITE};
   overflow-y: auto;
   .favorite {
-    margin-top: 40px;
-    margin-left: 20px;
+    padding-top: 40px;
+    .swiper {
+      padding-bottom: 10px;
+    }
+    .subject {
+      padding-left: 1.5rem;
+    }
   }
 `;
 
 export const ButtonDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 10%;
-  width: 380px;
-  height: 120px;
-  background-color: ${(props) => props.theme.SUB_BACKGROUND_COLOR};
+  width: 100%;
   border-radius: 10px;
-
+  padding: 1rem;
+  margin-top: 30px;
   div {
+    background-color: ${(props) => props.theme.SUB_BACKGROUND_COLOR};
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    height: 50%;
-    margin-left: 20px;
-    margin-right: 20px;
+    width: 100%;
+    padding: 1rem;
     font-weight: 500;
     font-size: 16px;
     cursor: pointer;
@@ -97,73 +98,103 @@ export const ButtonDiv = styled.div`
     border-right: none;
     border-left: none;
   }
+  .icon {
+    color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
+  }
 `;
 
 export const SubContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  width: 100%;
   height: 40%;
   background: linear-gradient(
     301.89deg,
     ${(props) => props.theme.PUBLIC_BLUE} 7.3%,
     ${(props) => props.theme.PUBLIC_PURPLE} 100%
   );
-  .content1 {
+
+  .wrap {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-left: 30px;
-    width: 50%;
-    height: 30%;
-    color: ${(props) => props.theme.PUBLIC_WHITE};
-    .class {
-      font-size: 14px;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 20%;
+    .content1 {
       display: flex;
-      border: none;
-      width: 70px;
-      height: 30px;
-      background: rgba(255, 255, 255, 0.4);
-      border-radius: 14.5px;
-      align-items: center;
-      justify-content: space-around;
-    }
-    .nick {
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .lecture {
-      font-size: 16px;
-    }
-  }
-  .content2 {
-    width: 50%;
-    div {
-      border-radius: 50%;
-    }
-    .img {
-      position: relative;
-      margin-left: 30px;
-      width: 140px;
-      height: 140px;
-      background-color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
-    }
-    .edit {
-      position: absolute;
-      z-index: 99;
-      width: 36px;
-      height: 36px;
-      background-color: ${(props) => props.theme.PUBLIC_WHITE};
-      left: 100px;
-      top: 100px;
-      cursor: pointer;
-      .icons {
-        position: relative;
-        left: 6px;
-        top: 6px;
-        color: ${(props) => props.theme.PUBLIC_BLUE};
+      flex-direction: column;
+      height: 30%;
+      color: ${(props) => props.theme.PUBLIC_WHITE};
+      .class {
+        margin-bottom: 10px;
+        font-size: 14px;
+        display: flex;
+        border: none;
+        width: 70px;
+        height: 30px;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 14.5px;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .nick {
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .lecture {
+        margin-bottom: 10px;
+        font-size: 16px;
       }
     }
+    .content2 {
+      div {
+        border-radius: 50%;
+      }
+      .img {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        background-color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
+      }
+      .edit {
+        position: absolute;
+        z-index: 99;
+        width: 36px;
+        height: 36px;
+        background-color: ${(props) => props.theme.PUBLIC_WHITE};
+        left: 100px;
+        top: 100px;
+        cursor: pointer;
+        .icons {
+          position: relative;
+          left: 6px;
+          top: 6px;
+          color: ${(props) => props.theme.PUBLIC_BLUE};
+        }
+      }
+    }
+  }
+`;
+
+export const TestDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: ${(props) => props.theme.SUB_BACKGROUND_COLOR};
+  border-radius: 10px;
+  margin: 1rem;
+  div {
+    display: flex;
+    padding: 1rem;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .logout {
+  }
+  .resign {
+    border-top: 1px solid ${(props) => props.theme.MATCH_TAB_BORDER_COLOR};
+  }
+  .icon {
+    color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
   }
 `;

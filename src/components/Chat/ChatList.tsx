@@ -15,10 +15,10 @@ const ChatList = () => (
           </div>
         </div>
         <div className="time">
-          <div>
-            <span>2022</span>
-            <span>03-01</span>
+          <div className="content1">
+            <span>2022 03-01</span>
           </div>
+          <div className="notice">1</div>
         </div>
       </ChatListBox>
       <ChatListBox>
@@ -32,9 +32,11 @@ const ChatList = () => (
           </div>
         </div>
         <div className="time">
-          <div>
-            <span>오후</span>
-            <span>02:10</span>
+          <div className="content1">
+            <span>2022 03-01</span>
+          </div>
+          <div className="content2">
+            <div className="notice">1</div>
           </div>
         </div>
       </ChatListBox>

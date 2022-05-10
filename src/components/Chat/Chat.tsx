@@ -4,6 +4,7 @@ import { AiOutlineLink } from 'react-icons/ai';
 import {
   BubbleLeft,
   BubbleRight,
+  ChatContainer,
   ChatDiv,
   ChatInput,
   ChatSubject,
@@ -22,7 +23,7 @@ const ChatDetail = () => (
       <div className="day">2022년 03월 10일</div>
       <OtherContainer>
         <Circle />
-        <div>
+        <div className="content">
           <span className="nick">치즈</span>
           <BubbleLeft>
             <span className="chat">잘부탁드립니다잘부탁드립니다잘부탁드립니다 있습니다.</span>
@@ -32,7 +33,7 @@ const ChatDetail = () => (
       </OtherContainer>
 
       <MeContainer>
-        <div className="container">
+        <div className="content">
           <span className="nick-right">치즈</span>
           <BubbleRight>
             <span className="chat">잘부탁드립니다잘부탁드립니다잘부탁드립니다 있습니다.</span>
@@ -41,13 +42,15 @@ const ChatDetail = () => (
         </div>
         <Circle />
       </MeContainer>
-      <ChatDiv>
-        <ChatInput type="text" placeholder="메시지 보내기..." />
-        <div className="files">
-          <AiOutlineLink size="23px" />
-          <BsImage size="23px" />
-        </div>
-      </ChatDiv>
+      <ChatContainer>
+        <ChatDiv>
+          <ChatInput type="text" placeholder="메시지 보내기..." />
+          <div className="files">
+            <AiOutlineLink size="23px" />
+            <BsImage size="23px" />
+          </div>
+        </ChatDiv>
+      </ChatContainer>
     </Container>
   </>
 );
