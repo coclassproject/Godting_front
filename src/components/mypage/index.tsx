@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { BsChevronRight } from 'react-icons/bs';
 import { BiPencil } from 'react-icons/bi';
-import { Container, SwiperDiv, Back, ButtonDiv, SubContainer, TestDiv } from './style';
+import { Container, SwiperDiv, Back, ButtonDiv, SubContainer } from './style';
 
 const Mypage = () => (
   <>
@@ -78,14 +78,14 @@ const Mypage = () => (
               </SwiperDiv>
             </SwiperSlide>
           </Swiper>
-          <TestDiv>
+          <ButtonDiv>
             <div className="logout">
               로그아웃 <BsChevronRight className="icon" size="20px" />
             </div>
             <div className="resign">
               회원탈퇴 <BsChevronRight className="icon" size="20px" />
             </div>
-          </TestDiv>
+          </ButtonDiv>
         </div>
       </Container>
     </Back>

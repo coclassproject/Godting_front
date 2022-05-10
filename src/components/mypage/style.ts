@@ -73,36 +73,6 @@ export const Container = styled.div`
   }
 `;
 
-export const ButtonDiv = styled.div`
-  width: 100%;
-  border-radius: 10px;
-  padding: 1rem;
-  margin-top: 30px;
-  div {
-    background-color: ${(props) => props.theme.SUB_BACKGROUND_COLOR};
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 100%;
-    padding: 1rem;
-    font-weight: 500;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  .logout {
-    border: none;
-  }
-  .resign {
-    border-top: 1px solid ${(props) => props.theme.MATCH_TAB_BORDER_COLOR};
-    border-bottom: none;
-    border-right: none;
-    border-left: none;
-  }
-  .icon {
-    color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
-  }
-`;
-
 export const SubContainer = styled.div`
   height: 40%;
   background: linear-gradient(
@@ -173,7 +143,7 @@ export const SubContainer = styled.div`
   }
 `;
 
-export const TestDiv = styled.div`
+export const ButtonDiv = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.SUB_BACKGROUND_COLOR};
