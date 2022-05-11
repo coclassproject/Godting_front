@@ -8,10 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {
-  CardButton,
   CardContainer,
-  CardHeight,
-  CardOld,
   CardSubContainer,
   CategoryContainer,
   Container,
@@ -69,32 +66,56 @@ const HomeComponent = ({ setNoMenu }: HomeComponentProps) => {
       {open && <Filter ref={filterRef} setOpen={setOpen} setNoMenu={setNoMenu} />}
       <CardContainer>
         <CardSubContainer onClick={() => setModalIsOpen(true)}>
-          <CardButton>
-            <AiOutlineHeart size="20" />
-          </CardButton>
-          <CardOld> 23세</CardOld>
-          <CardHeight> 162cm</CardHeight>
+          <div className="wrap">
+            <div className="content1">
+              <button className="heart">
+                <AiOutlineHeart className="icon" size="20" />
+              </button>
+            </div>
+            <div className="content2">
+              <span className="old"> 23세</span>
+              <span className="height"> 162cm</span>
+            </div>
+          </div>
         </CardSubContainer>
-        <CardSubContainer>
-          <CardButton>
-            <AiOutlineHeart size="20" />
-          </CardButton>
-          <CardOld> 23세</CardOld>
-          <CardHeight> 162cm</CardHeight>
+        <CardSubContainer onClick={() => setModalIsOpen(true)}>
+          <div className="wrap">
+            <div className="content1">
+              <button className="heart">
+                <AiOutlineHeart className="icon" size="20" />
+              </button>
+            </div>
+            <div className="content2">
+              <span className="old"> 23세</span>
+              <span className="height"> 162cm</span>
+            </div>
+          </div>
         </CardSubContainer>
-        <CardSubContainer>
-          <CardButton>
-            <AiOutlineHeart size="20" />
-          </CardButton>
-          <CardOld> 23세</CardOld>
-          <CardHeight> 162cm</CardHeight>
+        <CardSubContainer onClick={() => setModalIsOpen(true)}>
+          <div className="wrap">
+            <div className="content1">
+              <button className="heart">
+                <AiOutlineHeart className="icon" size="20" />
+              </button>
+            </div>
+            <div className="content2">
+              <span className="old"> 23세</span>
+              <span className="height"> 162cm</span>
+            </div>
+          </div>
         </CardSubContainer>
-        <CardSubContainer>
-          <CardButton>
-            <AiOutlineHeart size="20" />
-          </CardButton>
-          <CardOld> 23세</CardOld>
-          <CardHeight> 162cm</CardHeight>
+        <CardSubContainer onClick={() => setModalIsOpen(true)}>
+          <div className="wrap">
+            <div className="content1">
+              <button className="heart">
+                <AiOutlineHeart className="icon" size="20" />
+              </button>
+            </div>
+            <div className="content2">
+              <span className="old"> 23세</span>
+              <span className="height"> 162cm</span>
+            </div>
+          </div>
         </CardSubContainer>
       </CardContainer>
       <Span>#최근에 가입한 친구들</Span>

@@ -93,7 +93,6 @@ export const ImageBtn = styled.button`
 `;
 
 export const RegisterBtn = styled(FullButton)`
-  margin-bottom: 150px;
   margin-top: 5rem;
 `;
 

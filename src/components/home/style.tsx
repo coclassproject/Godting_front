@@ -23,47 +23,51 @@ export const IconContainer = styled.div`
 `;
 
 export const CardContainer = styled.div`
-  width: 400px;
+  display: flex;
+  width: 100%;
   height: 500px;
-  margin: 0 auto;
   justify-content: center;
+  flex-wrap: wrap;
 `;
 
 export const CardSubContainer = styled.div`
   border-radius: 10px;
-  width: 185px;
+  width: 45%;
   height: 240px;
-  float: left;
-  margin: 6px;
+  margin: 0.5rem;
   justify-content: center;
-  position: relative;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 4.41%, rgba(3, 3, 3, 0.22) 100%);
   cursor: pointer;
-`;
-export const CardButton = styled.button`
-  position: absolute;
-  width: 34px;
-  height: 34px;
-  left: 140px;
-  bottom: 200px;
-  border-radius: 100%;
-  color: ${(props) => props.theme.LINE_WHITE_COLOR};
-  background-color: ${(props) => props.theme.PUBLIC_WHITE};
-  border: 1px solid ${(props) => props.theme.LINE_WHITE_COLOR};
-  cursor: pointer;
-`;
-
-export const CardOld = styled.span`
-  position: absolute;
-  right: 135px;
-  top: 180px;
-  color: ${(props) => props.theme.LAYOUT_WHITE_COLOR};
-`;
-export const CardHeight = styled.span`
-  position: absolute;
-  right: 120px;
-  top: 200px;
-  color: ${(props) => props.theme.LAYOUT_WHITE_COLOR};
+  .wrap {
+    display: flex;
+    height: 100%;
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+    .content1 {
+      padding-left: 80%;
+      border: none;
+      .heart {
+        width: 34px;
+        height: 34px;
+        border-radius: 100%;
+        color: ${(props) => props.theme.LINE_WHITE_COLOR};
+        background-color: ${(props) => props.theme.PUBLIC_WHITE};
+        border: 1px solid ${(props) => props.theme.LINE_WHITE_COLOR};
+        cursor: pointer;
+        .icon {
+          vertical-align: middle;
+        }
+      }
+    }
+    .content2 {
+      display: flex;
+      flex-direction: column;
+      span {
+        color: ${(props) => props.theme.LAYOUT_WHITE_COLOR};
+      }
+    }
+  }
 `;
 
 export const RegisterContainer = styled.div`

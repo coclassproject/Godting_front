@@ -32,12 +32,15 @@ export const ChatListBox = styled.div`
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
   border-radius: 5px;
   display: flex;
+  justify-content: space-around;
   flex-direction: row;
   margin-bottom: 20px;
+  padding: 0 0.5rem;
   .wrap {
     display: flex;
+    width: 80%;
     flex-direction: column;
-    margin: 25px 25px 25px 25px;
+    justify-content: center;
     .tab1 {
       display: inline-block;
     }
@@ -77,22 +80,30 @@ export const ChatListBox = styled.div`
   }
 
   .time {
-    width: 60px;
-    height: 78px;
-    margin: auto;
-    margin-right: 12px;
-    background-color: ${(props) => props.theme.LINE_WHITE_COLOR};
-    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    div {
-      margin-top: 33%;
+    justify-content: center;
+    align-items: center;
+    .content1 {
       span {
-        display: block;
         font-weight: 400;
-        font-size: 12px;
+        font-size: 10px;
         line-height: 18px;
         color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
       }
+    }
+    .notice {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: ${(props) => props.theme.PUBLIC_BLUE};
+      color: ${(props) => props.theme.PUBLIC_WHITE};
+      font-size: 14px;
     }
   }
 `;
@@ -122,43 +133,21 @@ export const ChatSubject = styled.div`
 export const OtherContainer = styled.div`
   width: 100%;
   display: flex;
-  padding-left: 1rem;
-  margin-bottom: 3rem;
-  .nick {
-    margin-left: 20px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
-  }
-  .time {
-    margin-left: 20px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-`;
-
-export const MeContainer = styled(OtherContainer)`
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-content: flex-end;
-    align-items: flex-end;
-    margin-right: 20px;
-    .nick-right {
-      margin-right: 5px;
+  padding-bottom: 3rem;
+  .content {
+    width: 85%;
+    .chat {
+      width: 100%;
+    }
+    .nick {
+      padding-left: 20px;
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
       color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
     }
-    .time-right {
-      margin-right: 5px;
+    .time {
+      padding-left: 20px;
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
@@ -167,13 +156,39 @@ export const MeContainer = styled(OtherContainer)`
       flex-wrap: wrap;
     }
   }
-  padding-right: 1rem;
-  padding-left: 3rem;
+`;
+
+export const MeContainer = styled(OtherContainer)`
+  justify-content: flex-end;
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-end;
+    align-items: flex-end;
+    padding-right: 20px;
+    .nick-right {
+      padding-right: 5px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
+    }
+    .time-right {
+      padding-right: 5px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
 `;
 export const BubbleLeft = styled.div`
   position: relative;
   padding: 1rem;
-  max-width: 50%;
+  max-width: 70%;
   background: ${(props) => props.theme.PUBLIC_WHITE};
   filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.08));
   border-radius: 10px;
@@ -198,6 +213,7 @@ export const BubbleLeft = styled.div`
 `;
 
 export const BubbleRight = styled(BubbleLeft)`
+  max-width: 74%;
   background-color: ${(props) => props.theme.PUBLIC_BLUE};
   color: ${(props) => props.theme.PUBLIC_WHITE};
   filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.08));
@@ -228,7 +244,6 @@ export const ChatDiv = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 60%;
   .files {
     width: 15%;
     justify-content: space-around;
@@ -246,4 +261,15 @@ export const ChatInput = styled.input`
   font-size: 14px;
   color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
   border: none;
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const ChatContainer = styled.div`
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
 `;

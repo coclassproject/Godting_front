@@ -5,18 +5,6 @@ import { INTEREST, REGION } from 'src/schema';
 import { CheckBoxOrRadioNone } from 'src/theme/CommonStyle';
 import Major from '../shared/Major';
 import {
-  SignUpDiv,
-  Div,
-  SignUpLabel,
-  Subject,
-  EmailDiv,
-  Input,
-  EmailBtn,
-  ValidationLabel,
-  MarginDiv,
-  SelectDiv,
-  LabelSmall,
-  SelectBox,
   Container,
   EmailBtn,
   ExtendsCommonTag,
@@ -102,8 +90,7 @@ const Register = () => {
   };
 
   const onSubmit = (data: DataForm) => {
-    const values = { ...data, major: submitMajor };
-    console.log(values);
+    console.log(data);
     console.log(data.picture);
   };
 
@@ -333,4 +320,3 @@ const Register = () => {
 };
 
 export default Register;
-// 버튼 Padding 넣기
