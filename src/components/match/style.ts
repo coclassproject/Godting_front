@@ -1,5 +1,33 @@
 import styled from '@emotion/styled';
 
+interface TabSpanProps {
+  activeColor: boolean;
+}
+
+export const Container = styled.div`
+  width: 100%;
+  padding-bottom: 2rem;
+
+  .tab {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid ${(props) => props.theme.MATCH_TAB_BORDER_COLOR};
+    margin-bottom: 2rem;
+  }
+`;
+
+export const TabSpan = styled.span<TabSpanProps>`
+  width: 50%;
+  text-align: center;
+  font-size: 1rem;
+  color: ${(props) => props.theme.TITLE_BLACK_COLOR};
+  cursor: pointer;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-bottom-color: ${(props) => (props.activeColor ? props.theme.PUBLIC_BLUE : props.theme.MATCH_TAB_BORDER_COLOR)};
+  padding-bottom: 1rem;
+`;
+
 export const RequestContainer = styled.div`
   .infoText {
     font-size: 1rem;

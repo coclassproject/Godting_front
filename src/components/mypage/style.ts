@@ -149,17 +149,6 @@ export const ButtonDiv = styled.div`
   border-radius: 10px;
   margin: 1rem;
 
-  /* & > div {
-    display: flex;
-    padding: 1rem;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 100%;
-    font-weight: 500;
-    font-size: 16px;
-    cursor: pointer;
-  } */
-
   & > .bottomBtn {
     display: flex;
     align-items: center;
@@ -178,10 +167,6 @@ export const ButtonDiv = styled.div`
     height: 1px;
     background-color: ${(props) => props.theme.MATCH_TAB_BORDER_COLOR};
   }
-
-  /* .bottomBtn:nth-of-type(1) {
-    border-bottom: 1px solid ${(props) => props.theme.MATCH_TAB_BORDER_COLOR};
-  } */
 
   .icon {
     color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
