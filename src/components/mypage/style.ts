@@ -66,6 +66,7 @@ export const Container = styled.div`
     padding-top: 40px;
     .swiper {
       padding-bottom: 10px;
+      cursor: pointer;
     }
     .subject {
       padding-left: 1.5rem;
