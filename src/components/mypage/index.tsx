@@ -68,11 +68,14 @@ const Mypage = () => (
             </SwiperSlide>
           </Swiper>
           <ButtonDiv>
-            <div className="logout">
-              로그아웃 <BsChevronRight className="icon" size="20px" />
+            <div className="bottomBtn">
+              <span>로그아웃</span>
+              <BsChevronRight className="icon" size="20px" />
             </div>
-            <div className="resign">
-              회원탈퇴 <BsChevronRight className="icon" size="20px" />
+            <hr />
+            <div className="bottomBtn">
+              <span>회원탈퇴</span>
+              <BsChevronRight className="icon" size="20px" />
             </div>
           </ButtonDiv>
         </div>
