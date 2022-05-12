@@ -16,10 +16,15 @@ const GlobalStyle = () => (
         height: 100%;
       }
 
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         overflow-x: hidden;
         width: 100%;
         font-family: 'Noto Sans KR', NanumSquare, notokr, 'Nanum Gothic', 'Malgun Gothic', sans-serif;
+        box-sizing: border-box;
       }
 
       a {

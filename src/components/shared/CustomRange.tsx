@@ -32,7 +32,7 @@ const CustomRange = ({ value, onChangeValue, option }: CustomRangeProps) => (
         <div
           ref={props.ref}
           style={{
-            height: '5px',
+            height: '4px',
             width: '100%',
             borderRadius: '2px',
             background: getTrackBackground({

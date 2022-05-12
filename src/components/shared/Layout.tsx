@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/dist/client/router';
 import React from 'react';
-import { menus } from 'schema';
+import { menus } from 'src/schema';
 import Menu from './Menu';
 import Nav from './Nav';
 
@@ -11,35 +11,43 @@ interface IBgColor {
 }
 
 const Container = styled.div`
-  height: 112vh;
   background-color: ${(props) => props.theme.LAYOUT_BACKGROUND_COLOR};
 `;
 
-const SubContainer = styled.div`
+const SubContainer = styled.div<IBgColor>`
   background-color: ${(props) => props.theme.LAYOUT_WHITE_COLOR};
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   left: 0px;
   top: 0px;
   padding-bottom: 5rem;
   position: relative;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  overflow-y: auto;
+  background-color: ${(props) => (props.bgColor ? props.theme.SUB_BACKGROUND_COLOR : props.theme.PUBLIC_WHITE)};
 
   @media ${(props) => props.theme.TABLET} {
     margin-left: auto;
     margin-right: auto;
     max-width: 448px;
-    height: 100vh;
   }
 `;
 
-const ChildrenContainer = styled.div<IBgColor>`
+const ChildrenContainer = styled.div`
   padding: 2rem 1.2rem;
   height: 100%;
-  background-color: ${(props) => (props.bgColor ? props.theme.SUB_BACKGROUND_COLOR : props.theme.PUBLIC_WHITE)};
 `;
 
-const Layout = ({ noAni = false, children = null, back = false, bgColor = false, noMenu = false }) => {
+const Layout = ({
+  noAni = false,
+  children = null,
+  back = false,
+  bgColor = false,
+  noMenu = false,
+  noNav = false,
+  title = '',
+  component = false,
+}) => {
   const router = useRouter();
 
   const currentPage = Object.keys(menus).find((key) => menus[key].path === router.pathname);
@@ -59,9 +67,9 @@ const Layout = ({ noAni = false, children = null, back = false, bgColor = false,
           animate={!isMenu && 'enter'}
           transition={{ type: 'linear' }}
         >
-          <SubContainer>
-            <Nav back={back} />
-            <ChildrenContainer bgColor={bgColor}>{children}</ChildrenContainer>
+          <SubContainer bgColor={bgColor}>
+            {!noNav && <Nav back={back} title={title} component={component} />}
+            <ChildrenContainer>{children}</ChildrenContainer>
             {!noMenu && <Menu currentMenu />}
           </SubContainer>
         </motion.div>

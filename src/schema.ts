@@ -1,5 +1,9 @@
+import { HiClipboardList, HiOutlineClipboardList } from 'react-icons/hi';
+import { RiCoupon3Fill, RiCoupon3Line, RiUser3Fill, RiUser3Line } from 'react-icons/ri';
+import { TiHome, TiHomeOutline } from 'react-icons/ti';
+
 export const REGION = ['서율', '경기', '인천', '부산', '경남'];
-export const PARTICIPANT = [1, 2, 3, 4]; // 미팅방 생성 시 팀 인원
+export const PARTICIPANT = [2, 3, 4]; // 미팅방 생성 시 팀 인원
 export const COLLEGE_NUMBER = [15, 16, 17, 18, 19, 20, 21, 22]; // 미팅방 생성 시 학번
 
 export const INTEREST = [
@@ -62,3 +66,36 @@ export const MajorObj = [
   ['레저스포츠산업과', '스포츠건강관리과', '생활스포츠과', '태권도과'],
   ['피아노', '뮤지컬', '실용음악', '연기예술'],
 ];
+
+export const menus = {
+  home: {
+    icon: TiHomeOutline,
+    activeIcon: TiHome,
+    title: '팀 만들기',
+    path: '/team/new',
+  },
+  items: {
+    icon: HiOutlineClipboardList,
+    activeIcon: HiClipboardList,
+    title: '미팅',
+    path: '/meeting',
+  },
+  users: {
+    icon: RiCoupon3Line,
+    activeIcon: RiCoupon3Fill,
+    title: '1:1 소개',
+    path: '/',
+  },
+  mypage: {
+    icon: RiUser3Line,
+    activeIcon: RiUser3Fill,
+    title: '매칭',
+    path: '/match',
+  },
+  test: {
+    icon: RiUser3Line,
+    activeIcon: RiUser3Fill,
+    title: '채팅',
+    path: '/chat',
+  },
+};

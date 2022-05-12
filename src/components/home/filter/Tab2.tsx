@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 import { INTEREST } from 'src/schema';
 import { CheckBoxOrRadioNone, CommonTag, LabelContainer } from 'src/theme/CommonStyle';
 import { SubmitHandler } from 'react-hook-form';
-import { ButtonContainer } from './Tab1';
-import { FilterInput } from '../type';
+import { HomeFilterInput, HomeFilterProps } from 'src/components/shared/type';
+import { ButtonContainer, ExtendsButtonContainer } from 'src/components/shared/Filter/style';
 
 const Container = styled(LabelContainer)`
   padding: 2rem 0;
@@ -15,14 +15,7 @@ const ExtendsCommonTag = styled(CommonTag)`
   width: auto;
 `;
 
-const ExtendsButtonContainer = styled(ButtonContainer)`
-  position: absolute;
-  bottom: 105px;
-  left: 50%;
-  transform: translateX(-50%);
-`;
-
-const Tab2 = ({ register, handleSubmit }) => {
+const Tab2 = ({ register, handleSubmit, setOpen, setNoMenu }: HomeFilterProps) => {
   const [activeInterest, setActiveInterest] = useState([]);
 
   const onClickInterest = (e) => {
@@ -34,7 +27,7 @@ const Tab2 = ({ register, handleSubmit }) => {
     }
   };
 
-  const onSubmit: SubmitHandler<FilterInput> = (data) => {
+  const onSubmit: SubmitHandler<HomeFilterInput> = (data) => {
     console.log(data);
   };
 

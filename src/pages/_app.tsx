@@ -7,11 +7,14 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { configs } from 'src/config';
 import { lightTheme } from 'src/theme';
 import GlobalStyle from 'src/theme/globalStyle';
+import ko from 'date-fns/locale/ko';
+import { registerLocale } from 'react-datepicker';
 
 const isProduction = configs.ENV === 'production';
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [queryClient] = React.useState(() => new QueryClient());
+  registerLocale('ko', ko);
 
   return (
     <>
