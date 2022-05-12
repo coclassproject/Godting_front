@@ -46,8 +46,8 @@ const ChatDetail = () => (
         <ChatDiv>
           <ChatInput type="text" placeholder="메시지 보내기..." />
           <div className="files">
-            <AiOutlineLink size="23px" />
             <BsImage size="23px" />
+            <AiOutlineLink size="23px" />
           </div>
         </ChatDiv>
       </ChatContainer>

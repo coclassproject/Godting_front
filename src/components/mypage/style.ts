@@ -66,6 +66,7 @@ export const Container = styled.div`
     padding-top: 40px;
     .swiper {
       padding-bottom: 10px;
+      cursor: pointer;
     }
     .subject {
       padding-left: 1.5rem;
@@ -144,26 +145,29 @@ export const SubContainer = styled.div`
 `;
 
 export const ButtonDiv = styled.div`
-  display: flex;
-  flex-direction: column;
   background-color: ${(props) => props.theme.SUB_BACKGROUND_COLOR};
   border-radius: 10px;
   margin: 1rem;
-  div {
+
+  & > .bottomBtn {
     display: flex;
-    padding: 1rem;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
-    width: 100%;
-    font-weight: 500;
-    font-size: 16px;
-    cursor: pointer;
+    padding: 1rem;
+
+    & > span {
+      color: ${(props) => props.theme.TITLE_BLACK_COLOR};
+      font-weight: 500;
+    }
   }
-  .logout {
+
+  & > hr {
+    margin: 0 0.5rem;
+    border: none;
+    height: 1px;
+    background-color: ${(props) => props.theme.MATCH_TAB_BORDER_COLOR};
   }
-  .resign {
-    border-top: 1px solid ${(props) => props.theme.MATCH_TAB_BORDER_COLOR};
-  }
+
   .icon {
     color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
   }

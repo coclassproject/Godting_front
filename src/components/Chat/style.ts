@@ -4,6 +4,9 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: ${(props) => props.theme.SUB_BACKGROUND_COLOR};
   .day {
     display: flex;
@@ -24,6 +27,7 @@ export const Container = styled.div`
     margin: 0px 16px;
   }
 `;
+
 /* chat List */
 export const ChatListBox = styled.div`
   width: 100%;
@@ -235,41 +239,47 @@ export const Circle = styled.div`
   background-color: ${(props) => props.theme.PUBLIC_LIGHTGREY};
 `;
 
+export const ChatContainer = styled.div`
+  max-width: 448px;
+  width: 100%;
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 1rem;
+`;
+
 export const ChatDiv = styled.div`
   width: 100%;
   height: 45px;
   background: ${(props) => props.theme.PUBLIC_WHITE};
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
   border-radius: 40px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+
   .files {
-    width: 15%;
-    justify-content: space-around;
-    display: flex;
-    flex-direction: row-reverse;
+    flex-grow: 1;
     color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
     cursor: pointer;
-  }
-`;
-export const ChatInput = styled.input`
-  margin-left: 20px;
-  width: 75%;
-  height: 90%;
-  font-weight: 400;
-  font-size: 14px;
-  color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
-  border: none;
-  &:focus {
-    outline: none;
+    padding-left: 1rem;
+
+    & > svg:nth-of-type(1) {
+      margin-right: 0.5rem;
+    }
   }
 `;
 
-export const ChatContainer = styled.div`
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  width: 100%;
-  text-align: center;
+export const ChatInput = styled.input`
+  font-size: 14px;
+  color: ${(props) => props.theme.ICON_COLOR_AND_BOTTOM_CONTENT};
+  flex-grow: 10;
+  border: none;
+  padding-left: 1rem;
+
+  &:focus {
+    outline: none;
+  }
 `;
