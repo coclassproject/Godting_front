@@ -50,7 +50,9 @@ const Register = () => {
   const [activeArmy, setActiveArmy] = useState('');
   const [activeSmoke, setActiveSmoke] = useState('');
   const [interestActive, setInterestActive] = useState([]);
-  const [submitMajor, setSubmitMajor] = useState<string[]>(null);
+  const [choiceMajor, setChoiceMajor] = useState<string[]>([null]);
+  const imageRef = useRef<HTMLInputElement>(null);
+  const [image, setImage] = useState('');
 
   const onClickDrink = (value: activeRadioType) => {
     setActiveDrink(value);
@@ -62,17 +64,15 @@ const Register = () => {
     setActiveSmoke(value);
   };
 
-  const onClickInterest = (i) => {
-    const te = i.target.innerText;
-    if (interestActive.indexOf(te) === -1) {
-      setInterestActive((prev) => [...prev, te]);
+  const onClickInterest = (e: React.MouseEvent<HTMLLabelElement, MouseEvent>) => {
+    const target = e.target as HTMLElement;
+    const text = target.innerText;
+    if (interestActive.indexOf(text) === -1) {
+      setInterestActive((prev) => [...prev, text]);
     } else {
-      setInterestActive((prev) => prev.filter((v) => v !== te));
+      setInterestActive((prev) => prev.filter((v) => v !== text));
     }
   };
-
-  const imageRef = useRef<HTMLInputElement>(null);
-  const [image, setImage] = useState('');
 
   const {
     register,
@@ -80,18 +80,9 @@ const Register = () => {
     formState: { errors },
   } = useForm<DataForm>();
 
-  const convert2base64 = (file) => {
-    const reader = new FileReader();
-
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setImage(reader.result.toString());
-    };
-  };
-
   const onSubmit = (data: DataForm) => {
+    const values = { ...data, major: choiceMajor };
     console.log(data);
-    console.log(data.picture);
   };
 
   return (
@@ -109,18 +100,18 @@ const Register = () => {
                     required: true,
                     pattern: {
                       value: /[A-Za-z0-9]+@\w[bu]+\.\w[ac]+\.\w[kr]$/,
-                      message: '이메일 형식이 틀렸습니다.',
+                      message: '대학교 웹메일 계정만 인증이 가능합니다.',
                     },
                   })}
                   type="text"
                 />
                 <EmailBtn>인증번호 발송</EmailBtn>
               </div>
-              <div className="validation">
-                <ValidationLabel>{errors?.email?.message}</ValidationLabel>
-                <ValidationLabel>ㄴ 대학교 웹메일 계정만 웹메일이 발송 가능합니다.</ValidationLabel>
-                <ValidationLabel>ㄴ 형식: @bu.ac.kr</ValidationLabel>
-              </div>
+              {errors?.email?.message && (
+                <div className="validation">
+                  <ValidationLabel>{errors?.email?.message}</ValidationLabel>
+                </div>
+              )}
               <Input className="auth" placeholder="인증번호를 입력해주세요." />
             </div>
 
@@ -199,7 +190,7 @@ const Register = () => {
                   </SelectBox>
                 </div>
               </SelectDiv>
-              <Major setSubmitMajor={setSubmitMajor} />
+              <Major choiceMajor={choiceMajor} setChoiceMajor={setChoiceMajor} />
             </div>
             <div className="interest">
               <Subject htmlFor="user-interest">관심사</Subject>
@@ -210,7 +201,7 @@ const Register = () => {
                       activeColor={interestActive.indexOf(item) !== -1}
                       htmlFor={`interest-${i}`}
                       key={item}
-                      onClick={(sx) => onClickInterest(sx)}
+                      onClick={(e) => onClickInterest(e)}
                     >
                       {item}
                     </ExtendsCommonTag>
