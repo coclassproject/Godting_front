@@ -1,6 +1,9 @@
 import React from 'react';
 import useKakaoLogin from 'src/hooks/useKakaoLogin';
 import { Container } from './style';
+import KakaoLoginButton from '../../../public/kakao.svg';
+import NaverLoginButton from '../../../public/naver.svg';
+import GoogleLoginButton from '../../../public/google.svg';
 
 const SignInCompoent = () => {
   useKakaoLogin();
@@ -9,6 +12,7 @@ const SignInCompoent = () => {
       redirectUri: 'http://localhost:3000/sign_in',
     });
   };
+
   return (
     <Container>
       <div className="text">
@@ -16,9 +20,9 @@ const SignInCompoent = () => {
         <br />
         <span>갓팅 서비스를 즐겨보세요</span>
       </div>
-      <img src="/kakao.png" onClick={onClickKakaoLogin} alt="kakao login button" />
-      <img src="/naver.png" alt="naver login button" />
-      <img src="/kakao.png" alt="google login button" />
+      <KakaoLoginButton onClick={onClickKakaoLogin} />
+      <NaverLoginButton />
+      <GoogleLoginButton />
     </Container>
   );
 };

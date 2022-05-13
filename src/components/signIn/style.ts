@@ -19,8 +19,7 @@ export const Container = styled.div`
     }
   }
 
-  img {
-    margin-bottom: 0.3rem;
+  & > svg {
     cursor: pointer;
   }
 `;
