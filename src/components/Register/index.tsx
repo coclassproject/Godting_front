@@ -30,7 +30,6 @@ interface DataForm {
   lecture: string;
   height: string;
   region: string;
-  picture: File;
   interest: string;
   name: string;
   army: string;
@@ -54,6 +53,12 @@ const Register = () => {
   const imageRef = useRef<HTMLInputElement>(null);
   const [image, setImage] = useState('');
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<DataForm>();
+
   const onClickDrink = (value: activeRadioType) => {
     setActiveDrink(value);
   };
@@ -74,15 +79,16 @@ const Register = () => {
     }
   };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<DataForm>();
+  const onChangeImageUpload = (e) => {
+    console.log('fasf', e.target.files[0]);
+    const formData = new FormData();
+    formData.append('image', e.target.files[0]);
+    setImage(e.target.files[0].name);
+  };
 
   const onSubmit = (data: DataForm) => {
-    const values = { ...data, major: choiceMajor };
-    console.log(data);
+    const values = { ...data, major: choiceMajor, image };
+    console.log(values);
   };
 
   return (
@@ -281,7 +287,7 @@ const Register = () => {
             </SelectDiv>
             <div className="img">
               <Subject>사진 등록(필수 아님)</Subject>
-              <CheckBoxOrRadioNone {...register('picture')} accept="image/*" type="file" ref={imageRef} />
+              <CheckBoxOrRadioNone onChange={onChangeImageUpload} accept="image/*" type="file" ref={imageRef} />
               <ImageBtn onClick={() => imageRef.current.click()}>
                 <BsFillPlusCircleFill size="25" color="#9E9E9E" />
               </ImageBtn>

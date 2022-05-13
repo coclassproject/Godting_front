@@ -98,6 +98,7 @@ export const ImageBtn = styled.button`
   height: 140px;
   border: none;
   border-radius: 10%;
+  cursor: pointer;
 `;
 
 export const RegisterBtn = styled(FullButton)`
