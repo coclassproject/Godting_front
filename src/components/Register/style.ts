@@ -20,7 +20,7 @@ export const SignUpDiv = styled(Background)`
     .validation {
       display: flex;
       flex-direction: column;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
   }
   .nick {
@@ -42,6 +42,14 @@ export const SignUpDiv = styled(Background)`
         display: none;
       }
     }
+  }
+
+  .auth {
+    margin-top: 1rem;
+  }
+
+  input {
+    outline: none;
   }
 `;
 
@@ -68,7 +76,7 @@ export const LittleSubject = styled.label`
   color: ${(props) => props.theme.SUBTITLE_AND_CONTENT_COLOR};
 `;
 export const ValidationLabel = styled.label`
-  font-size: 14px;
+  font-size: 12px;
   color: ${(props) => props.theme.VALIDATION_COLOR};
   margin-top: 7px;
 `;
@@ -90,6 +98,7 @@ export const ImageBtn = styled.button`
   height: 140px;
   border: none;
   border-radius: 10%;
+  cursor: pointer;
 `;
 
 export const RegisterBtn = styled(FullButton)`

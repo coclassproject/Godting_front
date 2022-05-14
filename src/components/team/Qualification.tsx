@@ -16,7 +16,7 @@ const AVGAGE_OPTION = {
 const QualificationComponent = () => {
   const [avgAge, setAvgAge] = useState([20, 27]);
   const [startDate, setStartDate] = useState(new Date());
-  const [submitMajor, setSubmitMajor] = useState<string[]>(null);
+  const [choiceMajor, setChoiceMajor] = useState<string[]>([null]);
 
   return (
     <>
@@ -60,7 +60,7 @@ const QualificationComponent = () => {
           ))}
         </div>
       </ExtendsLabelContainer>
-      <Major setSubmitMajor={setSubmitMajor} />
+      <Major choiceMajor={choiceMajor} setChoiceMajor={setChoiceMajor} />
       <AgeTitle>평균 나이</AgeTitle>
       <RangeContainer>
         <div className="labelContainer">
