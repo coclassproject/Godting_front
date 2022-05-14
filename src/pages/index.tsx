@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import HomeComponent from 'src/components/Home';
+import HomeComponent from 'src/components/home';
 import Layout from 'src/components/shared/Layout';
 
 const Home = () => {
