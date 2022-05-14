@@ -4,7 +4,8 @@
   "description": "Godting_front",
   "main": ".src/index.tsx",
   "scripts": {
-    "build": "next build",
+    "build": "next build && npm run export",
+    "export": "next export",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev"
   },
