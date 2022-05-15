@@ -4,6 +4,7 @@ import { HiOutlineRefresh } from 'react-icons/hi';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useRouter } from 'next/router';
 import { IoPersonOutline } from 'react-icons/io5';
+import Logo from '../../../public/logo.svg';
 
 interface ContainerProps {
   shadow: boolean;
@@ -69,7 +70,10 @@ const Nav = ({ back = false, title, component = false }) => {
           </>
         ) : (
           <>
-            <span>로고</span>
+            {/* <span>로고</span> */}
+            <div>
+              <Logo width="28" height="30" />
+            </div>
             <IconContainer>
               <IoPersonOutline color="#9E9E9E" size="1.3rem" />
               <HiOutlineRefresh color="#9E9E9E" size="1.3rem" />
