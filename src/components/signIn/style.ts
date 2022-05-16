@@ -8,11 +8,17 @@ export const Container = styled.div`
   top: 50%;
   transform: translate(-50%, -60%);
 
-  .text {
+  & > .logo {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  & > .text {
     font-size: 1.2rem;
     color: ${(props) => props.theme.TITLE_BLACK_COLOR};
     line-height: 1.8rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
 
     span:nth-of-type(2) {
       font-weight: bold;
