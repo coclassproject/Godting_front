@@ -15,6 +15,7 @@ const isProduction = configs.ENV === 'production';
 declare global {
   interface Window {
     Kakao: any;
+    naver: any;
   }
 }
 
